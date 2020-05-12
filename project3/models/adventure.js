@@ -25,4 +25,6 @@ module.exports = function(sequelize, DataTypes) {
 
     // Multiple locations or images association?
 
+    return Adventure;
+
 }

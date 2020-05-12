@@ -5,16 +5,6 @@ module.exports = function(sequelize, DataTypes) {
         cityName: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        // Capital
-        capital: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        // Language - or for country
-        language: {
-            type: DataTypes.STRING,
-            allowNull: true
         }
     });
 
@@ -22,4 +12,6 @@ module.exports = function(sequelize, DataTypes) {
         models.City.hasMany(models.Trip, {foriegnkey: 'id'}, {
         });
     }
+
+    return City;
 }

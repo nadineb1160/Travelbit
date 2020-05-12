@@ -32,4 +32,6 @@ module.exports = function(sequelize, DataTypes) {
         // models.Restaurant.hasMany(models.Meals, {foriegnkey: 'id'}, {
         // });
     }
+
+    return Restaurant;
 }

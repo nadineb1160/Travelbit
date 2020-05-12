@@ -22,4 +22,6 @@ module.exports = function(sequelize, DataTypes) {
         });
         // models.User.hasMany(models.User, {foriegnkey: 'followers'})
     }
+
+    return User;
 }

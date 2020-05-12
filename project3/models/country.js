@@ -11,11 +11,23 @@ module.exports = function(sequelize, DataTypes) {
         continent: {
             type: DataTypes.STRING,
             allowNull: true,
-        }
+        },
+         // Capital
+        //  capital: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true,
+        // },
+        // // Language
+        // language: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // }
     });
 
     Country.associate = models => {
         models.Country.hasMany(models.City, {foriegnkey: 'id'}, {
         });
     }
+
+    return Country;
 }
