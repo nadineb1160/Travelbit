@@ -28,11 +28,14 @@ module.exports = function(sequelize, DataTypes) {
         });
         models.Trip.hasMany(models.Adventure, {foriegnkey: 'id'}, {
         });
-        models.Trip.hasMany(models.Enterainment, {foriegnkey: 'id'}, {
+        models.Trip.hasMany(models.Entertainment, {foriegnkey: 'id'}, {
         });
         models.Trip.hasMany(models.Contact, {foriegnkey: 'id'}, {
         });
+        // Stretch
         models.Trip.hasMany(models.Store, {foriegnkey: 'id'}, {
         });
     }
+
+    return Trip;
 }
