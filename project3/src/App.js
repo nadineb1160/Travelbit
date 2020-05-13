@@ -1,11 +1,17 @@
 import React from 'react';
+import Router from "../src/components/Router"
+import {WindowDimensionsProvider} from "./state/WindowDimensions"
+import {UserProvider} from "./state/UserContext"
 import './App.css';
 
 function App() {
+
   return (
-    <div className="App">
-      
-    </div>
+    <WindowDimensionsProvider>
+      <UserProvider>
+        <Router />
+      </UserProvider>
+    </WindowDimensionsProvider>
   );
 }
 
