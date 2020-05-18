@@ -27,15 +27,15 @@ module.exports = {
         db.Country
         .findOne({
             where: {
-                id: req.param.userId,
-                UserId: req.params.id
+                id: req.param.userId
+                // UserId: req.params.id
             },
             include: [{
                 model: db.City
             }]
-        }).then(countries => {
-            console.log(countries)
-            res.json(countries);
+        }).then(country => {
+            console.log(country);
+            res.json(country);
         }).catch(err => {
             console.log(err);
             res.send('No data found')
@@ -49,16 +49,14 @@ module.exports = {
         })
         .catch(err => {
             console.log(err);
-            res.send(`Application for ${application.dataValues.title}, was NOT created`)
+            res.send(`Country ${country.dataValues.countryName}, was NOT created`)
         });
     },
     update: (req, res) => {
         db.Country
         .update(req.body, {
             where: {
-                id: {
-                    id: req.params.countryId
-                }
+                id: req.params.id
             }
         }).then(() => {
             res.json("Completed");
@@ -71,7 +69,7 @@ module.exports = {
         db.Country
         .destroy({
             where: {
-                id: req.params.countryId
+                id: req.params.id
             }
         }).then((rowsDeleted) => {
             rowsDeleted ? res.send(true) : res.send(false);
