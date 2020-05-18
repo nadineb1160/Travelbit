@@ -10,7 +10,7 @@ export default {
     },
     // Deletes a country with given id
     deleteCountry: (id) => {
-        return axios.delete(`/api/country${id}`)
+        return axios.delete(`/api/country/${id}`)
     },
     // Saves a country to the database
     saveCountry: (countryData) => {
