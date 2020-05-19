@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default {
+    // Get all countries for user
     getCountries: () => {
         return axios.get("/api/country");
     },
@@ -12,9 +13,12 @@ export default {
     deleteCountry: (id) => {
         return axios.delete(`/api/country/${id}`)
     },
+    // Update country with id
+    updateCountry: (id, countryData) => {
+        return axios.post(`api/country/${id}`, countryData);
+    },
     // Saves a country to the database
     saveCountry: (countryData) => {
         return axios.post("/api/country", countryData);
     }
-    // Update country with id
 };
