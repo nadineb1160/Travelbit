@@ -2,14 +2,14 @@ import React, {useState, useEffect} from "react";
 import Card from '../Card';
 
 
-const CardContainer = () => {
+const CardContainer = ({ cards }) => {
+
 
     return (
-       <div className="w-1/3 flex p-6">
-           <Card/>
-           <Card/>
+       <div className="flex p-6">
+           {cards.map((card) => <Card card={card}/>)}
        </div>
-    )
+    );
 }
 
 export default CardContainer
