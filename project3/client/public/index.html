@@ -12,6 +12,9 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rammetto+One&display=swap"
     rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	
   <!-- <link rel="stylesheet" href="style.css"> -->
   <!-- <link rel="stylesheet" href="../src/assets/main.css"> -->
   <title>Travel Bit</title>
@@ -21,12 +24,13 @@
   <div id="root"></div>
 
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+  <!-- <script src="assets/js/authenticatate.js"></script>
+  <script src="assets/js/auth-signup.js"></script> -->
 
   <script>
     // Your web app's Firebase configuration
@@ -35,15 +39,19 @@
     //   authDomain: "travelbit-ce02a.firebaseapp.com",
     //   databaseURL: "https://travelbit-ce02a.firebaseio.com",
     //   projectId: "travelbit-ce02a",
-    //   storageBucket: "travelbit-ce02a.appspot.com",
-    //   messagingSenderId: "830021166356",
-    //   appId: "1:830021166356:web:ab84a29578bb2e476a8e01",
-    //   measurementId: "G-DLG8K80589"
+    //   // storageBucket: "travelbit-ce02a.appspot.com",
+    //   // messagingSenderId: "830021166356",
+    //   // appId: "1:830021166356:web:ab84a29578bb2e476a8e01",
+    //   // measurementId: "G-DLG8K80589"
     // };
-    // Initialize Firebase
+    // // Initialize Firebase
     // firebase.initializeApp(firebaseConfig);
     // firebase.analytics();
+
+    // Initialize auth service
+    const auth = firebase.auth();
   </script>
+
 </body>
 
 </html>
