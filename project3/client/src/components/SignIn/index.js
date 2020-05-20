@@ -8,9 +8,9 @@ const SignIn = () => {
     const [error, setError] = useState(null);
 
     const signInWithEmailAndPasswordHandler =
-        (event, email, password) => {
+        async (event, email, password) => {
             event.preventDefault();
-            auth.signInWithEmailAndPassword(email, password)
+            await auth.signInWithEmailAndPassword(email, password)
             .then(window.location.href = "/")
             .catch(error => {
                 setError("Error signing in with password and email!");
