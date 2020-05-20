@@ -21,7 +21,6 @@ var db = require("./models");
 
 
 // Routes
-// require("./routes/api-country-routes")(app);
 app.use(routes);
 
 // Sync Sequelize Models
