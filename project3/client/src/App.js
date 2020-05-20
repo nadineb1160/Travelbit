@@ -5,7 +5,7 @@ import {UserProvider} from "./state/UserContext"
 import './App.css';
 
 function App() {
-
+  
   return (
     <WindowDimensionsProvider>
       <UserProvider>
