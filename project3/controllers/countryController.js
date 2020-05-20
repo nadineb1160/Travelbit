@@ -27,7 +27,7 @@ module.exports = {
         db.Country
         .findOne({
             where: {
-                id: req.param.userId
+                id: req.param.countryId
                 // UserId: req.params.id
             },
             include: [{
@@ -56,7 +56,7 @@ module.exports = {
         db.Country
         .update(req.body, {
             where: {
-                id: req.params.id
+                id: req.params.countryId
             }
         }).then(() => {
             res.json("Completed");
@@ -69,7 +69,7 @@ module.exports = {
         db.Country
         .destroy({
             where: {
-                id: req.params.id
+                id: req.params.countryId
             }
         }).then((rowsDeleted) => {
             rowsDeleted ? res.send(true) : res.send(false);

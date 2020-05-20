@@ -3,26 +3,26 @@ const bcrypt = require("bcryptjs");
 
 // City controller methods
 module.exports = {
-    // findAll: (req, res) => {
-    //     db.User
-    //     .findAll({
-    //         include: [{
-    //             model: db.Country
-    //         }]
-    //     }).then(users => {
-    //         console.log(users)
-    //         res.json(users);
-    //     }).catch(err => {
-    //         console.log(err);
-    //         res.send('No data found')
-    //     });
+    findAll: (req, res) => {
+        db.User
+        .findAll({
+            include: [{
+                model: db.Country
+            }]
+        }).then(users => {
+            console.log(users)
+            res.json(users);
+        }).catch(err => {
+            console.log(err);
+            res.send('No data found')
+        });
         
-    // },
+    },
     findById: (req, res) => {
         db.User
         .findOne({
             where: {
-                id: req.param.id
+                id: req.param.userId
             },
             include: [{
                 model: db.Country
@@ -36,8 +36,9 @@ module.exports = {
         });
     },
     create: (req, res) => {
+        console.log(req.body)
         db.User
-        .create(req.body, {})
+        .create(req.body)
         .then(user => {
             res.json(user.dataValues.id)
         })
@@ -50,7 +51,7 @@ module.exports = {
         db.User
         .update(req.body, {
             where: {
-                id: req.params.id
+                id: req.params.userId
             }
         }).then(() => {
             res.json("Completed");

@@ -28,7 +28,7 @@ module.exports = {
         db.City
         .findOne({
             where: {
-                id: req.param.id
+                id: req.param.cityId
             },
             include: [{
                 model: db.Trip
@@ -56,7 +56,7 @@ module.exports = {
         db.City
         .update(req.body, {
             where: {
-                id: req.params.id
+                id: req.params.cityId
             }
         }).then(() => {
             res.json("Completed");
@@ -69,7 +69,7 @@ module.exports = {
         db.City
         .destroy({
             where: {
-                id: req.params.id
+                id: req.params.cityId
             }
         }).then((rowsDeleted) => {
             rowsDeleted ? res.send(true) : res.send(false);
