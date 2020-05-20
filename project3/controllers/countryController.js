@@ -5,9 +5,9 @@ module.exports = {
     findAll: (req, res) => {
         db.Country
         .findAll({
-            where: {
-                UserId: req.params.id
-            },
+            // where: {
+            //     UserId: req.params.id
+            // },
             include: [{
                 model: db.City
             }],
