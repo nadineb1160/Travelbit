@@ -1,23 +1,45 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { generateUserDocument, auth } from "../../firebase";
+import API from "../../utils/API";
+
+function createUser(user, name) {
+    return (
+        {
+            "email": user.email,
+            "name": name,
+            "uid": user.uid
+        }
+    )
+}
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [displayName, setDisplayName] = useState("");
+    const [name, setName] = useState("");
     const [error, setError] = useState(null);
     const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
         event.preventDefault();
         try {
             const { user } = await auth.createUserWithEmailAndPassword(email, password);
-            generateUserDocument(user, {displayName});
+              generateUserDocument(user, {name});
+            let userBody = createUser(user, name);
+            console.log("user body")
+            console.log(userBody)
+            API.saveUser(userBody)
+            .then(() => {
+                console.log("Saved")
+            })
+            .catch(error => {
+                console.log(error)
+            })
         } catch(error) {
             setError("Error signing up with email and password")
         }
         setEmail("");
         setPassword("");
-        setDisplayName("");
+        setName("");
+
     };
 
     const onChangeHandler = event => {
@@ -26,8 +48,8 @@ const SignUp = () => {
             setEmail(value);
         } else if (name === "userPassword") {
             setPassword(value);
-        } else if (name === "displayName") {
-            setDisplayName(value);
+        } else if (name === "name") {
+            setName(value);
         }
     };
 
@@ -41,16 +63,16 @@ const SignUp = () => {
                     </div>
                 )}
                 <form className="">
-                    <label htmlFor="displayName" className="block">
-                        Display Name:
+                    <label htmlFor="name" className="block">
+                        Name:
                     </label>
                     <input
                         type="text"
                         className="my-1 p-1 w-full "
-                        name="displayName"
-                        value={displayName}
-                        placeholder="E.g: Faruq"
-                        id="displayName"
+                        name="name"
+                        value={name}
+                        placeholder="E.g: Joe Smith"
+                        id="name"
                         onChange={event => onChangeHandler(event)}
                     />
                     <label htmlFor="userEmail" className="block">
