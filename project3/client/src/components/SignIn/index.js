@@ -10,10 +10,13 @@ const SignIn = () => {
     const signInWithEmailAndPasswordHandler =
         (event, email, password) => {
             event.preventDefault();
-            auth.signInWithEmailAndPassword(email, password).catch(error => {
+            auth.signInWithEmailAndPassword(email, password)
+            .then(window.location.href = "/")
+            .catch(error => {
                 setError("Error signing in with password and email!");
                 console.error("Error signing in with password and email", error);
             });
+            
         };
 
     const onChangeHandler = (event) => {
@@ -41,7 +44,7 @@ const SignIn = () => {
                         className="my-1 p-1 w-full"
                         name="userEmail"
                         value={email}
-                        placeholder="E.g: faruq123@gmail.com"
+                        placeholder="E.g: joesmith@gmail.com"
                         id="userEmail"
                         onChange={(event) => onChangeHandler(event)}
                     />
