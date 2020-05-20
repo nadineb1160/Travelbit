@@ -33,11 +33,15 @@ export const UserProvider = ({ children }) => {
   //   app.auth().onAuthStateChanged(setUser);
   // }, []);
 
-  useEffect(async () => {
-    auth.onAuthStateChanged(async userAuth => {
-      const user = await generateUserDocument(userAuth);
-      setUser({ user: user});
-    });
+  useEffect(() => {
+    async function checkAuth() {
+      auth.onAuthStateChanged(async userAuth => {
+        const user = await generateUserDocument(userAuth);
+        setUser({ user: user});
+      });
+    }
+
+    checkAuth()
   }, [])
 
   return (
