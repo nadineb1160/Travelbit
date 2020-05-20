@@ -1,9 +1,13 @@
 import axios from "axios";
 
 export default {
+    // Get all users
+    getUsers: () => {
+        return axios.get(`/api/user`);
+    },
     // Get user with a given id
     getUser: (userId) => {
-        return axios.get(`/api/country/${userId}`);
+        return axios.get(`/api/user/${userId}`);
     },
     // Update user with id
     updateUser: (userId, userData) => {
