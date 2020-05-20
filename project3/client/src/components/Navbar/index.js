@@ -3,9 +3,31 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../../state/UserContext"
 // import "./style.css";
 
+function UserSignedIn() {
+  const { user } = useUserContext();
+
+  return (
+    <ul className="navbar-nav justify-content-end">
+
+      {user ?
+      <li className="nav-item">
+        <Link to="/logout" className={window.location.pathname === "/logout" ? "nav-link active" : "nav-link"}>Logout Out</Link>
+      </li>
+        :
+      // <li className="nav-item">
+      //   <Link to="/signup" className={window.location.pathname === "/signup" ? "nav-link active" : "nav-link"}>Sign Up</Link>
+      // </li>
+      <li className="nav-item">
+        <Link to="/signin" className={window.location.pathname === "/signin" ? "nav-link active" : "nav-link"}>Sign In</Link>
+      </li>
+      }
+    </ul>
+
+  )
+}
 
 function Navbar() {
-  // const {name} = useUserContext();
+  const { user } = useUserContext();
 
   return (
 
@@ -23,27 +45,18 @@ function Navbar() {
             <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/travel" className={window.location.pathname === "/travel" ? "nav-link active" : "nav-link"}>Travel</Link>
+            <Link to="/about" className={window.location.pathname === "/about" ? "nav-link active" : "nav-link"}>About</Link>
           </li>
           <li className="nav-item">
-            <Link to="/about" className={window.location.pathname === "/about" ? "nav-link active" : "nav-link"}>About</Link>
+            <Link to="/travel" className={window.location.pathname === "/travel" ? "nav-link active" : "nav-link"}>Travel</Link>
           </li>
         </ul>
         {/* <form className="form-inline my-2 my-lg-0">
           <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form> */}
-        <ul className="navbar-nav justify-content-end">
-          <li className="nav-item">
-            <Link to="/profile" className={window.location.pathname === "/profile" ? "nav-link active" : "nav-link"}>Profile</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/signup" className={window.location.pathname === "/signup" ? "nav-link active" : "nav-link"}>Sign Up</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/signin" className={window.location.pathname === "/signin" ? "nav-link active" : "nav-link"}>Sign In</Link>
-          </li>
-        </ul>
+        <UserSignedIn/>
+
       </div>
     </nav>
 
