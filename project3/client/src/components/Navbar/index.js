@@ -8,10 +8,19 @@ function UserSignedIn() {
 
   return (
     <ul className="navbar-nav justify-content-end">
+      {user ? 
+        <li className="nav-item">
+          <Link to="/profile" className={window.location.pathname === "/profile" ? "nav-link active" : "nav-link"}>Profile</Link>
+        </li>
+        :
+        <li className="nav-item">
+          <Link to="/about" className={window.location.pathname === "/about" ? "nav-link active" : "nav-link"}>About</Link>
+        </li>
+      }
 
       {user ?
       <li className="nav-item">
-        <Link to="/logout" className={window.location.pathname === "/logout" ? "nav-link active" : "nav-link"}>Logout Out</Link>
+        <Link to="/logout" className={window.location.pathname === "/logout" ? "nav-link active" : "nav-link"}>Logout</Link>
       </li>
         :
       // <li className="nav-item">
@@ -27,7 +36,7 @@ function UserSignedIn() {
 }
 
 function Navbar() {
-  const { user } = useUserContext();
+  // const { user } = useUserContext();
 
   return (
 
@@ -44,9 +53,9 @@ function Navbar() {
           <li className="nav-item active">
             <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>Home</Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to="/about" className={window.location.pathname === "/about" ? "nav-link active" : "nav-link"}>About</Link>
-          </li>
+          </li> */}
           <li className="nav-item">
             <Link to="/travel" className={window.location.pathname === "/travel" ? "nav-link active" : "nav-link"}>Travel</Link>
           </li>
