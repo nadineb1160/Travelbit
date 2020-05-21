@@ -1,12 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
+import API from "../../utils/API";
+
+function countryJSON(country, continent) {
+    return (
+        {
+            "country": country,
+            "continent": continent
+            // "userId": 
+        }
+    )
+}
 
 function AddCountry() {
+    const [country, setCountry] = useState("");
+    const [continent, setContinent] = useState("");
 
     const handleAdd = (event) => {
         event.preventDefault();
-        console.log("hello")
-
+        const countryBody = countryJSON(country, continent);
+        API.saveCountry(countryBody)
+        .then(() => {
+            console.log("Saved")
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
+
+    const onChangeHandler = event => {
+        const { name, value } = event.currentTarget;
+        if (name === "country") {
+            setCountry(value);
+        } else if (name === "continent") {
+            setContinent(value);
+        }
+    };
 
     return (
         <div>
@@ -20,7 +48,7 @@ function AddCountry() {
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500" id="country" type="text" placeholder="Germany" />
+                            <input onChange={event => onChangeHandler(event)} className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500" id="country" type="text" placeholder="Germany" />
                         </div>
                     </div>
                     <div className="md:flex md:items-center mb-6">
@@ -31,7 +59,7 @@ function AddCountry() {
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <select className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500" id="continent">
+                            <select onChange={event => onChangeHandler(event)} className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500" id="continent">
                                 <option>Africa</option>
                                 <option>Antarctica</option>
                                 <option>Australia</option>
