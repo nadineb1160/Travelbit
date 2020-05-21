@@ -6,6 +6,7 @@ import SignUp from "../SignUp";
 import SignIn from "../SignIn";
 import PasswordReset from "../PasswordReset";
 import AddCountry from "../AddCountry";
+import AddCity from "../AddCity";
 import Profile from "../../pages/Profile";
 import Travel from "../../pages/Travel";
 import Navbar from "../Navbar/index";
@@ -39,6 +40,7 @@ function Router() {
                     <Route exact path="/about" component={About} />
                     <Route exact path="/profile" component={Profile} />
                     <Route exact path="/addCountry" component={AddCountry} />
+                    <Route exact path="/addCity" component={AddCity} />
                     {/* <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/signin" component={SignIn} /> */}
                     {/* <Route component={NoMatch} /> */}
