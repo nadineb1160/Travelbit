@@ -12,11 +12,11 @@ import Travel from "../../pages/Travel";
 import Navbar from "../Navbar/index";
 import Footer from "../Footer/index";
 import Wrapper from "../Wrapper/index";
-import {useUserContext} from "../../state/UserContext.js"
+import { useUserContext } from "../../state/UserContext.js"
 
 function AuthenticatedRoutes() {
     return (
-        
+
         <Switch>
             <Route exact path="/signup" component={SignUp} />
             <Route path="/signin" component={SignIn} />
@@ -26,7 +26,7 @@ function AuthenticatedRoutes() {
 }
 
 function Router() {
-    const {user} = useUserContext();
+    const { user } = useUserContext();
 
 
     return (
@@ -34,18 +34,18 @@ function Router() {
             <Navbar />
             <Wrapper>
                 {user ?
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/travel" component={Travel} />
-                    <Route exact path="/about" component={About} />
-                    <Route exact path="/profile" component={Profile} />
-                    <Route exact path="/addCountry" component={AddCountry} />
-                    <Route exact path="/addCity" component={AddCity} />
-                    {/* <Route exact path="/signup" component={SignUp} />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/travel" component={Travel} />
+                        <Route exact path="/about" component={About} />
+                        <Route exact path="/profile" component={Profile} />
+                        <Route exact path="/addCountry" component={AddCountry} />
+                        <Route exact path="/addCity" component={AddCity} />
+                        {/* <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/signin" component={SignIn} /> */}
-                    {/* <Route component={NoMatch} /> */}
-                </Switch>
-                : <AuthenticatedRoutes/>
+                        {/* <Route component={NoMatch} /> */}
+                    </Switch>
+                    : <AuthenticatedRoutes />
                 }
             </Wrapper>
             <Footer />
