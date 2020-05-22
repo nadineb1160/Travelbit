@@ -5,9 +5,13 @@ export default {
     getUsers: () => {
         return axios.get(`/api/user`);
     },
-    // Get user with a given id
-    getUser: (userId) => {
-        return axios.get(`/api/user/${userId}`);
+    // // Get user with a given id
+    // getUser: (userId) => {
+    //     return axios.get(`/api/user/${userId}`);
+    // },
+    // Get user with a uid
+    getUserByUid: (uid) => {
+        return axios.get(`/api/user/${uid}`);
     },
     // Update user with id
     updateUser: (userId, userData) => {
