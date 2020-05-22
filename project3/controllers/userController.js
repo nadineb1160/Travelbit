@@ -18,16 +18,33 @@ module.exports = {
         });
         
     },
-    findById: (req, res) => {
+    // findById: (req, res) => {
+    //     db.User
+    //     .findOne({
+    //         where: {
+    //             id: req.param.userId
+    //         },
+    //         include: [{
+    //             model: db.Country
+    //         }]
+    //     }).then(user => {
+    //         console.log("found user by id")
+    //         console.log(user)
+    //         res.json(user);
+    //     }).catch(err => {
+    //         console.log(err);
+    //         res.send('No data found')
+    //     });
+    // },
+    findByUid: (req, res) => {
         db.User
         .findOne({
             where: {
-                id: req.param.userId
+                uid: req.param.uid
             },
-            include: [{
-                model: db.Country
-            }]
+            attributes: ["id"]
         }).then(user => {
+            console.log("found user by uid")
             console.log(user)
             res.json(user);
         }).catch(err => {
