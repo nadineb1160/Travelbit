@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import API from "../../utils/API";
+import {useUserContext} from "../../state/UserContext"
 
-function countryJSON(country, continent) {
+
+function countryJSON(country, continent, userId) {
     return (
         {
-            "country": country,
-            "continent": continent
-            // "userId": 
+            "countryName": country,
+            "continent": continent,
+            "userId": userId
         }
     )
 }
@@ -14,25 +16,46 @@ function countryJSON(country, continent) {
 function AddCountry() {
     const [country, setCountry] = useState("");
     const [continent, setContinent] = useState("");
+    const {user} = useUserContext();
 
     const handleAdd = (event) => {
         event.preventDefault();
-        const countryBody = countryJSON(country, continent);
-        API.saveCountry(countryBody)
-        .then(() => {
-            console.log("Saved")
-        })
+        let uid = String(user.uid)
+        console.log(uid)
+        console.log(typeof(user.id))
+        API.getUserByUid(uid)
+        .then(
+            // Add uid to json
+
+        )
         .catch(error => {
             console.log(error)
-        })
+        });
+
+
+        // const countryBody = countryJSON(country, continent, userId);
+        // console.log(countryBody)
+        // API.saveCountry(countryBody)
+        // .then(() => {
+        //     console.log("Saved Country")
+        // })
+        // .catch(error => {
+        //     console.log(error)
+        // })
     }
 
     const onChangeHandler = event => {
+        console.log(event.currentTarget)
         const { name, value } = event.currentTarget;
+        console.log(name)
+        console.log(value)
         if (name === "country") {
             setCountry(value);
+            console.log(country)
         } else if (name === "continent") {
             setContinent(value);
+            console.log(continent)
+
         }
     };
 
@@ -48,7 +71,14 @@ function AddCountry() {
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <input onChange={event => onChangeHandler(event)} className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500" id="country" type="text" placeholder="Germany" />
+                            <input 
+                            type="text" 
+                            className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500" 
+                            name="country"
+                            value={country}
+                            placeholder="Germany" 
+                            id="country" 
+                            onChange={(event) => onChangeHandler(event)} />
                         </div>
                     </div>
                     <div className="md:flex md:items-center mb-6">
@@ -59,7 +89,12 @@ function AddCountry() {
                             </label>
                         </div>
                         <div className="md:w-2/3">
-                            <select onChange={event => onChangeHandler(event)} className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500" id="continent">
+                            <select 
+                            className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500" 
+                            name="continent"
+                            value={continent}
+                            id="continent"
+                            onChange={(event) => onChangeHandler(event)} >
                                 <option>Africa</option>
                                 <option>Antarctica</option>
                                 <option>Australia</option>
@@ -78,7 +113,7 @@ function AddCountry() {
                     <div className="md:flex md:items-center">
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">
-                            <button onClick={handleAdd} className="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                            <button onClick={event => handleAdd(event)} className="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
                                 Add +
                             </button>
                         </div>
