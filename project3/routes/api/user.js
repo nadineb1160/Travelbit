@@ -7,9 +7,13 @@ router.route("/")
     .post(userController.create)
     // .post(userController.checkExisting)
 
-// Matches with "api/user/:id"
-router.route("/:id")
-    .get(userController.findById)
+// Matches with "api/user/:userId"
+router.route("/:userId")
+    // .get(userController.findById)
     .put(userController.update)
+    
+// Matches with "api/user/:uid"
+router.route("/:uid")
+    .get(userController.findByUid)
 
 module.exports = router;
