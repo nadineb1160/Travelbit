@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
+const countryRoutes = require("./country");
 
 // Matcher with "/api/user"
 router.route("/")
@@ -15,5 +16,8 @@ router.route("/:userId")
 // Matches with "api/user/:uid"
 router.route("/:uid")
     .get(userController.findByUid)
+
+// Matches with "api/user/:userId"
+router.use("/:userId/country", countryRoutes);
 
 module.exports = router;
