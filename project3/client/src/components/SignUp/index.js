@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { generateUserDocument, auth } from "../../firebase";
 import API from "../../utils/API";
 
-function createUser(user, name) {
+
+function userJSON(user, displayName) {
     return (
         {
             "email": user.email,
-            "name": name,
+            "displayName": displayName,
             "uid": user.uid
         }
     )
@@ -16,14 +17,17 @@ function createUser(user, name) {
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
+    const [displayName, setdisplayName] = useState("");
     const [error, setError] = useState(null);
+
     const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
         event.preventDefault();
         try {
             const { user } = await auth.createUserWithEmailAndPassword(email, password);
-              generateUserDocument(user, {name});
-            let userBody = createUser(user, name);
+            console.log(user)
+            console.log(displayName);
+            let userBody = userJSON(user, displayName);
+            generateUserDocument(userBody);
             console.log("user body")
             console.log(userBody)
             API.saveUser(userBody)
@@ -31,6 +35,7 @@ const SignUp = () => {
                 console.log("Saved")
             })
             .catch(error => {
+                console.log("Error saving user in database")
                 console.log(error)
             })
         } catch(error) {
@@ -38,8 +43,9 @@ const SignUp = () => {
         }
         setEmail("");
         setPassword("");
-        setName("");
+        setdisplayName("");
 
+        // window.location.href = "/"
     };
 
     const onChangeHandler = event => {
@@ -48,8 +54,8 @@ const SignUp = () => {
             setEmail(value);
         } else if (name === "userPassword") {
             setPassword(value);
-        } else if (name === "name") {
-            setName(value);
+        } else if (name === "displayName") {
+            setdisplayName(value);
         }
     };
 
@@ -63,16 +69,16 @@ const SignUp = () => {
                     </div>
                 )}
                 <form className="">
-                    <label htmlFor="name" className="block">
+                    <label htmlFor="displayName" className="block">
                         Name:
                     </label>
                     <input
                         type="text"
                         className="my-1 p-1 w-full "
-                        name="name"
-                        value={name}
+                        name="displayName"
+                        value={displayName}
                         placeholder="E.g: Joe Smith"
-                        id="name"
+                        id="displayName"
                         onChange={event => onChangeHandler(event)}
                     />
                     <label htmlFor="userEmail" className="block">
