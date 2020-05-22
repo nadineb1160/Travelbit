@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
+import {useUserContext} from "../../state/UserContext"
+
 
 const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
+    const {user} = useUserContext();
 
-    const signInWithEmailAndPasswordHandler =
-        async (event, email, password) => {
+    const signInWithEmailAndPasswordHandler = 
+    (event, email, password) => {
             event.preventDefault();
-            await auth.signInWithEmailAndPassword(email, password)
-            .then(window.location.href = "/")
+             auth.signInWithEmailAndPassword(email, password)
+            .then(
+                // API.getUserByUid(uid)
+                console.log(user)
+                // window.location.href = "/"
+            )
             .catch(error => {
                 setError("Error signing in with password and email!");
                 console.error("Error signing in with password and email", error);
