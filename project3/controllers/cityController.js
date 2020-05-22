@@ -6,7 +6,7 @@ module.exports = {
         db.City
         .findAll({
             where: {
-                // UserId: req.params.id,
+                UserId: req.params.userId,
                 countryId: req.params.countryId
             },
             include: [{
@@ -28,6 +28,7 @@ module.exports = {
         db.City
         .findOne({
             where: {
+                UserId: req.params.userId,
                 id: req.param.cityId
             },
             include: [{
@@ -56,6 +57,7 @@ module.exports = {
         db.City
         .update(req.body, {
             where: {
+                UserId: req.params.userId,
                 id: req.params.cityId
             }
         }).then(() => {
@@ -69,6 +71,7 @@ module.exports = {
         db.City
         .destroy({
             where: {
+                UserId: req.params.userId,
                 id: req.params.cityId
             }
         }).then((rowsDeleted) => {

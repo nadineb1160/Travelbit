@@ -5,9 +5,9 @@ module.exports = {
     findAll: (req, res) => {
         db.Country
         .findAll({
-            // where: {
-            //     UserId: req.params.id
-            // },
+            where: {
+                UserId: req.params.userId
+            },
             include: [{
                 model: db.City
             }],
@@ -27,8 +27,8 @@ module.exports = {
         db.Country
         .findOne({
             where: {
+                UserId: req.params.userId,
                 id: req.param.countryId
-                // UserId: req.params.id
             },
             include: [{
                 model: db.City
@@ -49,13 +49,14 @@ module.exports = {
         })
         .catch(err => {
             console.log(err);
-            res.send(`Country ${country.dataValues.countryName}, was NOT created`)
+            res.send(`Country was NOT created`)
         });
     },
     update: (req, res) => {
         db.Country
         .update(req.body, {
             where: {
+                UserId: req.params.userId,
                 id: req.params.countryId
             }
         }).then(() => {
@@ -69,6 +70,7 @@ module.exports = {
         db.Country
         .destroy({
             where: {
+                UserId: req.params.userId,
                 id: req.params.countryId
             }
         }).then((rowsDeleted) => {
