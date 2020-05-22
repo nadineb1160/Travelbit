@@ -1,47 +1,27 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, createContext } from "react";
 import { auth, generateUserDocument } from "../firebase";
 
-const UserContext = React.createContext({
-  // id: 0,
-  // name: "",
-  // email: "",
-  // getUserToken: () => { },
-  // login: () => { }
+const UserContext = createContext({
 
   user: null
 });
 
-function getUserToken() {
-  return "SampleToken123";
-}
-function getLogin() {
-  return "SampleToken123";
-}
 
 export const UserProvider = ({ children }) => {
 
   const [user, setUser] = useState({
-    // id: 0,
-    // name: "Bob",
-    // email: "bob@bob.com",
-    // getUserToken: getUserToken,
-    // login: getLogin
+  
     user: null
   });
 
-  // useEffect(() => {
-  //   app.auth().onAuthStateChanged(setUser);
-  // }, []);
+  
 
   useEffect(() => {
-    async function checkAuth() {
-      auth.onAuthStateChanged(async userAuth => {
-        const user = await generateUserDocument(userAuth);
-        setUser({ user: user});
-      });
-    }
-
-    checkAuth()
+    
+    auth.onAuthStateChanged(async userAuth => {
+      const user = await generateUserDocument(userAuth);
+      setUser({ user });
+    });
   }, [])
 
   return (
