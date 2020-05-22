@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         // First and Last Name
-        name: {
+        displayName: {
             type: DataTypes.STRING,
             allowNull: true,
         },
