@@ -40,7 +40,7 @@ module.exports = {
         db.User
         .findOne({
             where: {
-                uid: req.param.uid
+                uid: req.params.uid
             },
             attributes: ["id"]
         }).then(user => {
