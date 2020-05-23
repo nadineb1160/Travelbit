@@ -4,8 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         // Country Name
         countryName: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true, // Check
+            allowNull: false
         },
         // Country Continent
         continent: {
