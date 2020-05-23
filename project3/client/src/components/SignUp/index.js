@@ -17,35 +17,37 @@ function userJSON(user, displayName) {
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [displayName, setdisplayName] = useState("");
+    const [displayName, setDisplayName] = useState("");
     const [error, setError] = useState(null);
 
     const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
         event.preventDefault();
         try {
             const { user } = await auth.createUserWithEmailAndPassword(email, password);
-            console.log(user)
+            // generateUserDocument(user, { displayName });
             console.log(displayName);
             let userBody = userJSON(user, displayName);
             generateUserDocument(userBody);
             console.log("user body")
             console.log(userBody)
             API.saveUser(userBody)
-            .then(() => {
-                console.log("Saved")
-            })
-            .catch(error => {
-                console.log("Error saving user in database")
-                console.log(error)
-            })
-        } catch(error) {
-            setError("Error signing up with email and password")
+                .then(() => {
+                    console.log("Saved")
+                })
+                .catch(error => {
+                    console.log("Error saving user in database")
+                    console.log(error)
+                })
         }
+        catch (error) {
+            setError('Error Signing up with email and password');
+        }
+
         setEmail("");
         setPassword("");
-        setdisplayName("");
+        setDisplayName("");
 
-        // window.location.href = "/"
+        window.location.href = "/"
     };
 
     const onChangeHandler = event => {
@@ -55,7 +57,7 @@ const SignUp = () => {
         } else if (name === "userPassword") {
             setPassword(value);
         } else if (name === "displayName") {
-            setdisplayName(value);
+            setDisplayName(value);
         }
     };
 
