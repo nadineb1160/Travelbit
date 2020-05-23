@@ -6,7 +6,6 @@ import API from "../utils/API";
 const State = ({countryId}) => {
     console.log("Hello made it to state")
     const { user } = useUserContext();
-    const { name } = user;
 
     const [displayCards, setDisplayCards] = useState([]);
     // const [selected, setSelected] = useState({});
