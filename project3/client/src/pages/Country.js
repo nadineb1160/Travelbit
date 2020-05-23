@@ -7,7 +7,6 @@ import API from "../utils/API";
 
 const Country = () => {
     const { user } = useUserContext();
-    const { name } = user;
 
     const [displayCards, setDisplayCards] = useState([]);
     const [selected, setSelected] = useState({});
@@ -17,14 +16,12 @@ const Country = () => {
         setLoading(true);
         console.log(user)
         API.getUserByUid(user.uid)
-        .then((id) => {
-            let userId = id.data.id;
+        .then((res) => {
+            let userId = res.data.id;
             console.log(userId);
     
             API.getCountries(userId).then((countries) => {
-                console.log("Countries")
-                console.log(countries.data);
-
+            
                 let countryData = countries.data;
 
                 setDisplayCards(countryData);
@@ -46,7 +43,7 @@ const Country = () => {
             <div className="flex justify-center">
                 {/* <h2 className="text-center text-xl font-bold">{name}Countries</h2>
                 <br/> */}
-                <button onClick={addCountryHandler} className="bg-teal-500 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                <button onClick={addCountryHandler} className="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                     Add Country
                 </button>
             </div>
