@@ -5,7 +5,6 @@ import API from "../utils/API";
 
 const City = ({ countryId }) => {
     const { user } = useUserContext();
-    const { name } = user;
 
     const [displayCards, setDisplayCards] = useState([]);
     // const [selected, setSelected] = useState({});
@@ -44,7 +43,7 @@ const City = ({ countryId }) => {
             <div className="flex justify-center">
                 {/* <h2 className="text-center text-xl font-bold">{name}Countries</h2>
                 <br/> */}
-                <button onClick={addCityHandler} className="bg-teal-500 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                <button onClick={addCityHandler} className="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                     Add City
                 </button>
             </div>
