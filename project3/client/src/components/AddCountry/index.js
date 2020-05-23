@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import API from "../../utils/API";
-import {useUserContext} from "../../state/UserContext"
+import {useUserContext} from "../../state/UserContext";
+import Travel from "../../pages/Travel";
 
 
 function countryJSON(country, continent, userId) {
@@ -8,7 +9,7 @@ function countryJSON(country, continent, userId) {
         {
             "countryName": country,
             "continent": continent,
-            "userId": userId
+            "UserId": userId
         }
     )
 }
@@ -20,28 +21,31 @@ function AddCountry() {
 
     const handleAdd = (event) => {
         event.preventDefault();
-        let uid = String(user.uid)
-        console.log(uid)
-        console.log(typeof(user.id))
-        API.getUserByUid(uid)
-        .then(
-            // Add uid to json
+     
+        API.getUserByUid(user.uid)
+        .then((id) => {
+            let userId = id.data.id;
+            console.log(userId);
 
-        )
+            const countryBody = countryJSON(country, continent, userId);
+            console.log(countryBody)
+
+            API.saveCountry(countryBody)
+            .then(() => {
+                console.log("Saved Country")
+                return (
+                    window.location.href = "/travel"
+                )
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        })
         .catch(error => {
             console.log(error)
         });
 
 
-        // const countryBody = countryJSON(country, continent, userId);
-        // console.log(countryBody)
-        // API.saveCountry(countryBody)
-        // .then(() => {
-        //     console.log("Saved Country")
-        // })
-        // .catch(error => {
-        //     console.log(error)
-        // })
     }
 
     const onChangeHandler = event => {
@@ -51,11 +55,8 @@ function AddCountry() {
         console.log(value)
         if (name === "country") {
             setCountry(value);
-            console.log(country)
         } else if (name === "continent") {
             setContinent(value);
-            console.log(continent)
-
         }
     };
 
