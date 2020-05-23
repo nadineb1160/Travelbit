@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import API from "../../utils/API";
 import {useUserContext} from "../../state/UserContext";
-import Travel from "../../pages/Travel";
 
 
 function countryJSON(country, continent, userId) {
@@ -49,10 +48,7 @@ function AddCountry() {
     }
 
     const onChangeHandler = event => {
-        console.log(event.currentTarget)
         const { name, value } = event.currentTarget;
-        console.log(name)
-        console.log(value)
         if (name === "country") {
             setCountry(value);
         } else if (name === "continent") {
