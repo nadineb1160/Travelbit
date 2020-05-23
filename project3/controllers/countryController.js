@@ -43,7 +43,7 @@ module.exports = {
     },
     create: (req, res) => {
         db.Country
-        .create(req.body, {})
+        .create(req.body)
         .then(country => {
             res.json(country.dataValues.id)
         })
