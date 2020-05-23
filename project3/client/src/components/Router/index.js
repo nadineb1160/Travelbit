@@ -9,6 +9,7 @@ import AddCountry from "../AddCountry";
 import AddCity from "../AddCity";
 import Profile from "../../pages/Profile";
 import Travel from "../../pages/Travel";
+import State from "../../pages/State";
 import Navbar from "../Navbar/index";
 import Footer from "../Footer/index";
 import Wrapper from "../Wrapper/index";
@@ -41,6 +42,7 @@ function Router() {
                         <Route exact path="/profile" component={Profile} />
                         <Route exact path="/addCountry" component={AddCountry} />
                         <Route exact path="/addCity" component={AddCity} />
+                        <Route exact path="/state" component={State} />
                         {/* <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/signin" component={SignIn} /> */}
                         {/* <Route component={NoMatch} /> */}
