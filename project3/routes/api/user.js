@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
+const countryController = require("../../controllers/countryController");
 const countryRoutes = require("./country");
 
 // Matcher with "/api/user"
@@ -17,7 +18,17 @@ router.route("/:userId")
 router.route("/:uid")
     .get(userController.findByUid)
 
-// Matches with "api/user/:userId"
-router.use("/:userId/country", countryRoutes);
+
+// ***** Country Routes *****
+
+router.route("/country")
+    .post(countryController.create)
+
+// Matches with "api/user/:userId/country"
+router.route("/:userId/country")
+    .get(countryController.findAll)
+
+
+// countryRoutes);
 
 module.exports = router;
