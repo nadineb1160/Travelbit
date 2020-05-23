@@ -4,10 +4,10 @@ const Home = () => {
     return (
         <div>
 
-            <header className="relative bg-no-repeat bg-cover lg:bg-center p-6 bg-top-right" id="bg-img">
+            <header className="relative bg-no-repeat bg-cover lg:bg-center p-6 bg-top-right h-screen" id="bg-img">
 
-                <div className="max-w-5xl mx-auto lg:py-32 py-2">
-                    <h2 className="lg:text-5xl text-4xl font-semibold text-white leading-none mb-4">Travel back in time</h2>
+                <div className="max-w-5xl mx-auto lg:py-32 py-2 align-middle">
+                    <h2 className="lg:text-5xl text-4xl text-center font-semibold text-white leading-none mb-4">Travel back in time</h2>
 
                     <div className="flex items-center flex-wrap justify-start max-w-2xl lg:mx-0 mx-auto">
                         <div className="lg:pr-5 w-full lg:w-1/2 mb-4 lg:mb-0">
