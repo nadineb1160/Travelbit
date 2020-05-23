@@ -1,7 +1,8 @@
 import React from "react";
 import State from "../../pages/State";
-import City from "../../pages/City";
-import { useState } from "react";
+import Home from "../../pages/Home";
+// import City from "../../pages/City";
+// import { useState } from "react";
 
 function CountryCard({ card }) {
 
@@ -9,7 +10,7 @@ function CountryCard({ card }) {
 
     const clickCardHandler = (event) => {
         event.preventDefault();
-        console.log(event.currentTarget)
+        // console.log(event.currentTarget)
         let cardId = event.currentTarget.getAttribute('value');
         let cardName = event.currentTarget.getAttribute('name');
         console.log(cardId)
@@ -18,13 +19,16 @@ function CountryCard({ card }) {
         if (cardName === "United States of America" || cardName === "USA" || cardName === "United States") {
             console.log("states");
             return (
-                <State countryId={cardId}></State>
+                // <State countryId={cardId}></State>
+                window.location.href = "/state"
+                
+            )
+        } else {
+            return (
+                // <City></City>
+                window.location.href = "/city"
             )
         }
-        
-        // return (
-            
-        // )
 
     }
 
