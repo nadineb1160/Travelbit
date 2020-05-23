@@ -11,7 +11,7 @@ import Profile from "../../pages/Profile";
 import Travel from "../../pages/Travel";
 import State from "../../pages/State";
 import Navbar from "../Navbar/index";
-import Footer from "../Footer/index";
+// import Footer from "../Footer/index";
 import Wrapper from "../Wrapper/index";
 import { useUserContext } from "../../state/UserContext.js"
 
@@ -50,7 +50,7 @@ function Router() {
                     : <AuthenticatedRoutes />
                 }
             </Wrapper>
-            <Footer />
+            {/* <Footer /> */}
         </BrowserRouter>
     );
 }
