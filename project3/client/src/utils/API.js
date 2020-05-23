@@ -39,8 +39,27 @@ export default {
     },
     // Saves a country to the database
     saveCountry: (countryData) => {
-        console.log(countryData)
         return axios.post(`/api/user/country`, countryData);
+    },
+    // Get all states in country for user
+    getStates: (userId, countryId) => {
+        return axios.get(`/api/user/${userId}/country/${countryId}/state`);
+    },
+    // Get the city with a given id
+    getState: (userId, countryId, stateId) => {
+        return axios.get(`/api/user/${userId}/country/${countryId}/state/${stateId}`);
+    },
+    // Deletes a city with given id
+    deleteState: (userId, countryId, stateId) => {
+        return axios.get(`/api/user/${userId}/country/${countryId}/state/${stateId}`);
+    },
+    // Update city with id
+    updateState: (userId, countryId, stateId, stateData) => {
+        return axios.get(`/api/user/${userId}/country/${countryId}/state/${stateId}`, stateData);
+    },
+    // Saves a city to the database
+    saveState: (stateData) => {
+        return axios.post(`/api/user/country/state`, stateData);
     },
     // Get all cities in country for user
     getCities: (userId, countryId) => {
@@ -59,8 +78,8 @@ export default {
         return axios.get(`/api/user/${userId}/country/${countryId}/city/${cityId}`, cityData);
     },
     // Saves a city to the database
-    saveCity: (userId, countryId, cityData) => {
-        return axios.post(`/api/user/${userId}/country${countryId}/city/`, cityData);
+    saveCity: (cityData) => {
+        return axios.post(`/api/user/country/city`, cityData);
     },
     // Get all trips for a city
     getTrips: (userId, countryId, cityId) => {
@@ -79,7 +98,7 @@ export default {
         return axios.get(`/api/user/${userId}/country/${countryId}/city/${cityId}/trip/${tripId}`, tripData);
     },
     // Saves a city to the database
-    saveTrip: (userId, countryId, cityId, tripData) => {
-        return axios.post(`/api/user/${userId}/country${countryId}/city/${cityId}/trip/`, tripData);
+    saveTrip: (tripData) => {
+        return axios.post(`/api/user/country/city/trip/`, tripData);
     }
 };
