@@ -37,6 +37,7 @@ module.exports = {
     //     });
     // },
     findByUid: (req, res) => {
+        console.log(req.params.uid)
         db.User
         .findOne({
             where: {
@@ -45,23 +46,26 @@ module.exports = {
             attributes: ["id"]
         }).then(user => {
             console.log("found user by uid")
-            // console.log(user)
-            res.json(user);
+            console.log(user.dataValues.id)
+            res.json(user.dataValues);
         }).catch(err => {
             console.log(err);
             res.send('No data found')
         });
     },
     create: (req, res) => {
+        console.log("req.body")
         console.log(req.body)
         db.User
         .create(req.body)
         .then(user => {
-            res.json(user.dataValues.id)
+            console.log("user.dataValues")
+            console.log(user.dataValues)
+            res.json(user.dataValues)
         })
         .catch(err => {
             console.log(err);
-            res.send(`User ${city.dataValues.name}, was NOT created`)
+            res.send(`User was NOT created`)
         });
     },
     update: (req, res) => {
