@@ -1,10 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../state/UserContext"
+import { auth } from "../../firebase";
 // import "./style.css";
 
 function UserSignedIn() {
   const { user } = useUserContext();
+
+  const logoutHandler = () =>  {
+    auth.signOut().then(function() {
+      // Sign-out successful.
+      console.log("Logged out")
+      window.location.href = "/"
+    }).catch(error => {
+      // An error happened.
+      console.log(error)
+    });
+  }
 
   return (
     <ul className="navbar-nav justify-content-end">
@@ -20,7 +32,7 @@ function UserSignedIn() {
 
       {user ?
       <li className="nav-item">
-        <Link to="/logout" className={window.location.pathname === "/logout" ? "nav-link active" : "nav-link"}>Logout</Link>
+        <button onClick={logoutHandler} className={window.location.pathname === "/logout" ? "nav-link active" : "nav-link"}>Logout</button>
       </li>
         :
       // <li className="nav-item">
