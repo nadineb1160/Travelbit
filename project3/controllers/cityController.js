@@ -16,7 +16,7 @@ module.exports = {
                 ['cityName', 'ASC']
             ]
         }).then(cities => {
-            console.log(cities)
+            // console.log(cities)
             res.json(cities);
         }).catch(err => {
             console.log(err);
@@ -35,7 +35,7 @@ module.exports = {
                 model: db.Trip
             }]
         }).then(city => {
-            console.log(city)
+            // console.log(city)
             res.json(city);
         }).catch(err => {
             console.log(err);

@@ -45,7 +45,7 @@ module.exports = {
             attributes: ["id"]
         }).then(user => {
             console.log("found user by uid")
-            console.log(user)
+            // console.log(user)
             res.json(user);
         }).catch(err => {
             console.log(err);

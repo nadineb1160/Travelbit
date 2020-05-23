@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const countryController = require("../../controllers/countryController");
 
-
 // Matches with "/api/user/:userId/country"
 // router.use(function(req, res, next) {
 //     if (!req.headers.authorization) {

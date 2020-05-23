@@ -34,7 +34,7 @@ module.exports = {
                 model: db.City
             }]
         }).then(country => {
-            console.log(country);
+            // console.log(country);
             res.json(country);
         }).catch(err => {
             console.log(err);
