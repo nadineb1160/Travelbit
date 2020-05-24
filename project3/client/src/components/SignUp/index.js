@@ -63,7 +63,7 @@ const SignUp = () => {
 
     return (
         <div className="mt-8">
-            <h1 className="text-3xl mb-2 text-center font-bold">Sign Up</h1>
+            <h1 className="text-3xl mb-4 text-center font-bold">Sign Up</h1>
             <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
                 {error !== null && (
                     <div className="py-4 bg-red-600 w-full text-white text-center mb-3">
@@ -108,7 +108,7 @@ const SignUp = () => {
                         onChange={event => onChangeHandler(event)}
                     />
                     <button
-                        className="bg-green-400 hover:bg-green-500 w-full py-2 text-white"
+                        className="bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 w-full rounded"
                         onClick={event => {
                             createUserWithEmailAndPasswordHandler(event, email, password);
                         }}
@@ -124,7 +124,7 @@ const SignUp = () => {
                 </button>
                 <p className="text-center my-3">
                     Already have an account?{" "}
-                    <Link to="/" className="text-blue-500 hover:text-blue-600">
+                    <Link to="signIn" className="text-blue-500 hover:text-blue-600">
                         Sign in here
                     </Link>
                 </p>
