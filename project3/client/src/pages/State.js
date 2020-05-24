@@ -43,17 +43,17 @@ const State = ({countryId}) => {
 
     return (
         <div>
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-4">
                 {/* <h2 className="text-center text-xl font-bold">{name}Countries</h2>
                 <br/> */}
-                <button onClick={addStateHandler} className="bg-teal-500 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                <button onClick={addStateHandler} className="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                     Add State
                 </button>
             </div>
            
-            <StateCardContainer
+            {/* <StateCardContainer
                 cards={displayCards}
-            />
+            /> */}
         </div>
     )
 }

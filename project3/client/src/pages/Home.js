@@ -1,22 +1,27 @@
 import React from 'react';
 
 const Home = () => {
+
+    const onClickHandler = (event) => {
+
+    }
+
     return (
         <div>
 
             <header className="relative bg-no-repeat bg-cover lg:bg-center p-6 bg-top-right h-screen" id="bg-img">
 
-                <div className="max-w-5xl mx-auto lg:py-32 py-2 align-middle">
-                    <h2 className="lg:text-5xl text-4xl text-center font-semibold text-white leading-none mb-4">Travel back in time</h2>
+                <div className="max-w-2xl mx-auto lg:py-32 py-10 align-middle">
+                    <h2 className="lg:text-5xl text-4xl text-center font-semibold text-gray-900 bg-teal-500 bg-opacity-75 p-4 rounded leading-none mb-4 elite">Travel back in time</h2>
 
-                    <div className="flex items-center flex-wrap justify-start max-w-2xl lg:mx-0 mx-auto">
+                    <div className="flex items-center flex-wrap justify-start max-w-xl lg:mx-0 mx-auto text-xl">
                         <div className="lg:pr-5 w-full lg:w-1/2 mb-4 lg:mb-0">
                             <p className="text-white mb-2 tracking-wide">Find new places to explore</p>
-                            <button className="transition bg-white px-10 py-3 rounded shadow font-bold hover:bg-gray-300 block w-full text-center border-2 border-white">Explore</button>
+                            <button onClick={onClickHandler} className="transition bg-white px-10 py-3 rounded shadow font-bold hover:bg-gray-300 text-gray-900 block w-full text-center border-2 border-white elite" name="explore">Explore</button>
                         </div>
                         <div className="lg:pl-5 w-full lg:w-1/2 mb-4 lg:mb-0">
-                            <p className="text-white mb-2 tracking-wide">Look back in time</p>
-                            <button className="transition bg-transparent px-10 py-3 rounded shadow font-bold hover:bg-gray-800 text-white block w-full text-center border-2 border-white">Remember</button>
+                            <p className="text-white mb-2 tracking-wide">Look at past adventures</p>
+                            <button onClick={onClickHandler} className="transition bg-transparent px-10 py-3 rounded shadow font-bold hover:bg-gray-800 text-gray-900 block w-full text-center border-2 border-white elite" name="remember">Remember</button>
                             
                         </div>
                     </div>
