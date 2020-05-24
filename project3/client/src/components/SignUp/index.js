@@ -62,7 +62,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className="mt-8">
+        <div className="mt-8 poppins tracking-wider">
             <h1 className="text-3xl mb-4 text-center font-bold">Sign Up</h1>
             <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
                 {error !== null && (
@@ -71,36 +71,36 @@ const SignUp = () => {
                     </div>
                 )}
                 <form className="">
-                    <label htmlFor="displayName" className="block">
+                    <label htmlFor="displayName" className="block font-semibold">
                         Name:
                     </label>
                     <input
                         type="text"
-                        className="my-1 p-1 w-full "
+                        className="my-1 p-1 mb-3 w-full "
                         name="displayName"
                         value={displayName}
                         placeholder="E.g: Joe Smith"
                         id="displayName"
                         onChange={event => onChangeHandler(event)}
                     />
-                    <label htmlFor="userEmail" className="block">
+                    <label htmlFor="userEmail" className="block font-semibold">
                         Email:
                     </label>
                     <input
                         type="email"
-                        className="my-1 p-1 w-full"
+                        className="my-1 p-1 mb-3 w-full"
                         name="userEmail"
                         value={email}
                         placeholder="E.g: joe.smith@gmail.com"
                         id="userEmail"
                         onChange={event => onChangeHandler(event)}
                     />
-                    <label htmlFor="userPassword" className="block">
+                    <label htmlFor="userPassword" className="block font-semibold">
                         Password:
                     </label>
                     <input
                         type="password"
-                        className="mt-1 mb-3 p-1 w-full"
+                        className="mt-1 mb-4 p-1 w-full"
                         name="userPassword"
                         value={password}
                         placeholder="Your Password"
@@ -118,7 +118,7 @@ const SignUp = () => {
                 </form>
                 <p className="text-center my-3">or</p>
                 <button
-                    className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
+                    className="bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 w-full rounded"
                 >
                     Sign In with Google
                 </button>
