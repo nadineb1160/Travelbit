@@ -44,21 +44,16 @@ function Navbar() {
 
   return (
 
-    <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6 pt-8 border-b-8 border-white">
+    <nav className="flex items-center justify-between flex-wrap bg-teal-600 p-6 pt-8 border-b-8 border-white">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <h1 className="font-semibold text-4xl tracking-tight elite">Travel <span className="text-gray-900">Bit</span></h1>
-      </div>
-      <div className="block lg:hidden">
-        <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-          <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
-        </button>
+        <h1 className="font-semibold text-4xl tracking-tight elite">Travel | <span className="text-gray-900">Bit</span></h1>
       </div>
 
       <div>
           
       </div>
 
-      <div className="w-full block lg:flex lg:items-center lg:w-auto text-xl">
+      <div className="w-full block lg:flex lg:items-center lg:w-auto text-xl poppins tracking-wide">
         <div>
           <Link to="/" className={window.location.pathname === "/" ? "block lg:inline-block lg:mt-0 text-gray-900 mr-4" : "block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"}>Home</Link>
           <Link to="/travel" className={window.location.pathname === "/travel" ? "block lg:inline-block lg:mt-0 text-gray-900 mr-4" : "block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"}>Travel</Link>
