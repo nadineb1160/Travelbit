@@ -41,9 +41,8 @@ const ProfilePage = () => {
           <h4># of countries visited: <span>{countryCount}</span></h4>
           <h4># of state visited: <span>{stateCount}</span></h4>
         </div>
-
       </div>
-      <button onClick={logoutHandler} className="w-full rounded shadow-md py-3 bg-teal-500 mt-4 text-white">Sign out</button>
+      <button onClick={logoutHandler} className="w-full shadow-md bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold py-3 px-4 mt-4 rounded">Sign out</button>
     </div>
   )
 };
