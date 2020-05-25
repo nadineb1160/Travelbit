@@ -40,18 +40,21 @@ const Country = () => {
 
     return (
         <div>
-            <div className="flex justify-center mt-4">
-                {/* <h2 className="text-center text-xl font-bold">{name}Countries</h2>
-                <br/> */}
-                <button onClick={addCountryHandler} className="shadow bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded popppins">
-                    Add Country
-                </button>
-            </div>
-           
-            <CountryCardContainer
-                cards={displayCards}
-            />
-            </div>
+            <header className="relative bg-no-repeat bg-cover lg:bg-center p-6 bg-top-right h-screen" id="country-img">
+
+                <div className="flex justify-center mt-4">
+                    {/* <h2 className="text-center text-xl font-bold">{name}Countries</h2>
+                    <br/> */}
+                    <button onClick={addCountryHandler} className="shadow bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded popppins">
+                        Add Country
+                    </button>
+                </div>
+            
+                <CountryCardContainer
+                    cards={displayCards}
+                />
+            </header>
+        </div>
     )
 }
 
