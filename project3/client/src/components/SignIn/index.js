@@ -38,9 +38,9 @@ const SignIn = () => {
     };
 
     return (
-        <div className="mt-8 poppins tracking-wider">
+        <div className="poppins tracking-wider py-6" id="country-img">
             <h1 className="text-3xl mb-4 text-center font-bold">Sign In</h1>
-            <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
+            <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8 bg-white">
                 {error !== null && <div className="py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
                 <form className="">
                     <label htmlFor="userEmail" className="block font-semibold">
@@ -48,7 +48,7 @@ const SignIn = () => {
                     </label>
                     <input
                         type="email"
-                        className="my-1 p-1 mb-3 w-full"
+                        className="my-1 p-1 mb-3 w-full border rounded"
                         name="userEmail"
                         value={email}
                         placeholder="E.g: joesmith@gmail.com"
@@ -60,7 +60,7 @@ const SignIn = () => {
                     </label>
                     <input
                         type="password"
-                        className="mt-1 mb-4 p-1 w-full"
+                        className="mt-1 mb-4 p-1 w-full border rounded"
                         name="userPassword"
                         value={password}
                         placeholder="Your Password"
