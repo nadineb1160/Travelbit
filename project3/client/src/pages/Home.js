@@ -2,8 +2,11 @@ import React from 'react';
 
 const Home = () => {
 
-    const onClickHandler = (event) => {
-
+    const rememberOnClickHandler = () => {
+        window.location.href = "/travel"
+    }
+    const exploreOnClickHandler = () => {
+        window.location.href = "/travel"
     }
 
     return (
@@ -21,17 +24,43 @@ const Home = () => {
                     <div className="flex items-center flex-wrap justify-start max-w-xl lg:mx-0 mx-auto text-xl">
                         <div className="lg:pr-5 w-full lg:w-1/2 mb-4 lg:mb-0">
                             <p className="text-white mb-2 tracking-wide">Look at past adventures</p>
-                            <button onClick={onClickHandler} className="transition bg-white px-10 py-3 rounded shadow font-bold hover:bg-gray-300 text-gray-900 block w-full text-center border-2 border-white elite" name="remember">Remember</button>
+                            <button onClick={rememberOnClickHandler} className="transition bg-white px-10 py-3 rounded shadow font-bold hover:bg-gray-300 text-gray-900 block w-full text-center border-2 border-white elite" name="remember">Remember</button>
                         </div>
                         <div className="lg:pl-5 w-full lg:w-1/2 mb-4 lg:mb-0">
                             <p className="text-white mb-2 tracking-wide">Find new places to explore</p>
-                            <button onClick={onClickHandler} className="transition bg-transparent px-10 py-3 rounded shadow font-bold hover:bg-gray-800 text-white block w-full text-center border-2 border-white elite" name="explore">Explore</button>
-                            
+                            <button onClick={exploreOnClickHandler} className="transition bg-transparent px-10 py-3 rounded shadow font-bold hover:bg-gray-800 text-white block w-full text-center border-2 border-white elite" name="explore">Explore</button>
+
                         </div>
                     </div>
                 </div>
 
             </header>
+
+            <section class="container px-4 p-10" id="country-img">
+            
+                <div class="flex items-center flex-wrap mb-20">
+                    <div class="w-full md:w-1/2">
+                        <h4 class="text-3xl text-gray-800 font-bold mb-3">View past trips</h4>
+                        <p class="text-gray-600 mb-8">Travel | Bit allows you to store your travels so that you can remember past and share with others.</p>
+                    </div>
+                    <div class="w-full md:w-1/4">
+                        <img src="https://images.unsplash.com/photo-1551526793-fc99b5ea9919?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" className="pr-5 pb-4" alt="Bridge" />
+                    </div>
+                    <div class="w-full md:w-1/4">
+                        <img src="https://images.unsplash.com/photo-1568887759898-723db7949b52?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" className="" alt="Bridge" />
+                    </div>
+                </div>
+
+                <div class="flex items-center flex-wrap mb-20">
+                    <div class="w-full md:w-1/2 mb-4">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/29/09/49/adventure-1868817__480.jpg" alt="Exploring" />
+                    </div>
+                    <div class="w-full md:w-1/2 pl-10">
+                        <h4 class="text-3xl text-gray-800 font-bold mb-3">Exploring (Coming soon!)</h4>
+                        <p class="text-gray-600 mb-8">We hope to implement a social feature to this app that allows for sharing (exporting) trips or building a platform to view other users travels.</p>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }
