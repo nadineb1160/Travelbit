@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../firebase";
 import {useUserContext} from "../../state/UserContext"
 
@@ -9,15 +9,14 @@ const SignIn = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const {user} = useUserContext();
+    const history = useHistory();
 
     const signInWithEmailAndPasswordHandler = 
     (event, email, password) => {
             event.preventDefault();
              auth.signInWithEmailAndPassword(email, password)
             .then(
-                // API.getUserByUid(uid)
-                console.log(user)
-                // window.location.href = "/"
+                history.push("/")
             )
             .catch(error => {
                 setError("Error signing in with password and email!");
