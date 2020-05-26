@@ -26,6 +26,8 @@ module.exports = function(sequelize, DataTypes) {
     Country.associate = models => {
         models.Country.hasMany(models.City, {foriegnkey: 'id'}, {
         });
+        models.Country.hasMany(models.State, {foriegnkey: 'id'}, {
+        });
     }
 
     return Country;
