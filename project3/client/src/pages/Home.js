@@ -36,28 +36,28 @@ const Home = () => {
 
             </header>
 
-            <section class="container px-4 p-10" id="country-img">
+            <section className="container px-4 p-10" id="country-img">
             
-                <div class="flex items-center flex-wrap mb-20">
-                    <div class="w-full md:w-1/2">
-                        <h4 class="text-3xl text-gray-800 font-bold mb-3">View past trips</h4>
-                        <p class="text-gray-600 mb-8">Travel | Bit allows you to store your travels so that you can remember past and share with others.</p>
+                <div className="flex items-center flex-wrap mb-20">
+                    <div className="w-full md:w-1/2">
+                        <h4 className="text-3xl text-gray-800 font-bold mb-3">View past trips</h4>
+                        <p className="text-gray-600 mb-8">Travel | Bit allows you to store your travels so that you can remember past and share with others.</p>
                     </div>
-                    <div class="w-full md:w-1/4">
+                    <div className="w-full md:w-1/4">
                         <img src="https://images.unsplash.com/photo-1551526793-fc99b5ea9919?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" className="pr-5 pb-4" alt="Bridge" />
                     </div>
-                    <div class="w-full md:w-1/4">
+                    <div className="w-full md:w-1/4">
                         <img src="https://images.unsplash.com/photo-1568887759898-723db7949b52?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" className="" alt="Bridge" />
                     </div>
                 </div>
 
-                <div class="flex items-center flex-wrap mb-20">
-                    <div class="w-full md:w-1/2 mb-4">
+                <div className="flex items-center flex-wrap mb-20">
+                    <div className="w-full md:w-1/2 mb-4">
                         <img src="https://cdn.pixabay.com/photo/2016/11/29/09/49/adventure-1868817__480.jpg" alt="Exploring" />
                     </div>
-                    <div class="w-full md:w-1/2 pl-10">
-                        <h4 class="text-3xl text-gray-800 font-bold mb-3">Exploring (Coming soon!)</h4>
-                        <p class="text-gray-600 mb-8">We hope to implement a social feature to this app that allows for sharing (exporting) trips or building a platform to view other users travels.</p>
+                    <div className="w-full md:w-1/2 pl-10">
+                        <h4 className="text-3xl text-gray-800 font-bold mb-3">Exploring (Coming soon!)</h4>
+                        <p className="text-gray-600 mb-8">We hope to implement a social feature to this app that allows for sharing (exporting) trips or building a platform to view other users travels.</p>
                     </div>
                 </div>
             </section>
