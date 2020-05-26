@@ -23,82 +23,86 @@ export default {
     },
     // Get all countries for user
     getCountries: (userId) => {
-        return axios.get(`/api/user/${userId}/country`);
+        return axios.get(`/api/country/byUser/${userId}`);
     },
     // Get the country with a given id
-    getCountry: (userId, countryId) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}`);
+    getCountry: (countryId) => {
+        return axios.get(`/api/country/${countryId}`);
     },
     // Deletes a country with given id
-    deleteCountry: (userId, countryId) => {
-        return axios.delete(`/api/user/${userId}/country/${countryId}`)
+    deleteCountry: (countryId) => {
+        return axios.delete(`/api/country/${countryId}`)
     },
     // Update country with id
-    updateCountry: (userId, countryId, countryData) => {
-        return axios.post(`api/user/${userId}/country/${countryId}`, countryData);
+    updateCountry: (countryId, countryData) => {
+        return axios.post(`api/country/${countryId}`, countryData);
     },
     // Saves a country to the database
     saveCountry: (countryData) => {
-        return axios.post(`/api/user/country`, countryData);
+        return axios.post(`/api/country`, countryData);
     },
-    // Get all states in country for user
-    getStates: (userId, countryId) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/state`);
+    // Get all states in country
+    getStates: (countryId) => {
+        return axios.get(`/api/state/byCountry/${countryId}`);
     },
     // Get the city with a given id
-    getState: (userId, countryId, stateId) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/state/${stateId}`);
+    getState: (stateId) => {
+        return axios.get(`/api/state/${stateId}`);
     },
     // Deletes a city with given id
-    deleteState: (userId, countryId, stateId) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/state/${stateId}`);
+    deleteState: (stateId) => {
+        return axios.get(`/api/state/${stateId}`);
     },
     // Update city with id
-    updateState: (userId, countryId, stateId, stateData) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/state/${stateId}`, stateData);
+    updateState: (stateId, stateData) => {
+        return axios.get(`/api/state/${stateId}`, stateData);
     },
     // Saves a city to the database
     saveState: (stateData) => {
-        return axios.post(`/api/user/country/state`, stateData);
+        return axios.post(`/api/state`, stateData);
     },
     // Get all cities in country for user
-    getCities: (userId, countryId) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/city`);
+    getCitiesFromCountry: (countryId) => {
+        return axios.get(`/api/city/byCountry/${countryId}`);
+    },
+    // Get all cities in state for user
+    getCitiesFromState: (stateId) => {
+        return axios.get(`/api/city/byCountry/${stateId}`);
     },
     // Get the city with a given id
-    getCity: (userId, countryId, cityId) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/city/${cityId}`);
+    getCity: (cityId) => {
+        return axios.get(`/api/city/${cityId}`);
     },
     // Deletes a city with given id
-    deleteCity: (userId, countryId, cityId) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/city/${cityId}`);
+    deleteCity: (cityId) => {
+        return axios.get(`/api/city/${cityId}`);
     },
     // Update city with id
-    updateCity: (userId, countryId, cityId, cityData) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/city/${cityId}`, cityData);
+    updateCity: (cityId, cityData) => {
+        return axios.get(`/api/city/${cityId}`, cityData);
     },
     // Saves a city to the database
     saveCity: (cityData) => {
-        return axios.post(`/api/user/country/city`, cityData);
+        return axios.post(`/api/city`, cityData);
     },
     // Get all trips for a city
-    getTrips: (userId, countryId, cityId) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/city/${cityId}/trip`);
+    getTrips: (cityId) => {
+        return axios.get(`/api/trip/byCity/${cityId}`);
     },
     // Get the trip with a given id
-    getTrip: (userId, countryId, cityId, tripId) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/city/${cityId}/trip/${tripId}`);
+    getTrip: (tripId) => {
+        return axios.get(`/api/trip/${tripId}`);
     },
     // Deletes a trip with given id
-    deleteTrip: (userId, countryId, cityId, tripId) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/city/${cityId}/trip/${tripId}`);
+    deleteTrip: (tripId) => {
+        return axios.get(`/api/trip/${tripId}`);
     },
     // Update city with id
-    updateTrip: (userId, countryId, cityId, tripId, tripData) => {
-        return axios.get(`/api/user/${userId}/country/${countryId}/city/${cityId}/trip/${tripId}`, tripData);
+    updateTrip: (tripId, tripData) => {
+        return axios.get(`/api/trip/${tripId}`, tripData);
     },
     // Saves a city to the database
     saveTrip: (tripData) => {
-        return axios.post(`/api/user/country/city/trip/`, tripData);
+        return axios.post(`/api/trip`, tripData);
     }
 };
