@@ -23,7 +23,7 @@ const Country = () => {
             API.getCountries(userId).then((countries) => {
             
                 let countryData = countries.data;
-
+                
                 setDisplayCards(countryData);
                 setLoading(false);
             })
