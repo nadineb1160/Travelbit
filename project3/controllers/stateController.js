@@ -6,7 +6,6 @@ module.exports = {
         db.State
         .findAll({
             where: {
-                UserId: req.params.userId,
                 countryId: req.params.countryId
             },
             include: [{
@@ -20,7 +19,7 @@ module.exports = {
             res.json(states);
         }).catch(err => {
             console.log(err);
-            res.send('No data found')
+            res.status(400).send(err);
         });
         
     },
@@ -28,7 +27,6 @@ module.exports = {
         db.State
         .findOne({
             where: {
-                UserId: req.params.userId,
                 id: req.param.stateId
             },
             include: [{
@@ -57,7 +55,6 @@ module.exports = {
         db.State
         .update(req.body, {
             where: {
-                UserId: req.params.userId,
                 id: req.params.stateId
             }
         }).then(() => {

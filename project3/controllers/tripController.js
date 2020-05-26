@@ -6,7 +6,6 @@ module.exports = {
         db.Trip
         .findAll({
             where: {
-                UserId: req.params.userId,
                 cityId: req.params.cityId
             },
             include: [
@@ -31,7 +30,6 @@ module.exports = {
         db.Trip
         .findOne({
             where: {
-                UserId: req.params.userId,
                 id: req.param.tripId
             },
             include: [
@@ -63,7 +61,6 @@ module.exports = {
         db.Trip
         .update(req.body, {
             where: {
-                UserId: req.params.userId,
                 id: req.params.tripId
             }
         }).then(() => {
@@ -77,7 +74,6 @@ module.exports = {
         db.Trip
         .destroy({
             where: {
-                UserId: req.params.userId,
                 id: req.params.tripId
             }
         }).then((rowsDeleted) => {
