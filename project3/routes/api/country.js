@@ -2,12 +2,6 @@ const router = require("express").Router();
 const countryController = require("../../controllers/countryController");
 
 // Matches with "/api/country"
-// router.use(function(req, res, next) {
-//     if (!req.headers.authorization) {
-//       return res.status(403).json({ error: 'No credentials sent!' });
-//     }
-//     next();
-//   }).route("/")
 router.route("/")
     .post(countryController.create);
 

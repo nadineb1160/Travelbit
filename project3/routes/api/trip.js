@@ -1,14 +1,7 @@
 const router = require("express").Router();
 const tripController = require("../../controllers/tripController");
 
- // Matches with "/api/trip"
-//  router.use(function(req, res, next) {
-//     if (!req.headers.authorization) {
-//       return res.status(403).json({ error: 'No credentials sent!' });
-//     }
-//     next();
-//   }).
-  
+  // Matches with "/api/trip"
   router.route("/")
     .post(tripController.create);
 
