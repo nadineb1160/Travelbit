@@ -1,31 +1,23 @@
 const router = require("express").Router();
 const cityController = require("../../controllers/cityController");
 
- // Matches with "/api/city"
-//  router.use(function(req, res, next) {
-//     if (!req.headers.authorization) {
-//       return res.status(403).json({ error: 'No credentials sent!' });
-//     }
-//     next();
-//   }).
-  
+  //  Matches with "/api/city"
   router.route("/")
     .post(cityController.create);
 
   // Matches with "api/city/byCountry/:countryId"  
   router.route("/byCountry/:countryId")
-  .get(cityController.findAllByCountry)
+    .get(cityController.findAllByCountry);
   
   // Matches with "api/city/byState/:stateId"  
   router.route("/byState/:stateId")
-  .get(cityController.findAllByState)
+    .get(cityController.findAllByState);
 
-  
   // Matches with "api/city/:cityId"
   router.route("/:cityId")
-  .get(cityController.findById)
-  .put(cityController.update)
-  .delete(cityController.remove);
-  
+    .get(cityController.findById)
+    .put(cityController.update)
+    .delete(cityController.remove);
+    
 
 module.exports = router;
