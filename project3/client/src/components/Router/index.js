@@ -6,7 +6,8 @@ import SignUp from "../SignUp";
 import SignIn from "../SignIn";
 import PasswordReset from "../PasswordReset";
 import AddCountry from "../AddCountry";
-import AddCity from "../AddCity";
+import AddCityFromCountry from "../AddCityFromCountry";
+import AddCityFromState from "../AddCityFromState";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import Wrapper from "../Wrapper";
@@ -50,7 +51,8 @@ function Router() {
                         <Route exact path="/about" component={About} />
                         <Route exact path="/profile" component={Profile} />
                         <Route exact path="/addCountry" component={AddCountry} />
-                        <Route exact path="/addCity" component={AddCity} />
+                        <Route exact path="/addCityFromCountry" component={AddCityFromCountry} />
+                        <Route exact path="/addCityFromState" component={AddCityFromState} />
                         <Route exact path="/country/:countryId/state" component={State} />
                         <Route exact path="/country/:countryId/city" component={CityFromCountry} />
                         <Route exact path="/state/:stateId/city" component={CityFromState} />
