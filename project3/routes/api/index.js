@@ -5,6 +5,13 @@ const stateRoutes = require("./state");
 const cityRoutes = require("./city");
 const tripRoutes = require("./trip");
 
+router.use(function(req, res, next) {
+    if (!req.headers.authorization) {
+      return res.status(403).json({ error: 'No credentials sent!' });
+    }
+    next();
+  })
+
 // User routes
 router.use("/user", userRoutes);
 
