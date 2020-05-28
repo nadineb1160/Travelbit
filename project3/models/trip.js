@@ -6,21 +6,14 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        // Trip Date - "Summer 2014"
-        date: {
+        // Trip Start Date
+        startDate: {
             type: DataTypes.STRING,
-            allowNull: false
         },
-        // Notes
-        notes: {
+        // Trip End Date
+        endDate: {
             type: DataTypes.STRING,
-            allowNull: true,
         },
-        // Phrases
-        phrases: {
-            type: DataTypes.STRING,
-            allowNull: true
-        }
     });
 
     Trip.associate = models => {
@@ -31,6 +24,10 @@ module.exports = function(sequelize, DataTypes) {
         models.Trip.hasMany(models.Entertainment, {foriegnkey: 'id'}, {
         });
         models.Trip.hasMany(models.Contact, {foriegnkey: 'id'}, {
+        });
+        models.Trip.hasMany(models.Accomodation, {foriegnkey: 'id'}, {
+        });
+        models.Trip.hasMany(models.Note, {foriegnkey: 'id'}, {
         });
         // Stretch
         models.Trip.hasMany(models.Store, {foriegnkey: 'id'}, {
