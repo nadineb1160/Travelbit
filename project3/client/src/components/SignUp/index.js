@@ -62,7 +62,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className="poppins tracking-wider py-6"  id="country-img">
+        <div className="poppins tracking-wider py-6" id="country-img">
             <h1 className="text-3xl mb-4 text-center font-bold">Sign Up</h1>
             <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8 bg-white">
                 {error !== null && (
@@ -76,7 +76,7 @@ const SignUp = () => {
                     </label>
                     <input
                         type="text"
-                        className="my-1 p-1 mb-3 w-full border rounded"
+                        className="px-3 py-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
                         name="displayName"
                         value={displayName}
                         placeholder="E.g: Joe Smith"
@@ -88,7 +88,7 @@ const SignUp = () => {
                     </label>
                     <input
                         type="email"
-                        className="my-1 p-1 mb-3 w-full border rounded"
+                        className="px-3 py-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
                         name="userEmail"
                         value={email}
                         placeholder="E.g: joe.smith@gmail.com"
@@ -100,7 +100,7 @@ const SignUp = () => {
                     </label>
                     <input
                         type="password"
-                        className="mt-1 mb-4 p-1 w-full border rounded"
+                        className="px-3 py-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
                         name="userPassword"
                         value={password}
                         placeholder="Your Password"
@@ -108,7 +108,7 @@ const SignUp = () => {
                         onChange={event => onChangeHandler(event)}
                     />
                     <button
-                        className="bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 w-full rounded"
+                        className="bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 mt-4 w-full rounded"
                         onClick={event => {
                             createUserWithEmailAndPasswordHandler(event, email, password);
                         }}
@@ -118,7 +118,7 @@ const SignUp = () => {
                 </form>
                 <p className="text-center my-3">or</p>
                 <button
-                    className="bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 w-full rounded"
+                    className="bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 w-full rounded"
                 >
                     Sign In with Google
                 </button>

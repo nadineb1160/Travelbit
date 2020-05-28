@@ -1,28 +1,29 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../firebase";
-import {useUserContext} from "../../state/UserContext"
+import { useUserContext } from "../../state/UserContext"
 
 
 const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
-    const {user} = useUserContext();
+    const { user } = useUserContext();
     const history = useHistory();
 
-    const signInWithEmailAndPasswordHandler = 
-    (event, email, password) => {
+    const signInWithEmailAndPasswordHandler =
+        (event, email, password) => {
             event.preventDefault();
-             auth.signInWithEmailAndPassword(email, password)
-            .then(
-                history.push("/")
-            )
-            .catch(error => {
-                setError("Error signing in with password and email!");
-                console.error("Error signing in with password and email", error);
-            });
-            
+            auth.signInWithEmailAndPassword(email, password)
+                .then(
+                    // console.log(user)
+                    history.push("/")
+                )
+                .catch(error => {
+                    setError("Error signing in with password and email!");
+                    console.error("Error signing in with password and email", error);
+                });
+
         };
 
     const onChangeHandler = (event) => {
@@ -47,7 +48,7 @@ const SignIn = () => {
                     </label>
                     <input
                         type="email"
-                        className="my-1 p-1 mb-3 w-full border rounded"
+                        className="px-3 py-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
                         name="userEmail"
                         value={email}
                         placeholder="E.g: joesmith@gmail.com"
@@ -59,21 +60,21 @@ const SignIn = () => {
                     </label>
                     <input
                         type="password"
-                        className="mt-1 mb-4 p-1 w-full border rounded"
+                        className="px-3 py-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
                         name="userPassword"
                         value={password}
                         placeholder="Your Password"
                         id="userPassword"
                         onChange={(event) => onChangeHandler(event)}
                     />
-                    
-                    <button className="bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 w-full rounded" onClick={(event) => { signInWithEmailAndPasswordHandler(event, email, password) }}>
+
+                    <button className="bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 mt-4 w-full rounded" onClick={(event) => { signInWithEmailAndPasswordHandler(event, email, password) }}>
                         Sign in
                     </button>
                 </form>
                 <p className="text-center my-3">or</p>
                 <button
-                    className="bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 w-full rounded">
+                    className="bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 w-full rounded">
                     Sign in with Google
                 </button>
                 <p className="text-center my-3">
