@@ -6,6 +6,7 @@ import { useUserContext } from "../state/UserContext.js"
 import API from "../utils/API";
 
 const CityFromState = () => {
+    console.log("City From State")
     const { user } = useUserContext();
     const { stateId } = useParams();
 
@@ -17,6 +18,8 @@ const CityFromState = () => {
     useEffect(() => {
         setLoading(true);
         console.log(user)
+
+        console.log(stateId)
         
         API.getCitiesFromState(stateId).then((cities) => {
             console.log("Cities")
@@ -26,6 +29,8 @@ const CityFromState = () => {
 
             setDisplayCards(cityData);
             setLoading(false);
+        }).catch(error => {
+            console.log(error)
         })
        
     }, []);
