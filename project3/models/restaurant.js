@@ -9,22 +9,18 @@ module.exports = function(sequelize, DataTypes) {
         // Restaurant Address
         address: {
             type: DataTypes.STRING,
-            allowNull: false
         },
         // Link - restaurant url
         link: {
             type: DataTypes.STRING,
-            allowNull: false
         },
         // Notes
         notes: {
             type: DataTypes.STRING,
-            allowNull: true,
         },
         // Images - Array
         images: {
             type: DataTypes.STRING,
-            allowNull: true
         }
     });
 
