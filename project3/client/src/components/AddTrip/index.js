@@ -73,14 +73,14 @@ function AddTrip({ cityId }) {
         <div>
 
             <div className="flex justify-center m-6">
-                <form className="w-full max-w-sm">
+                <form className="w-full max-w-sm bg-teal-600 bg-opacity-75 p-3 rounded">
                     <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="tripName">
+                        <div className="md:w-1/4">
+                            <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="tripName">
                                 Trip
                             </label>
                         </div>
-                        <div className="md:w-2/3">
+                        <div className="md:w-3/4">
                             <input
                                 type="text"
                                 className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500"
@@ -91,7 +91,7 @@ function AddTrip({ cityId }) {
                                 onChange={(event) => onChangeHandler(event)} />
                         </div>
                     </div>
-                    <div className="flex items-center mb-6">
+                    <div className="flex items-center mb-6 justify-center">
                         <DateRange
                             name="date"
                             editableDateInputs={true}
@@ -107,7 +107,7 @@ function AddTrip({ cityId }) {
                     <div className="md:flex md:items-center">
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">
-                            <button onClick={event => handleAdd(event)} className="shadow bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                            <button onClick={event => handleAdd(event)} className="shadow bg-white focus:shadow-outline focus:outline-none text-teal-600 font-bold py-2 px-4 rounded" type="button">
                                 Add +
                             </button>
                         </div>

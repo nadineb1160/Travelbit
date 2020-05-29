@@ -60,10 +60,10 @@ function AddCountry() {
         <div>
 
             <div className="flex justify-center m-6">
-                <form className="w-full max-w-sm">
+                <form className="w-full max-w-sm bg-teal-600 bg-opacity-75 p-3 rounded">
                     <div className="md:flex md:items-center mb-6">
                         <div className="md:w-1/3">
-                            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="country">
+                            <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="country">
                                 Country
                             </label>
                         </div>
@@ -81,7 +81,7 @@ function AddCountry() {
                     <div className="md:flex md:items-center mb-6">
                         
                         <div className="md:w-1/3">
-                            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="continent">
+                            <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="continent">
                                 Continent
                             </label>
                         </div>
@@ -110,7 +110,7 @@ function AddCountry() {
                     <div className="md:flex md:items-center">
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">
-                            <button onClick={event => handleAdd(event)} className="shadow bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                            <button onClick={event => handleAdd(event)} className="shadow bg-white focus:shadow-outline focus:outline-none text-teal-600 font-bold py-2 px-4 rounded" type="button">
                                 Add +
                             </button>
                         </div>
