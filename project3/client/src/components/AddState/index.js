@@ -29,7 +29,8 @@ function AddState({ countryId }) {
         .then(() => {
             console.log("Saved State")
             return (
-                history.push(`/${countryId}/state`)
+                history.push(`/country/${countryId}/state`),
+                window.location.reload()
             )
         })
         .catch(error => {
