@@ -1,8 +1,7 @@
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
 
-
-// Matcher with "/api/user"
+// Matches with "/api/user"
 router.route("/")
     .get(userController.findAll)
     .post(userController.create)
@@ -15,6 +14,5 @@ router.route("/:userId")
 // Matches with "api/user/:uid"
 router.route("/:uid")
     .get(userController.findByUid)
-
 
 module.exports = router;

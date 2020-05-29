@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const countryController = require("../../controllers/countryController");
 
+console.log("country routes")
+
 // Matches with "/api/country"
 router.route("/")
     .post(countryController.create);

@@ -24,6 +24,7 @@ module.exports = {
         
     },
     findAllByState: (req, res) => {
+        console.log("req.params.stateId");
         db.City
         .findAll({
             where: {
@@ -36,7 +37,7 @@ module.exports = {
                 ['cityName', 'ASC']
             ]
         }).then(cities => {
-            // console.log(cities)
+            console.log(cities)
             res.json(cities);
         }).catch(err => {
             console.log(err);

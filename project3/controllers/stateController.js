@@ -68,7 +68,6 @@ module.exports = {
         db.State
         .destroy({
             where: {
-                UserId: req.params.userId,
                 id: req.params.stateId
             }
         }).then((rowsDeleted) => {
