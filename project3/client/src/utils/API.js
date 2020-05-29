@@ -67,7 +67,7 @@ export default {
     },
     // Update city with id
     updateState: (stateId, stateData, userId) => {
-        return axios({url: `/api/state/${stateId}`, data: stateData, headers: headers(userId), method: "POST"});
+        return axios({url: `/api/state/${stateId}`, data: stateData, headers: headers(userId), method: "PUT"});
     },
     // Saves a city to the database
     saveState: (stateData, userId) => {
@@ -95,7 +95,7 @@ export default {
     },
     // Update city with id
     updateCity: (cityId, cityData, userId) => {
-        return axios({url: `/api/city/${cityId}`, data: cityData,  headers: headers(userId), method: "POST"});
+        return axios({url: `/api/city/${cityId}`, data: cityData,  headers: headers(userId), method: "PUT"});
     },
     // Saves a city to the database
     saveCity: (cityData, userId) => {
@@ -119,7 +119,7 @@ export default {
     },
     // Update city with id
     updateTrip: (tripId, tripData, userId) => {
-        return axios({url: `/api/trip/${tripId}`, data: tripData, headers: headers(userId), method: "POST"});
+        return axios({url: `/api/trip/${tripId}`, data: tripData, headers: headers(userId), method: "PUT"});
     },
     // Saves a city to the database
     saveTrip: (tripData, userId) => {
