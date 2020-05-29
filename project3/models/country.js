@@ -9,18 +9,12 @@ module.exports = function(sequelize, DataTypes) {
         // Country Continent
         continent: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
-         // Capital
-        //  capital: {
-        //     type: DataTypes.STRING,
-        //     allowNull: true,
-        // },
-        // // Language
-        // language: {
-        //     type: DataTypes.STRING,
-        //     allowNull: true
-        // }
+        // Card Image
+        img: {
+            type: DataTypes.STRING
+        }
     });
 
     Country.associate = models => {

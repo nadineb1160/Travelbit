@@ -6,14 +6,22 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
+        // Trip Description
+        decription: {
+            type: DataTypes.STRING
+        },
         // Trip Start Date
         startDate: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         // Trip End Date
         endDate: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
+        // Card Image
+        img: {
+            type: DataTypes.STRING
+        }
     });
 
     Trip.associate = models => {

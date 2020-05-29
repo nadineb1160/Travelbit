@@ -5,6 +5,10 @@ module.exports = function(sequelize, DataTypes) {
         stateName: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        // Card Image
+        img: {
+            type: DataTypes.STRING
         }
     });
 
