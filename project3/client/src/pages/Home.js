@@ -15,7 +15,7 @@ const Home = () => {
             <header className="relative bg-no-repeat bg-cover lg:bg-center p-6 bg-top-right h-screen" id="bg-img">
 
                 <div className="max-w-2xl mx-auto lg:py-32 py-10 align-middle">
-                    <div className="bg-teal-700 bg-opacity-25 p-4 m-8 rounded">
+                    <div className="bg-teal-700 bg-opacity-25 border-8 border-double border-white p-4 m-8 rounded">
                         <h2 className="lg:text-5xl text-4xl text-center font-semibold text-white mb-2 leading-none elite">Travel | <span className="text-gray-900">Bit</span></h2>
                         <h2 className="lg:text-5xl text-4xl text-center font-semibold text-white leading-none mb-2 dancing">Travel back in time</h2>
                     </div>
