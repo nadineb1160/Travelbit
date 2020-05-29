@@ -2,7 +2,7 @@ import React from 'react'
 
 const Wrapper = ({children}) => {
     return (
-        <div className="">
+        <div className="flex-grow">
            {children}
         </div>
     )
