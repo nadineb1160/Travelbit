@@ -33,18 +33,18 @@ function Footer() {
                 <a href="#" className="hover:underline text-gray-600 hover:text-teal-600">Linkedin</a>
               </li>
               <li className="mt-2">
-                <a href="#" className="hover:underline text-gray-600 hover:text-teal-600">Twitter</a>
+                <a href="#" className="hover:underline text-gray-600 hover:text-teal-600">Instagram</a>
               </li>
             </ul>
           </div>
-          <div className="w-full md:w-1/4 text-center md:text-left poppins">
+          <div className="w-full md:w-1/4 text-center md:text-left popppins">
             <h5 className="uppercase mb-3 font-bold">Company</h5>
             <ul className="mb-4">
               <li className="mt-2">
                 <a href="#" className="hover:underline text-gray-600 hover:text-teal-600">Blog</a>
               </li>
               <li className="mt-2">
-                <a href="#" className="hover:underline text-gray-600 hover:text-teal-600">About Us</a>
+                <a href="#" className="hover:underline text-gray-600 hover:text-teal-600">About</a>
               </li>
               <li className="mt-2">
                 <a href="#" className="hover:underline text-gray-600 hover:text-teal-600">Contact</a>
