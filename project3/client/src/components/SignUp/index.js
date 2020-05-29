@@ -4,11 +4,11 @@ import { generateUserDocument, auth } from "../../firebase";
 import API from "../../utils/API";
 
 
-function userJSON(user, displayName) {
+function userJSON(user) {
     return (
         {
             "email": user.email,
-            "displayName": displayName,
+            "displayName": user.displayName,
             "uid": user.uid
         }
     )
@@ -25,6 +25,30 @@ const SignUp = () => {
         try {
             const { user } = await auth.createUserWithEmailAndPassword(email, password);
             // generateUserDocument(user, { displayName });
+            // user.updateProfile({
+            //     displayName: displayName
+            // }).then(() => {
+            //     console.log("Update successful")
+            //     console.log(user)
+            //     console.log(displayName);
+            //     let userBody = userJSON(user);
+            //     generateUserDocument(user);
+            //     console.log("user body")
+            //     console.log(userBody)
+            //     API.saveUser(userBody)
+            //         .then(() => {
+            //             console.log("Saved")
+            //         })
+            //         .catch(error => {
+            //             console.log("Error saving user in database")
+            //             console.log(error)
+            //         })
+            // })
+            //     .catch(error => {
+            //         console.log(error)
+            //     });
+
+            console.log(user)
             console.log(displayName);
             let userBody = userJSON(user, displayName);
             generateUserDocument(userBody);
@@ -38,6 +62,7 @@ const SignUp = () => {
                     console.log("Error saving user in database")
                     console.log(error)
                 })
+
         }
         catch (error) {
             setError('Error Signing up with email and password');
@@ -57,6 +82,7 @@ const SignUp = () => {
         } else if (name === "userPassword") {
             setPassword(value);
         } else if (name === "displayName") {
+            console.log(value)
             setDisplayName(value);
         }
     };
