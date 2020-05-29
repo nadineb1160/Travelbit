@@ -77,10 +77,8 @@ function CountryCard({ card }) {
             API.updateCountry(card.id, countryBody, userId)
                 .then(() => {
                     console.log(`Saved Country: ${card.countryName}`)
-                    // return (
-                        
-                    //     // window.location.href = "/travel"
-                    // )
+                    window.location.href = "/travel"
+                  
                 })
                 .catch(error => {
                     console.log(error)
