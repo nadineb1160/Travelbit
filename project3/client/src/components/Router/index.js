@@ -29,9 +29,11 @@ function AuthenticatedRoutes() {
     return (
 
         <Switch>
+            <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={SignUp} />
             <Route path="/signin" component={SignIn} />
             <Route exact path="/passwordReset" component={PasswordReset} />
+            <Route exact path="/about" component={About} />
         </Switch>
     )
 }
@@ -48,7 +50,7 @@ function Router() {
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/travel" component={Travel} />
-                        <Route exact path="/about" component={About} />
+                        {/* <Route exact path="/about" component={About} /> */}
                         <Route exact path="/profile" component={Profile} />
                         <Route exact path="/addCountry" component={AddCountry} />
                         <Route exact path="/addCityFromCountry" component={AddCityFromCountry} />
