@@ -42,7 +42,7 @@ const Country = () => {
 
     return (
         <div>
-            <header className="relative bg-no-repeat bg-cover lg:bg-center p-6 bg-top-right h-screen" id="country-img">
+            <header className="relative bg-no-repeat bg-cover lg:bg-center p-6 bg-top-right h-screen">
 
                 <div className="flex justify-center mt-4">
                     {/* <h2 className="text-center text-xl font-bold">{name}Countries</h2>
