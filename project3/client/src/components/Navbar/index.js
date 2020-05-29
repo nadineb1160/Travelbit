@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useUserContext } from "../../state/UserContext"
+import { useUserContext } from "../../state/UserContext";
 import { auth } from "../../firebase";
 // import "./style.css";
 
@@ -22,6 +22,12 @@ function UserSignedIn() {
 
   return (
     <div className="justify-end">
+      {user ?
+      <Link to="/travel" className={window.location.pathname === "/travel" ? "block lg:inline-block lg:mt-0 text-gray-900 mr-4" : "block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"}>Travel</Link>
+      :
+      null
+      }
+
       {user ? 
         <Link to="/profile" className={window.location.pathname === "/profile" ? "block lg:inline-block lg:mt-0 text-gray-900 mr-4" : "block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"}>Profile</Link>
         :
@@ -60,7 +66,6 @@ function Navbar() {
       <div className="w-full block lg:flex lg:items-center lg:w-auto text-xl poppins tracking-wide">
         <div>
           <Link to="/" className={window.location.pathname === "/" ? "block lg:inline-block lg:mt-0 text-gray-900 mr-4" : "block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"}>Home</Link>
-          <Link to="/travel" className={window.location.pathname === "/travel" ? "block lg:inline-block lg:mt-0 text-gray-900 mr-4" : "block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"}>Travel</Link>
         </div>
   
         <UserSignedIn/>
