@@ -48,7 +48,7 @@ function Navbar() {
 
   return (
 
-    <nav className="flex items-center justify-between flex-wrap bg-teal-600 p-6 pt-8 border-b-8 border-white">
+    <nav className="flex items-center justify-between flex-wrap bg-teal-600 bg-opacity-75 p-6 pt-8 border-8 border-double border-white">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <h1 onClick={onClickHandler} className="font-semibold text-4xl tracking-tight elite">Travel | <span className="text-gray-900">Bit</span></h1>
       </div>
