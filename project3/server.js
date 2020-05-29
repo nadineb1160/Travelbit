@@ -17,7 +17,7 @@ app.use(express.json());
 // Static Directory
 app.use(express.static("public"));
 
-var db = require("./models");
+const db = require("./models");
 
 
 // Routes
