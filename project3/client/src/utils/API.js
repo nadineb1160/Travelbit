@@ -16,11 +16,11 @@ export default {
     // },
     // Get user with a uid
     getUserByUid: (uid) => {
-    return axios({url: `/api/user/${uid}`, headers: headers(uid)});
+        return axios({url: `/api/user/${uid}`, headers: headers(uid)});
     },
     // Update user with id
     updateUser: (userId, userData) => {
-    return axios({url: `/api/user/${userId}`, data: userData, headers: headers(userId), method: "POST"});
+        return axios({url: `/api/user/${userId}`, data: userData, headers: headers(userId), method: "POST"});
     },
     // Saves a user to the database
     saveUser: (userData) => {
@@ -43,7 +43,8 @@ export default {
     },
     // Update country with id
     updateCountry: (countryId, countryData, userId) => {
-        return axios({url: `/api/country/${countryId}`, data: countryData, headers: headers(userId), method: "POST"});
+        console.log("api")
+        return axios({url: `/api/country/${countryId}`, data: countryData, headers: headers(userId), method: "PUT"});
     },
     // Saves a country to the database
     saveCountry: (countryData, userId) => {
@@ -82,8 +83,6 @@ export default {
     },
     // Get all cities in state for user
     getCitiesFromState: (stateId, userId) => {
-        console.log("api")
-        console.log(stateId)
         return axios({url: `/api/city/byState/${stateId}`, headers: headers(userId)});
     },
     // Get the city with a given id
@@ -120,7 +119,7 @@ export default {
     },
     // Update city with id
     updateTrip: (tripId, tripData, userId) => {
-        return axios({url: `/api/trip/${tripId}`, data: tripData, headers: headers(userId)});
+        return axios({url: `/api/trip/${tripId}`, data: tripData, headers: headers(userId), method: "POST"});
     },
     // Saves a city to the database
     saveTrip: (tripData, userId) => {
