@@ -5,6 +5,9 @@ const routes = require("./routes");
 const app = express();
 var PORT = process.env.PORT || 3001;
 
+// Static Directory
+app.use(express.static("public"));
+
 // Define middleware to parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -14,8 +17,6 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
   }
 
-// Static Directory
-app.use(express.static("public"));
 
 const db = require("./models");
 
