@@ -4,11 +4,11 @@ import {useUserContext} from "../../state/UserContext";
 import API from "../../utils/API";
 
 
-function countryJSON(city, userId) {
+function cityJSON(city, countryId) {
     return (
         {
             "cityName": city,
-            "UserId": userId
+            "CountryId": countryId
         }
     )
 }
@@ -61,21 +61,20 @@ function CityCard({ card }) {
         .then((id) => {
             let userId = id.data.id;
             console.log(userId);
+            console.log(city)
+            console.log(card)
 
-            // const cityBody = countryJSON(city, userId);
-            // console.log(cityBody)
+            const cityBody = cityJSON(city, card.CountryId);
+            console.log(cityBody)
 
-            // API.updateCity(card.id, cityBody)
-            //     .then(() => {
-            //         console.log(`Saved City: ${card.cityName}`)
-            //         // return (
-                        
-            //         //     // window.location.href = "/travel"
-            //         // )
-            //     })
-            //     .catch(error => {
-            //         console.log(error)
-            // })
+            API.updateCity(card.id, cityBody, userId)
+                .then(() => {
+                    console.log(`Saved City: ${cityBody.cityName}`)
+                    window.location.href = `/country/${card.id}/city`
+                })
+                .catch(error => {
+                    console.log(error)
+            })
         })
         .catch(error => {
             console.log(error)
