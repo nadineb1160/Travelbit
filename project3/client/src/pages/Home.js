@@ -1,14 +1,22 @@
 import React from 'react';
+import { useUserContext } from "../state/UserContext";
 
 const Home = () => {
+    const { user } = useUserContext();
 
-    const rememberOnClickHandler = () => {
-        window.location.href = "/travel"
-    }
-    const exploreOnClickHandler = () => {
-        window.location.href = "/travel"
-    }
+    const OnClickHandler = event => {
+        const { id } = event.currentTarget;
+        if (id === "remember") {
+            window.location.href = "/travel";
 
+        } else if (id === "explore") {
+            // Update to explore when made
+            window.location.href = "/travel";
+        } else if (id === "signin") {
+            window.location.href = "/signin";
+        }
+    }
+   
     return (
         <div>
 
@@ -21,17 +29,26 @@ const Home = () => {
                     </div>
                     <h3></h3>
 
+                    {user ?
                     <div className="flex items-center flex-wrap justify-start max-w-xl lg:mx-0 mx-auto text-xl">
                         <div className="lg:pr-5 w-full lg:w-1/2 mb-4 lg:mb-0">
                             <p className="text-white mb-2 tracking-wide">Look at past adventures</p>
-                            <button onClick={rememberOnClickHandler} className="transition bg-white px-10 py-3 rounded shadow font-bold hover:bg-gray-300 text-gray-900 block w-full text-center border-2 border-white elite" name="remember">Remember</button>
+                            <button onClick={(event) => OnClickHandler(event)} className="transition bg-white px-10 py-3 rounded shadow font-bold hover:bg-gray-300 text-gray-900 block w-full text-center border-2 border-white elite" id="remember">Remember</button>
                         </div>
                         <div className="lg:pl-5 w-full lg:w-1/2 mb-4 lg:mb-0">
                             <p className="text-white mb-2 tracking-wide">Find new places to explore</p>
-                            <button onClick={exploreOnClickHandler} className="transition bg-transparent px-10 py-3 rounded shadow font-bold hover:bg-gray-800 text-white block w-full text-center border-2 border-white elite" name="explore">Explore</button>
+                            <button onClick={(event) => OnClickHandler(event)} className="transition bg-transparent px-10 py-3 rounded shadow font-bold hover:bg-gray-800 text-white block w-full text-center border-2 border-white elite" id="explore">Explore</button>
 
                         </div>
                     </div>
+                    :
+                    <div className="flex items-center flex-wrap justify-center max-w-xl lg:mx-0 mx-auto text-xl">
+                        <div className="w-2/3  mb-4 lg:mb-0">
+                            <p className="text-white mb-2 tracking-wider text-center popppins">Sign In to share your past adventures</p>
+                            <button onClick={(event) => OnClickHandler(event)} className="transition bg-white px-10 py-3 rounded shadow font-bold hover:bg-gray-300 text-gray-900 block w-full text-center border-2 border-white elite" id="signin">Sign In</button>
+                        </div>
+                    </div>
+                    }
                 </div>
 
             </header>
