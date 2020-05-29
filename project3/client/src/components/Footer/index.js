@@ -3,11 +3,11 @@ import React from "react";
 function Footer() {
   return (
 
-    <footer className="bg-teal-600 bg-opacity-50 object-bottom">
+    <footer className="bg-teal-600 bg-opacity-25 static bottom-0">
       <div className="container mx-auto px-4 pt-10 pb-6">
         <div className="flex flex-wrap">
           <div className="w-full md:w-1/4 text-center md:text-left">
-            <h1 className="font-semibold text-4xl tracking-tight text-white elite bg-teal-600 p-6 mb-4 rounded">Travel | <span className="text-gray-900">Bit</span></h1>
+            <h1 className="font-semibold text-4xl tracking-tight text-white elite bg-teal-600 bg-opacity-75 p-6 mb-4 rounded">Travel | <span className="text-gray-900">Bit</span></h1>
           </div>
           <div className="w-full md:w-1/4 text-center md:text-left popppins">
             <h5 className="uppercase mb-3 font-bold">Links</h5>
