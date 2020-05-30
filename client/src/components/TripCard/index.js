@@ -6,10 +6,11 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import API from "../../utils/API";
 
-function tripJSON(trip, startDate, endDate, cityId) {
+function tripJSON(trip, description, startDate, endDate, cityId) {
     return (
         {
             "tripName": trip,
+            "description": description,
             "startDate": startDate,
             "endDate": endDate,
             "CityId": cityId
@@ -20,8 +21,9 @@ function tripJSON(trip, startDate, endDate, cityId) {
 function TripCard({ card }) {
     const [showModal, setShowModal] = React.useState(false);
     const [trip, setTrip] = useState(card.tripName);
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
+    const [description, setDescription] = useState("");
+    // const [startDate, setStartDate] = useState("");
+    // const [endDate, setEndDate] = useState("");
     const { user } = useUserContext();
     const history = useHistory();
     const [state, setState] = useState([
@@ -83,7 +85,7 @@ function TripCard({ card }) {
                 tripEnd = state[0].endDate.toString().split(" ").slice(0, 4).join(" ");
 
 
-                const tripBody = tripJSON(trip, tripStart, tripEnd, card.CityId);
+                const tripBody = tripJSON(trip, description, tripStart, tripEnd, card.CityId);
                 console.log(tripBody)
 
                 API.updateTrip(card.id, tripBody, userId)
@@ -105,12 +107,14 @@ function TripCard({ card }) {
         const { name, value } = event.currentTarget;
         if (name === "trip") {
             setTrip(value);
+        } else if (name === "description") {
+            setDescription(value);
         }
     };
 
     return (
 
-        <div className="max-w-sm w-2/3 lg:max-w-full lg:flex p-3">
+        <div className="max-w-xl w-2/3 lg:max-w-full lg:flex p-3 justify-center">
             <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731__480.jpg')" }} title="Travel picture">
             </div>
             <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -165,10 +169,12 @@ function TripCard({ card }) {
                                     <form className="w-full max-w-sm">
                                         <div className="md:flex md:items-center mb-6">
                                             <div className="md:w-1/3">
-                                                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="country">
+                                                <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4" htmlFor="country">
                                                     Trip
                                             </label>
                                             </div>
+                                        </div>
+                                        <div className="md:flex md:items-center mb-6">
                                             <div className="md:w-2/3">
                                                 <input
                                                     type="text"
@@ -178,6 +184,25 @@ function TripCard({ card }) {
                                                     id="trip"
                                                     onChange={(event) => onChangeHandler(event)}
                                                 />
+                                            </div>
+                                        </div>
+                                        <div className="md:flex md:items-center mb-6">
+                                            <div className="w-1/4">
+                                                <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4" htmlFor="tripName">
+                                                    Description
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div className="md:flex md:items-center mb-6">
+                                            <div className="md:w-full">
+                                                <input
+                                                    type="text"
+                                                    className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500"
+                                                    name="description"
+                                                    value={description}
+                                                    placeholder="Adventure around Eastern Europe with cousin Stef and Mom after interning in Berlin."
+                                                    id="description"
+                                                    onChange={(event) => onChangeHandler(event)} />
                                             </div>
                                         </div>
                                         <div className="flex items-center mb-6">
