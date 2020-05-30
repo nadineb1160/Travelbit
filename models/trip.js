@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         // Trip Description
-        decription: {
+        description: {
             type: DataTypes.STRING
         },
         // Trip Start Date
