@@ -25,43 +25,43 @@ const SignUp = () => {
         try {
             const { user } = await auth.createUserWithEmailAndPassword(email, password);
             // generateUserDocument(user, { displayName });
-            // user.updateProfile({
-            //     displayName: displayName
-            // }).then(() => {
-            //     console.log("Update successful")
-            //     console.log(user)
-            //     console.log(displayName);
-            //     let userBody = userJSON(user);
-            //     generateUserDocument(user);
-            //     console.log("user body")
-            //     console.log(userBody)
-            //     API.saveUser(userBody)
-            //         .then(() => {
-            //             console.log("Saved")
-            //         })
-            //         .catch(error => {
-            //             console.log("Error saving user in database")
-            //             console.log(error)
-            //         })
-            // })
-            //     .catch(error => {
-            //         console.log(error)
-            //     });
-
-            console.log(user)
-            console.log(displayName);
-            let userBody = userJSON(user, displayName);
-            generateUserDocument(userBody);
-            console.log("user body")
-            console.log(userBody)
-            API.saveUser(userBody)
-                .then(() => {
-                    console.log("Saved")
-                })
+            user.updateProfile({
+                displayName: displayName
+            }).then(() => {
+                console.log("Update successful")
+                console.log(user)
+                // console.log(displayName);
+                let userBody = userJSON(user);
+                // generateUserDocument(userBody);
+                // console.log("user body")
+                // console.log(userBody)
+                API.saveUser(userBody)
+                    .then(() => {
+                        console.log("Saved")
+                    })
+                    .catch(error => {
+                        console.log("Error saving user in database")
+                        console.log(error)
+                    })
+            })
                 .catch(error => {
-                    console.log("Error saving user in database")
                     console.log(error)
-                })
+                });
+
+            // console.log(user)
+            // console.log(displayName);
+            // let userBody = userJSON(user, displayName);
+            // generateUserDocument(userBody);
+            // console.log("user body")
+            // console.log(userBody)
+            // API.saveUser(userBody)
+            //     .then(() => {
+            //         console.log("Saved")
+            //     })
+            //     .catch(error => {
+            //         console.log("Error saving user in database")
+            //         console.log(error)
+            //     })
 
         }
         catch (error) {
@@ -82,7 +82,6 @@ const SignUp = () => {
         } else if (name === "userPassword") {
             setPassword(value);
         } else if (name === "displayName") {
-            console.log(value)
             setDisplayName(value);
         }
     };
