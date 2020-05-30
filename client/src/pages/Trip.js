@@ -6,7 +6,6 @@ import { useUserContext } from "../state/UserContext.js";
 import API from "../utils/API";
 
 const Trip = () => {
-    console.log("Hello made it to trip")
     const { user } = useUserContext();
     const { cityId } = useParams();
 
@@ -14,17 +13,12 @@ const Trip = () => {
     const [loading, setLoading] = useState(false);
     const [adding, setAdding] = useState(false);
 
-    console.log(cityId)
-    console.log(displayCards)
-
     useEffect(() => {
         setLoading(true);
         console.log(user)
         
         API.getTrips(cityId).then((cities) => {
-            console.log("Cities")
-            console.log(cities.data);
-
+    
             let cityData = cities.data;
 
             setDisplayCards(cityData);
