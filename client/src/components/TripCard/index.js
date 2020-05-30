@@ -6,13 +6,13 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import API from "../../utils/API";
 
-function tripJSON(trip, startDate, endDate, userId) {
+function tripJSON(trip, startDate, endDate, cityId) {
     return (
         {
             "tripName": trip,
             "startDate": startDate,
             "endDate": endDate,
-            "UserId": userId
+            "CityId": cityId
         }
     )
 }
@@ -20,26 +20,21 @@ function tripJSON(trip, startDate, endDate, userId) {
 function TripCard({ card }) {
     const [showModal, setShowModal] = React.useState(false);
     const [trip, setTrip] = useState(card.tripName);
-    const [startDate, setStartDate] = useState(card.startDate);
-    const [endDate, setEndDate] = useState(card.endDate);
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
     const { user } = useUserContext();
     const history = useHistory();
     const [state, setState] = useState([
         {
-          startDate: new Date(),
-          endDate: null,
-          key: 'selection'
+            startDate: new Date(),
+            endDate: null,
+            key: 'selection'
         }
-      ]);
-
-    console.log(card)
+    ]);
 
     // Date Format - MM/DD/YYYY
     let tripStart = card.startDate.split(" ").slice(1, 4).join("/");
     let tripEnd = card.endDate.split(" ").slice(1, 4).join("/");
-
-    console.log(tripStart)
-    console.log(tripEnd)
 
     const clickCardHandler = (event) => {
         event.preventDefault();
@@ -82,17 +77,19 @@ function TripCard({ card }) {
                 let userId = id.data.id;
                 console.log(userId);
 
-                const tripBody = tripJSON(trip, startDate, endDate, userId);
+                // Date Format - MM/DD/YYYY
+                // Format: Day of week | Month | Day | Year
+                tripStart = state[0].startDate.toString().split(" ").slice(0, 4).join(" ");
+                tripEnd = state[0].endDate.toString().split(" ").slice(0, 4).join(" ");
+
+
+                const tripBody = tripJSON(trip, tripStart, tripEnd, card.CityId);
                 console.log(tripBody)
-                console.log(card.id)
 
                 API.updateTrip(card.id, tripBody, userId)
                     .then(() => {
                         console.log(`Updated Trip: ${card.tripName}`)
-                        // return (
-
-                        //     // window.location.href = "/travel"
-                        // )
+                        window.location.href = `/city/${card.CityId}/trip`
                     })
                     .catch(error => {
                         console.log(error)
@@ -132,7 +129,7 @@ function TripCard({ card }) {
                     <div className="p-2">
                     </div>
                     <div className="text-gray-900 font-bold text-xl mb-2">{card.tripName}</div>
-                    <p className="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+                    <p className="text-gray-700 text-base">{card.description}</p>
                     <i
                         className="fas fa-edit float-left text-teal-600 hover:text-teal-400 mt-3"
                         style={{ transition: "all .15s ease" }}
@@ -182,18 +179,18 @@ function TripCard({ card }) {
                                                     onChange={(event) => onChangeHandler(event)}
                                                 />
                                             </div>
-                                            </div>
-                                            <div className="flex items-center mb-6">
-                                                <DateRange
-                                                    name="date"
-                                                    editableDateInputs={true}
-                                                    onChange={item => setState([item.selection])}
-                                                    moveRangeOnFirstSelection={false}
-                                                    ranges={state}
-                                                    color={"#319795"}
-                                                    rangeColors={["#319795", "#319795", "#319795"]}
-                                                    id="date"
-                                                />
+                                        </div>
+                                        <div className="flex items-center mb-6">
+                                            <DateRange
+                                                name="date"
+                                                editableDateInputs={true}
+                                                onChange={item => setState([item.selection])}
+                                                moveRangeOnFirstSelection={false}
+                                                ranges={state}
+                                                color={"#319795"}
+                                                rangeColors={["#319795", "#319795", "#319795"]}
+                                                id="date"
+                                            />
                                         </div>
                                     </form>
                                 </div>
