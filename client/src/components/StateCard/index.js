@@ -3,11 +3,11 @@ import { useHistory } from "react-router-dom";
 import { useUserContext } from "../../state/UserContext";
 import API from "../../utils/API";
 
-function stateJSON(state, userId) {
+function stateJSON(state, countryId) {
     return (
         {
             "stateName": state,
-            "UserId": userId
+            "CountryId": countryId
         }
     )
 }
@@ -69,16 +69,13 @@ function StateCard({ card }) {
                 let userId = id.data.id;
                 console.log(userId);
 
-                const stateBody = stateJSON(state, userId);
+                const stateBody = stateJSON(state, card.CountryId);
                 console.log(stateBody)
 
                 API.updateState(card.id, stateBody, userId)
                     .then(() => {
                         console.log(`Saved State: ${card.stateName}`)
-                        // return (
-
-                        //     // window.location.href = "/travel"
-                        // )
+                        window.location.href = `/country/${card.CountryId}/state`
                     })
                     .catch(error => {
                         console.log(error)
