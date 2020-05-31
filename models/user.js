@@ -15,17 +15,21 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true,
         },
-
+        // Uid from firebase
         uid: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        // Profile img
+        img: {
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     });
 
     User.associate = models => {
         models.User.hasMany(models.Country, {foriegnkey: 'id'}, {
         });
-        // models.User.hasMany(models.User, {foriegnkey: 'followers'})
     }
 
     return User;
