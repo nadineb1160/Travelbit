@@ -20,7 +20,7 @@ export default {
     },
     // Update user with id
     updateUser: (userId, userData) => {
-        return axios({url: `/api/user/${userId}`, data: userData, headers: headers(userId), method: "POST"});
+        return axios({url: `/api/user/${userId}`, data: userData, headers: headers(userId), method: "PUT"});
     },
     // Saves a user to the database
     saveUser: (userData) => {
