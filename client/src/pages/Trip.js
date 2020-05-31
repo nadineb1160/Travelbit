@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import AddTrip from "../components/AddTrip";
 import TripCardContainer from '../components/TripCardContainer';
 import { useUserContext } from "../state/UserContext.js";
 import API from "../utils/API";
+import BackButton from '../components/BackButton';
 
 const Trip = () => {
     const { user } = useUserContext();
@@ -12,6 +13,7 @@ const Trip = () => {
     const [displayCards, setDisplayCards] = useState([]);
     const [loading, setLoading] = useState(false);
     const [adding, setAdding] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         setLoading(true);
@@ -28,7 +30,7 @@ const Trip = () => {
         
     }, []);
 
-    const addStateHandler = (event) => {
+    const addStateHandler = () => {
         
         setAdding(true);
         
@@ -39,8 +41,8 @@ const Trip = () => {
     return adding ? (<AddTrip cityId={cityId}/>) : (
 
         <div>
-            <div className="flex justify-center mt-4">
-                
+            <BackButton/>
+            <div className="flex justify-center">
                 <button onClick={addStateHandler} className="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                     Add Trip
                 </button>

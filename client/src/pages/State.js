@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import AddState from "../components/AddState";
 import StateCardContainer from '../components/StateCardContainer';
 import { useUserContext } from "../state/UserContext.js";
 import API from "../utils/API";
+import BackButton from '../components/BackButton';
 
 const State = () => {
     console.log("Hello made it to state")
@@ -14,6 +15,7 @@ const State = () => {
     // const [selected, setSelected] = useState({});
     const [loading, setLoading] = useState(false);
     const [adding, setAdding] = useState(false);
+    const history = useHistory();
 
     console.log(countryId)
     // console.log(displayCards)
@@ -45,7 +47,8 @@ const State = () => {
     return adding ? (<AddState countryId={countryId}/>) : (
 
         <div>
-            <div className="flex justify-center mt-4">
+            <BackButton/>
+            <div className="flex justify-center">
         
                 <button onClick={addStateHandler} className="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                     Add State
