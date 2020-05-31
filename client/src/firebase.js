@@ -27,12 +27,14 @@ export const generateUserDocument = async (user, additionalData) => {
 
     if (!snapshot.exists) {
         const { email, displayName, uid } = user;
+        let img = "";
     
         try {
             await userRef.set({
                 uid,
                 email,
                 displayName,
+                img,
                 ...additionalData
 
             });
