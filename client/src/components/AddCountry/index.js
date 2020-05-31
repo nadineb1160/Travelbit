@@ -1,13 +1,16 @@
-import React, {useState} from "react";
+import React, {useState, createRef} from "react";
 import API from "../../utils/API";
 import {useUserContext} from "../../state/UserContext";
+import SearchCardContainer from '../SearchCardContainer';
+import BackButton from '../BackButton';
 
 
-function countryJSON(country, continent, userId) {
+function countryJSON(country, continent, imgURL, userId) {
     return (
         {
             "countryName": country,
             "continent": continent,
+            "img": imgURL,
             "UserId": userId
         }
     )
@@ -16,6 +19,7 @@ function countryJSON(country, continent, userId) {
 function AddCountry() {
     const [country, setCountry] = useState("");
     const [continent, setContinent] = useState("");
+    const [imgURL, setImgURL] = useState("");
     const {user} = useUserContext();
 
     const handleAdd = (event) => {
@@ -26,10 +30,10 @@ function AddCountry() {
             let userId = id.data.id;
             console.log(userId);
 
-            const countryBody = countryJSON(country, continent, userId);
+            const countryBody = countryJSON(country, continent, imgURL, userId);
             console.log(countryBody)
 
-            API.saveCountry(countryBody)
+            API.saveCountry(countryBody, userId)
             .then(() => {
                 console.log("Saved Country")
                 return (
@@ -53,12 +57,28 @@ function AddCountry() {
             setCountry(value);
         } else if (name === "continent") {
             setContinent(value);
+        } else if (name === "img") {
+            setImgURL(value);
         }
     };
 
+    // const readURL = (event) => {
+    
+    //     if(event.target.files[0]) {
+    //         let reader = new FileReader();
+
+    //         reader.onload = function (e) {
+    //             console.log(e.target.result)
+    //             setImgURL(e.target.result)
+    //         };
+
+    //         reader.readAsDataURL(event.target.files[0]);
+    //     }
+    // }
+
     return (
         <div>
-
+            <BackButton/>
             <div className="flex justify-center m-6">
                 <form className="w-full max-w-sm bg-teal-600 bg-opacity-75 p-3 rounded">
                     <div className="md:flex md:items-center mb-6">
@@ -105,7 +125,28 @@ function AddCountry() {
                             </div>
                         </div>
                     </div>
-
+                    {/* <div className="md:flex md:items-center mb-6">
+                        <input type="file" onChange={readURL} className="p-4"/>
+                        <br/>
+                        <img id="uploadImage" scr={imgURL} alt="img" ref={imageRef} className="max-w-lg"/>
+                    </div> */}
+                    <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="img">
+                                Image URL
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input 
+                            type="text" 
+                            className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500" 
+                            name="img"
+                            value={imgURL}
+                            placeholder="https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731__480.jpg" 
+                            id="img" 
+                            onChange={(event) => onChangeHandler(event)} />
+                        </div>
+                    </div>
 
                     <div className="md:flex md:items-center">
                         <div className="md:w-1/3"></div>
@@ -117,6 +158,8 @@ function AddCountry() {
                     </div>
                 </form>
             </div>
+
+            <SearchCardContainer />
         </div>
     );
 }

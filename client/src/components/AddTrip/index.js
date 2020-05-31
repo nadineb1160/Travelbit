@@ -5,15 +5,18 @@ import { useUserContext } from "../../state/UserContext";
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import BackButton from '../BackButton';
+import SearchCardContainer from '../SearchCardContainer';
 
 
-function tripJSON(trip, description, startDate, endDate, cityId) {
+function tripJSON(trip, description, startDate, endDate, imgURL, cityId) {
     return (
         {
             "tripName": trip,
             "description": description,
             "startDate": startDate,
             "endDate": endDate,
+            "img": imgURL,
             "CityId": cityId
         }
     )
@@ -22,6 +25,7 @@ function tripJSON(trip, description, startDate, endDate, cityId) {
 function AddTrip({ cityId }) {
     const [tripName, setTripName] = useState("");
     const [description, setDescription] = useState("");
+    const [imgURL, setImgURL] = useState("");
     const [state, setState] = useState([
         {
             startDate: new Date(),
@@ -30,27 +34,26 @@ function AddTrip({ cityId }) {
         }
     ]);
 
-    // const [note, setNote] = useState("");
     const { user } = useUserContext();
     const history = useHistory();
 
     const handleAdd = (event) => {
         event.preventDefault();
 
-        console.log(state[0])
+        API.getUserByUid(user.uid)
+        .then((id) => {
+            let userId = id.data.id;
+            console.log(userId);
 
-        // Format: Day of week | Month | Day | Year
-        let startDate = state[0].startDate.toString().split(" ").slice(0, 4).join(" ");
-        let endDate = state[0].endDate.toString().split(" ").slice(0, 4).join(" ");
+            // Format: Day of week | Month | Day | Year
+            let startDate = state[0].startDate.toString().split(" ").slice(0, 4).join(" ");
+            let endDate = state[0].endDate.toString().split(" ").slice(0, 4).join(" ");
 
-        console.log(startDate)
-        console.log(endDate)
-
-        const tripBody = tripJSON(tripName, description, startDate, endDate, cityId);
-        console.log(tripBody)
+            const tripBody = tripJSON(tripName, description, startDate, endDate, imgURL, cityId);
+            console.log(tripBody)
 
 
-        API.saveTrip(tripBody)
+            API.saveTrip(tripBody, userId)
             .then(() => {
                 console.log("Saved Trip")
                 return (
@@ -61,6 +64,10 @@ function AddTrip({ cityId }) {
             .catch(error => {
                 console.log(error)
             })
+        })
+        .catch(error => {
+            console.log(error)
+        });
 
     }
 
@@ -70,12 +77,14 @@ function AddTrip({ cityId }) {
             setTripName(value);
         } else if (name === "description") {
             setDescription(value);
+        } else if (name === "img") {
+            setImgURL(value);
         }
     };
 
     return (
         <div>
-
+            <BackButton/>
             <div className="flex justify-center m-6">
                 <form className="w-full max-w-sm bg-teal-600 bg-opacity-75 p-3 rounded">
                     <div className="md:flex md:items-center mb-6">
@@ -129,6 +138,24 @@ function AddTrip({ cityId }) {
                         />
                     </div>
 
+                    <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-1/3">
+                            <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="img">
+                                Image URL
+                            </label>
+                        </div>
+                        <div className="md:w-2/3">
+                            <input 
+                            type="text" 
+                            className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500" 
+                            name="img"
+                            value={imgURL}
+                            placeholder="https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731__480.jpg" 
+                            id="img" 
+                            onChange={(event) => onChangeHandler(event)} />
+                        </div>
+                    </div>
+
                     <div className="md:flex md:items-center">
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">
@@ -138,6 +165,7 @@ function AddTrip({ cityId }) {
                         </div>
                     </div>
                 </form>
+                <SearchCardContainer />
             </div>
         </div>
     );
