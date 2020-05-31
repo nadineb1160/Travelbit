@@ -25,10 +25,10 @@ module.exports = {
             where: {
                 uid: req.params.uid
             },
-            attributes: ["id"]
+            // attributes: ["id"]
         }).then(user => {
             console.log("found user by uid")
-            console.log(user.dataValues.id)
+            console.log(user.dataValues)
             res.json(user.dataValues);
         }).catch(err => {
             console.log(err);
