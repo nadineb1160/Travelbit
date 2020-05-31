@@ -16,6 +16,7 @@ function cityJSON(city, countryId) {
 function CityCard({ card }) {
     const [showModal, setShowModal] = React.useState(false);
     const [city, setCity] = useState(card.cityName);
+    const [imgURL, setImgURL] = useState(card.img);
     const {user} = useUserContext();
     const history = useHistory();
 
@@ -105,7 +106,7 @@ function CityCard({ card }) {
                     id="update"/>
                 </div>
 
-                <img className="w-full p-3" src="https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731__480.jpg" alt="Travel Map"/>
+                <img className="w-full p-3" src={imgURL} alt="Travel Map"/>
                 <div className="px-3 py-2">
                     <h1 className="font-bold text-5xl mb-2 marker text-center">{card.cityName}</h1>
                 </div>

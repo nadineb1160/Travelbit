@@ -17,6 +17,7 @@ function CountryCard({ card }) {
     const [showModal, setShowModal] = React.useState(false);
     const [country, setCountry] = useState(card.countryName);
     const [continent, setContinent] = useState(card.continent);
+    const [imgURL, setImgURL] = useState(card.img);
     const {user} = useUserContext();
     const history = useHistory();
 
@@ -110,7 +111,7 @@ function CountryCard({ card }) {
                 id="update"></i>
             </div>
                 
-            <img className="w-full p-3" src="https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731__480.jpg" alt="Travel Map" />
+            <img className="w-full p-3" src={imgURL} alt="Travel Map" />
             <div className="px-3 py-2">
                 <h1 className="font-bold text-5xl mb-2 marker text-center">{card.countryName}</h1>
             </div>

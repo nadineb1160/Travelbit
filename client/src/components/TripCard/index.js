@@ -22,6 +22,7 @@ function TripCard({ card }) {
     const [showModal, setShowModal] = React.useState(false);
     const [trip, setTrip] = useState(card.tripName);
     const [description, setDescription] = useState("");
+    const [imgURL, setImgURL] = useState(card.img);
     // const [startDate, setStartDate] = useState("");
     // const [endDate, setEndDate] = useState("");
     const { user } = useUserContext();
@@ -115,7 +116,7 @@ function TripCard({ card }) {
     return (
 
         <div className="max-w-xl w-2/3 lg:max-w-full lg:flex p-3 justify-center">
-            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731__480.jpg')" }} title="Travel picture">
+            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{ backgroundImage: `url(${imgURL})` }} title="Travel picture">
             </div>
             <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                 <div className="mb-8">
@@ -140,7 +141,16 @@ function TripCard({ card }) {
                         onClick={(event) => clickButtonHandler(event)}
                         id="update" />
                 </div>
+                {/* <div className="px-6 py-4">
+                    {tags.map((tag, index) => (
+                        <span key={index}className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                            #{tag}
+                        </span>
+                    ))}
+                </div> */}
             </div>
+
+
             {showModal ? (
                 <>
                     <div
