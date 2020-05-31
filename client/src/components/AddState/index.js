@@ -6,7 +6,6 @@ import SearchCardContainer from '../SearchCardContainer';
 import BackButton from '../BackButton';
 
 
-
 function stateJSON(state, imgURL, countryId) {
     return (
         {
@@ -29,10 +28,8 @@ function AddState({ countryId }) {
         API.getUserByUid(user.uid)
         .then((id) => {
             let userId = id.data.id;
-            console.log(userId);
 
             const stateBody = stateJSON(state, imgURL, countryId);
-            console.log(stateBody)
      
             API.saveState(stateBody, userId)
             .then(() => {
@@ -49,7 +46,6 @@ function AddState({ countryId }) {
         .catch(error => {
             console.log(error)
         });
-       
     }
 
     const onChangeHandler = event => {
@@ -66,6 +62,7 @@ function AddState({ countryId }) {
             <BackButton/>
             <div className="flex justify-center m-6">
                 <form className="w-full max-w-sm bg-teal-600 bg-opacity-75 p-3 rounded">
+                    {/* State */}
                     <div className="md:flex md:items-center mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="state">
@@ -83,7 +80,7 @@ function AddState({ countryId }) {
                             onChange={(event) => onChangeHandler(event)} />
                         </div>
                     </div>
-
+                    {/* Image URL */}
                     <div className="md:flex md:items-center mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="img">
@@ -101,8 +98,7 @@ function AddState({ countryId }) {
                             onChange={(event) => onChangeHandler(event)} />
                         </div>
                     </div>
-                   
-
+                   {/* Add */}
                     <div className="md:flex md:items-center">
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import API from "../../utils/API";
-import { useUserContext } from "../../state/UserContext";
 import { DateRange } from 'react-date-range';
+import API from "../../utils/API";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import { useUserContext } from "../../state/UserContext";
 import BackButton from '../BackButton';
 import SearchCardContainer from '../SearchCardContainer';
 
@@ -43,15 +43,12 @@ function AddTrip({ cityId }) {
         API.getUserByUid(user.uid)
         .then((id) => {
             let userId = id.data.id;
-            console.log(userId);
 
             // Format: Day of week | Month | Day | Year
             let startDate = state[0].startDate.toString().split(" ").slice(0, 4).join(" ");
             let endDate = state[0].endDate.toString().split(" ").slice(0, 4).join(" ");
 
             const tripBody = tripJSON(tripName, description, startDate, endDate, imgURL, cityId);
-            console.log(tripBody)
-
 
             API.saveTrip(tripBody, userId)
             .then(() => {
@@ -87,6 +84,7 @@ function AddTrip({ cityId }) {
             <BackButton/>
             <div className="flex justify-center m-6">
                 <form className="w-full max-w-sm bg-teal-600 bg-opacity-75 p-3 rounded">
+                    {/* Trip */}
                     <div className="md:flex md:items-center mb-6">
                         <div className="md:w-1/4">
                             <label className="block text-white font-bold md:text-left mb-1 md:mb-0 pr-4" htmlFor="tripName">
@@ -106,6 +104,7 @@ function AddTrip({ cityId }) {
                                 onChange={(event) => onChangeHandler(event)} />
                         </div>
                     </div>
+                    {/* Description */}
                     <div className="md:flex md:items-center mb-6">
                         <div className="w-1/4">
                             <label className="block text-white font-bold md:text-left mb-1 md:mb-0 pr-4" htmlFor="tripName">
@@ -125,6 +124,7 @@ function AddTrip({ cityId }) {
                                 onChange={(event) => onChangeHandler(event)} />
                         </div>
                     </div>
+                    {/* Calendar */}
                     <div className="flex items-center mb-6 justify-center">
                         <DateRange
                             name="date"
@@ -137,7 +137,7 @@ function AddTrip({ cityId }) {
                             id="date"
                         />
                     </div>
-
+                    {/* Image URL */}
                     <div className="md:flex md:items-center mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="img">
@@ -155,7 +155,7 @@ function AddTrip({ cityId }) {
                             onChange={(event) => onChangeHandler(event)} />
                         </div>
                     </div>
-
+                    {/* Add */}
                     <div className="md:flex md:items-center">
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">

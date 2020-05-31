@@ -28,10 +28,8 @@ function AddCountry() {
         API.getUserByUid(user.uid)
         .then((id) => {
             let userId = id.data.id;
-            console.log(userId);
 
             const countryBody = countryJSON(country, continent, imgURL, userId);
-            console.log(countryBody)
 
             API.saveCountry(countryBody, userId)
             .then(() => {
@@ -81,6 +79,7 @@ function AddCountry() {
             <BackButton/>
             <div className="flex justify-center m-6">
                 <form className="w-full max-w-sm bg-teal-600 bg-opacity-75 p-3 rounded">
+                    {/* Country */}
                     <div className="md:flex md:items-center mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="country">
@@ -98,8 +97,8 @@ function AddCountry() {
                             onChange={(event) => onChangeHandler(event)} />
                         </div>
                     </div>
+                    {/* Continent */}
                     <div className="md:flex md:items-center mb-6">
-                        
                         <div className="md:w-1/3">
                             <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="continent">
                                 Continent
@@ -125,11 +124,7 @@ function AddCountry() {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="md:flex md:items-center mb-6">
-                        <input type="file" onChange={readURL} className="p-4"/>
-                        <br/>
-                        <img id="uploadImage" scr={imgURL} alt="img" ref={imageRef} className="max-w-lg"/>
-                    </div> */}
+                    {/* Image URL */}
                     <div className="md:flex md:items-center mb-6">
                         <div className="md:w-1/3">
                             <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="img">
@@ -147,7 +142,7 @@ function AddCountry() {
                             onChange={(event) => onChangeHandler(event)} />
                         </div>
                     </div>
-
+                    {/* Add */}
                     <div className="md:flex md:items-center">
                         <div className="md:w-1/3"></div>
                         <div className="md:w-2/3">
@@ -158,7 +153,6 @@ function AddCountry() {
                     </div>
                 </form>
             </div>
-
             <SearchCardContainer />
         </div>
     );
