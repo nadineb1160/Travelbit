@@ -20,7 +20,7 @@ function tripJSON(trip, description, startDate, endDate, cityId) {
 }
 
 function TripCard({ card }) {
-    const [showModal, setShowModal] = React.useState(false);
+    const [showModal, setShowModal] = useState(false);
     const [trip, setTrip] = useState(card.tripName);
     const [description, setDescription] = useState("");
     const [imgURL, setImgURL] = useState(card.img);
