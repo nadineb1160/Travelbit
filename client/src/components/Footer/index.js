@@ -27,13 +27,13 @@ function Footer() {
             <h5 className="uppercase mb-3 font-bold">Social</h5>
             <ul className="mb-4">
               <li className="mt-2">
-                <a href="#" className="hover:underline text-gray-600 hover:text-teal-600">Facebook</a>
+                <a href="#" className="hover:underline text-gray-600 hover:text-teal-600"><i class="fab fa-facebook-square"></i> Facebook</a>
               </li>
               <li className="mt-2">
-                <a href="#" className="hover:underline text-gray-600 hover:text-teal-600">Linkedin</a>
+                <a href="#" className="hover:underline text-gray-600 hover:text-teal-600"><i class="fab fa-linkedin"></i> Linkedin</a>
               </li>
               <li className="mt-2">
-                <a href="#" className="hover:underline text-gray-600 hover:text-teal-600">Instagram</a>
+                <a href="#" className="hover:underline text-gray-600 hover:text-teal-600"><i class="fab fa-instagram"></i> Instagram</a>
               </li>
             </ul>
           </div>
