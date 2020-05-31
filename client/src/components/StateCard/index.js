@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useUserContext } from "../../state/UserContext";
 import API from "../../utils/API";
 
+
 function stateJSON(state, countryId) {
     return (
         {
@@ -24,10 +25,6 @@ function StateCard({ card }) {
         event.stopPropagation();
 
         let stateId = event.currentTarget.getAttribute('value');
-        let stateName = event.currentTarget.getAttribute('name');
-
-        console.log(stateId)
-        console.log(stateName)
 
         history.push(`/state/${stateId}/city`)
 
@@ -37,11 +34,12 @@ function StateCard({ card }) {
         event.preventDefault();
         event.stopPropagation();
         const { id } = event.currentTarget;
+
         if (id === "delete") {
             API.getUserByUid(user.uid)
             .then((id) => {
                 let userId = id.data.id;
-                console.log(userId);
+                
                 API.deleteState(card.id, userId)
                     .then(() => {
                         console.log(`Removed ${card.stateName}`)
@@ -68,10 +66,8 @@ function StateCard({ card }) {
         API.getUserByUid(user.uid)
             .then((id) => {
                 let userId = id.data.id;
-                console.log(userId);
 
                 const stateBody = stateJSON(state, card.CountryId);
-                console.log(stateBody)
 
                 API.updateState(card.id, stateBody, userId)
                     .then(() => {
@@ -85,7 +81,6 @@ function StateCard({ card }) {
             .catch(error => {
                 console.log(error)
             });
-
     }
 
     const onChangeHandler = event => {
@@ -100,6 +95,7 @@ function StateCard({ card }) {
         <div>
 
             <div onClick={(event) => clickCardHandler(event)} className="max-w-sm border rounded overflow-hidden shadow-lg m-3 bg-white" value={card.id} name={card.stateName}>
+                {/* Buttons */}
                 <div className="p-2">
                     <i
                         className="fas fa-times float-left text-red-600 hover:text-red-400"
@@ -112,7 +108,9 @@ function StateCard({ card }) {
                         onClick={(event) => clickButtonHandler(event)}
                         id="update" />
                 </div>
+                {/* Image */}
                 <img className="w-full p-3" src={imgURL} alt="Travel Map" />
+                {/* State Name */}
                 <div className="px-3 py-2">
                     <h1 className="font-bold text-5xl mb-2 marker text-center">{card.stateName}</h1>
                 </div>
@@ -188,7 +186,6 @@ function StateCard({ card }) {
                 ) : null}
             </div>
         </div>
-
     );
 }
 

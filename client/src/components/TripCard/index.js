@@ -6,6 +6,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import API from "../../utils/API";
 
+
 function tripJSON(trip, description, startDate, endDate, cityId) {
     return (
         {
@@ -23,8 +24,6 @@ function TripCard({ card }) {
     const [trip, setTrip] = useState(card.tripName);
     const [description, setDescription] = useState("");
     const [imgURL, setImgURL] = useState(card.img);
-    // const [startDate, setStartDate] = useState("");
-    // const [endDate, setEndDate] = useState("");
     const { user } = useUserContext();
     const history = useHistory();
     const [state, setState] = useState([
@@ -55,6 +54,7 @@ function TripCard({ card }) {
         event.preventDefault();
         event.stopPropagation();
         const { id } = event.currentTarget;
+
         if (id === "delete") {
             API.deleteTrip(card.id)
                 .then(() => {
@@ -78,16 +78,13 @@ function TripCard({ card }) {
         API.getUserByUid(user.uid)
             .then((id) => {
                 let userId = id.data.id;
-                console.log(userId);
 
                 // Date Format - MM/DD/YYYY
                 // Format: Day of week | Month | Day | Year
                 tripStart = state[0].startDate.toString().split(" ").slice(0, 4).join(" ");
                 tripEnd = state[0].endDate.toString().split(" ").slice(0, 4).join(" ");
 
-
                 const tripBody = tripJSON(trip, description, tripStart, tripEnd, card.CityId);
-                console.log(tripBody)
 
                 API.updateTrip(card.id, tripBody, userId)
                     .then(() => {
@@ -101,7 +98,6 @@ function TripCard({ card }) {
             .catch(error => {
                 console.log(error)
             });
-
     }
 
     const onChangeHandler = event => {
@@ -119,37 +115,31 @@ function TripCard({ card }) {
             <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{ backgroundImage: `url(${imgURL})` }} title="Travel picture">
             </div>
             <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                {/* Card */}
                 <div className="mb-8">
+                    {/* Delete */}
                     <i
                         className="fas fa-times float-right text-red-600 hover:text-red-400"
                         onClick={(event) => clickButtonHandler(event)}
                         id="delete" />
-
                     <br />
-
-                    <p className="text-sm text-gray-600 flex items-center">
+                    {/* Date Range */}
+                    <p className="text-sm text-gray-600 flex items-center p-2">
                         <i className="fas fa-calendar-alt pr-2"></i>
                         {tripStart} - {tripEnd}
                     </p>
-                    <div className="p-2">
-                    </div>
+                    {/* Trip Name */}
                     <div className="text-gray-900 font-bold text-xl mb-2">{card.tripName}</div>
+                    {/* Trip Description */}
                     <p className="text-gray-700 text-base">{card.description}</p>
+                    {/* Update */}
                     <i
                         className="fas fa-edit float-left text-teal-600 hover:text-teal-400 mt-3"
                         style={{ transition: "all .15s ease" }}
                         onClick={(event) => clickButtonHandler(event)}
                         id="update" />
                 </div>
-                {/* <div className="px-6 py-4">
-                    {tags.map((tag, index) => (
-                        <span key={index}className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-                            #{tag}
-                        </span>
-                    ))}
-                </div> */}
             </div>
-
 
             {showModal ? (
                 <>
@@ -239,7 +229,6 @@ function TripCard({ card }) {
                                             handleUpdate(event)
                                             setShowModal(false)
                                         }}
-                                    // onClick={() => setShowModal(false)}
                                     >
                                         Save Changes
                                 </button>

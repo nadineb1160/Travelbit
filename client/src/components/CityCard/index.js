@@ -25,10 +25,6 @@ function CityCard({ card }) {
         event.stopPropagation();
 
         let cityId = event.currentTarget.getAttribute('value');
-        let cityName = event.currentTarget.getAttribute('name');
-        
-        console.log(cityId)
-        console.log(cityName)
         
         history.push(`/city/${cityId}/trip/`);
     }
@@ -37,6 +33,7 @@ function CityCard({ card }) {
         event.preventDefault();
         event.stopPropagation();
         const { id } = event.currentTarget;
+
         if (id === "delete") {
             API.deleteCity(card.id)
                 .then(() => {
@@ -57,16 +54,11 @@ function CityCard({ card }) {
     const handleUpdate = (event) => {
         event.preventDefault();
         
-        console.log(city)
         API.getUserByUid(user.uid)
         .then((id) => {
             let userId = id.data.id;
-            console.log(userId);
-            console.log(city)
-            console.log(card)
 
             const cityBody = cityJSON(city, card.CountryId);
-            console.log(cityBody)
 
             API.updateCity(card.id, cityBody, userId)
                 .then(() => {
@@ -80,7 +72,6 @@ function CityCard({ card }) {
         .catch(error => {
             console.log(error)
         });
-    
     }
 
     const onChangeHandler = event => {
@@ -93,6 +84,7 @@ function CityCard({ card }) {
     return (
         <div>
             <div onClick={(event) => clickCardHandler(event)} className="max-w-sm border rounded overflow-hidden shadow-lg m-3 bg-white"  value={card.id} name={card.cityName}>
+                {/* Card Buttons */}
                 <div className="p-2">
                     <i 
                     className="fas fa-times float-left text-red-600 hover:text-red-400" 
@@ -105,8 +97,9 @@ function CityCard({ card }) {
                     onClick={(event) => clickButtonHandler(event)}
                     id="update"/>
                 </div>
-
+                {/* Image */}
                 <img className="w-full p-3" src={imgURL} alt="Travel Map"/>
+                {/* City Name */}
                 <div className="px-3 py-2">
                     <h1 className="font-bold text-5xl mb-2 marker text-center">{card.cityName}</h1>
                 </div>
@@ -168,7 +161,6 @@ function CityCard({ card }) {
                                         handleUpdate(event)
                                         setShowModal(false)
                                     }}
-                                    // onClick={() => setShowModal(false)}
                                 >
                                     Save Changes
                                 </button>
