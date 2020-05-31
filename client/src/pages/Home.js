@@ -8,7 +8,6 @@ const Home = () => {
         const { id } = event.currentTarget;
         if (id === "remember") {
             window.location.href = "/travel";
-
         } else if (id === "explore") {
             // Update to explore when made
             window.location.href = "/travel";
@@ -19,15 +18,12 @@ const Home = () => {
    
     return (
         <div>
-
             <header className="relative bg-no-repeat bg-cover lg:bg-center p-6 bg-top-right h-screen" id="bg-img">
-
                 <div className="max-w-2xl mx-auto lg:py-32 py-10 align-middle">
                     <div className="bg-teal-700 bg-opacity-25 border-8 border-double border-white p-4 m-8 rounded">
                         <h2 className="lg:text-5xl text-4xl text-center font-semibold text-white mb-2 leading-none elite">Travel | <span className="text-gray-900">Bit</span></h2>
                         <h2 className="lg:text-5xl text-4xl text-center font-semibold text-white leading-none mb-2 dancing">Travel back in time</h2>
                     </div>
-                    <h3></h3>
 
                     {user ?
                     <div className="flex items-center flex-wrap justify-start max-w-xl lg:mx-0 mx-auto text-xl">
@@ -55,15 +51,15 @@ const Home = () => {
 
             <section className="container px-4 p-10" id="country-img">
             
-                <div className="flex items-center flex-wrap mb-20">
-                    <div className="w-full md:w-1/2">
+                <div className="flex items-center flex-wrap mb-10">
+                    <div className="w-full md:w-1/2 pr-2">
                         <h4 className="text-3xl text-gray-800 font-bold mb-3">View past trips</h4>
                         <p className="text-gray-600 mb-8">Travel | Bit allows you to store your travels so that you can remember past and share with others.</p>
                     </div>
-                    <div className="w-full md:w-1/4">
+                    <div className="w-1/2 md:w-1/4">
                         <img src="https://images.unsplash.com/photo-1551526793-fc99b5ea9919?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" className="pr-5 pb-4" alt="Bridge" />
                     </div>
-                    <div className="w-full md:w-1/4">
+                    <div className="w-1/2 md:w-1/4">
                         <img src="https://images.unsplash.com/photo-1568887759898-723db7949b52?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" className="" alt="Bridge" />
                     </div>
                 </div>

@@ -10,7 +10,7 @@ module.exports = {
                 model: db.Country
             }]
         }).then(users => {
-            console.log(users)
+            // console.log(users)
             res.json(users);
         }).catch(err => {
             console.log(err);
@@ -28,7 +28,7 @@ module.exports = {
             // attributes: ["id"]
         }).then(user => {
             console.log("found user by uid")
-            console.log(user.dataValues)
+            // console.log(user.dataValues)
             res.json(user.dataValues);
         }).catch(err => {
             console.log(err);
@@ -42,7 +42,7 @@ module.exports = {
         .create(req.body)
         .then(user => {
             console.log("user.dataValues")
-            console.log(user.dataValues)
+            // console.log(user.dataValues)
             res.json(user.dataValues)
         })
         .catch(err => {

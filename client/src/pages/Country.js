@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CountryCardContainer from '../components/CountryCardContainer';
 // import Card from '../components/Card';
-// import AddCountry from '../components/AddCountry';
+import AddCountry from '../components/AddCountry';
 import { useUserContext } from "../state/UserContext.js"
 import API from "../utils/API";
 
@@ -9,12 +9,14 @@ const Country = () => {
     const { user } = useUserContext();
 
     const [displayCards, setDisplayCards] = useState([]);
-    const [selected, setSelected] = useState({});
     const [loading, setLoading] = useState(false);
+    const [adding, setAdding] = useState(false);
+
 
     useEffect(() => {
         setLoading(true);
         console.log(user)
+
         API.getUserByUid(user.uid)
         .then((res) => {
             let userId = res.data.id;
@@ -34,13 +36,12 @@ const Country = () => {
     }, []);
 
     const addCountryHandler = (event) => {
-        return (
-            window.location.href = "/addCountry"
-        )
+        setAdding(true);
     }
 
+    if (loading) return <span>Loading...</span>
 
-    return (
+    return adding ? (<AddCountry />) : (
         <div>
 
             <div className="flex justify-center mt-4">

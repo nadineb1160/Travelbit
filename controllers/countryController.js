@@ -15,7 +15,7 @@ module.exports = {
                 ['countryName', 'ASC']
             ]
         }).then(countries => {
-            console.log(countries)
+            // console.log(countries)
             res.json(countries);
         }).catch(err => {
             console.log(err);

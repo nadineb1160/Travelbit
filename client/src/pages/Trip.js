@@ -13,7 +13,6 @@ const Trip = () => {
     const [displayCards, setDisplayCards] = useState([]);
     const [loading, setLoading] = useState(false);
     const [adding, setAdding] = useState(false);
-    const history = useHistory();
 
     useEffect(() => {
         setLoading(true);
