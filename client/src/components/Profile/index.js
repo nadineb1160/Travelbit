@@ -67,13 +67,13 @@ const ProfilePage = () => {
     userInstagram(username)
       .then(res => {
         console.log(res);
-        setProfilePic(res.profilePic)
+        setProfilePic(res.profilePicHD)
 
         API.getUserByUid(user.uid)
           .then((id) => {
             let userId = id.data.id;
 
-            const userBody = userJSON(user, res.profilePic);
+            const userBody = userJSON(user, res.profilePicHD);
             console.log(userBody)
             console.log(user)
 
@@ -109,22 +109,21 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
-
+    <div className="mb-4">
       <div className="mx-auto w-3/4 md:w-1/2 py-8 px-4 md:px-8">
-        <div className="flex border rounded shadow-md flex-col items-center md:flex-row md:items-start border-blue-400 px-3 py-4 bg-white">
-          <img src={profilePic} className="bg-cover bg-center" />
+        <div className="flex border rounded shadow-md flex-col items-center md:flex-row md:items-start border-blue-400 p-2 bg-white">
+          <img src={profilePic} className="bg-cover bg-center w-2/3 md:w-1/2 rounded m-1" />
           {/* Update */}
+          <div className="m-2 text-left self-center">
           <i
-            className="fas fa-edit float-right text-teal-600 hover:text-teal-400 md:ml-4"
+            className="fas fa-edit float-right text-teal-600 hover:text-teal-400 p-2"
             style={{ transition: "all .15s ease" }}
             onClick={(event) => clickButtonHandler(event)}
             id="update" />
-          <div className="md:pl-4 pt-1 text-center">
-            <h2 className="text-2xl font-bold">{displayName}</h2>
+            <h2 className="text-3xl font-bold">{displayName}</h2>
             <h3 className="italic pt-1 font-semibold text-teal-600">{email}</h3>
             <br />
-            <div className="py-2 px-4 bg-teal-600 bg-opacity-25 border rounded">
+            <div className="py-2 px-2 bg-teal-600 bg-opacity-25 border rounded text-center mt-2">
               <h4 className="text-2xl text-teal-600 font-bold">{countryCount}</h4>
               <h4>Countries Visited</h4>
               {/* <h4># of state visited: <span>{stateCount}</span></h4> */}
