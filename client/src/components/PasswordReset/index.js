@@ -6,12 +6,15 @@ const PasswordReset = () => {
   const [email, setEmail] = useState("");
   const [emailHasBeenSent, setEmailHasBeenSent] = useState(false);
   const [error, setError] = useState(null);
+
   const onChangeHandler = event => {
     const { name, value } = event.currentTarget;
+
     if (name === "userEmail") {
       setEmail(value);
     }
   };
+
   const sendResetEmail = event => {
     event.preventDefault();
     auth.sendPasswordResetEmail(email)
@@ -23,12 +26,13 @@ const PasswordReset = () => {
         setError("Error resetting password");
       });
   };
+
   return (
-    <div className="mt-8">
-      <h1 className="text-xl text-center font-bold mb-3">
+    <div className="poppins tracking-wider py-6">
+      <h1 className="text-3xl mb-4 text-center font-bold">
         Reset your Password
       </h1>
-      <div className="border border-blue-300 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
+      <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8 bg-white">
         <form action="">
           {emailHasBeenSent && (
             <div className="py-3 bg-green-400 w-full text-white text-center mb-3">
@@ -40,7 +44,7 @@ const PasswordReset = () => {
               {error}
             </div>
           )}
-          <label htmlFor="userEmail" className="w-full block">
+          <label htmlFor="userEmail" className="w-full block font-semibold">
             Email:
           </label>
           <input
@@ -50,17 +54,18 @@ const PasswordReset = () => {
             value={email}
             placeholder="Input your email"
             onChange={onChangeHandler}
-            className="mb-3 w-full px-1 py-2"
+            className="px-3 py-3 mb-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
           />
           <button
-            className="w-full bg-blue-400 text-white py-3"
+            className="bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 mt-2 w-full rounded"
+            onClick={event => sendResetEmail(event)}
           >
             Send me a reset link
           </button>
         </form>
         <Link
-         to ="/"
-          className="my-2 text-blue-700 hover:text-blue-800 text-center block"
+         to ="/signin"
+          className="my-2 text-teal-500 hover:text-teal-400 text-center block"
         >
           &larr; back to sign in page
         </Link>
