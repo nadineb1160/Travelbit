@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { signInWithGoogle } from "../../firebase";
 import { auth } from "../../firebase";
 import { useUserContext } from "../../state/UserContext"
 
@@ -38,7 +39,7 @@ const SignIn = () => {
     };
 
     return (
-        <div className="poppins tracking-wider py-6" id="country-img">
+        <div className="poppins tracking-wider py-6">
             <h1 className="text-3xl mb-4 text-center font-bold">Sign In</h1>
             <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8 bg-white">
                 {error !== null && <div className="py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
@@ -74,21 +75,29 @@ const SignIn = () => {
                 </form>
                 <p className="text-center my-3">or</p>
                 <button
-                    className="bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 w-full rounded">
+                    className="bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 w-full rounded" 
+                    onClick={() => {
+                        try {
+                          signInWithGoogle();
+                        } catch (error) {
+                          console.error("Error signing in with Google", error);
+                        }
+                      }}
+                >
                     Sign in with Google
                 </button>
                 <p className="text-center my-3">
                     Don't have an account?{" "}
-                    <Link to="signUp" className="text-blue-500 hover:text-blue-600">
+                    <Link to="signUp" className="text-teal-500 hover:text-teal-600">
                         Sign up here
-                    </Link>{" "}
-                    <br />{" "}
-                    <Link to="passwordReset" className="text-blue-500 hover:text-blue-600">
+                    </Link>
+                    <br />
+                    <Link to="passwordReset" className="text-teal-500 hover:text-teal-600">
                         Forgot Password?
                     </Link>
                 </p>
             </div>
-        </div>
+        </div >
     );
 };
 

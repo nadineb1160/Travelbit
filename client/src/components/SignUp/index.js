@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { generateUserDocument, auth } from "../../firebase";
+import { generateUserDocument, auth, signInWithGoogle } from "../../firebase";
 import API from "../../utils/API";
 
 
@@ -87,7 +87,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className="poppins tracking-wider py-6" id="country-img">
+        <div className="poppins tracking-wider py-6">
             <h1 className="text-3xl mb-4 text-center font-bold">Sign Up</h1>
             <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8 bg-white">
                 {error !== null && (
@@ -133,7 +133,7 @@ const SignUp = () => {
                         onChange={event => onChangeHandler(event)}
                     />
                     <button
-                        className="bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 mt-4 w-full rounded"
+                        className="bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 mt-4 w-full rounded"
                         onClick={event => {
                             createUserWithEmailAndPasswordHandler(event, email, password);
                         }}
@@ -143,13 +143,20 @@ const SignUp = () => {
                 </form>
                 <p className="text-center my-3">or</p>
                 <button
-                    className="bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 w-full rounded"
+                    className="bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 w-full rounded" 
+                    onClick={() => {
+                        try {
+                          signInWithGoogle();
+                        } catch (error) {
+                          console.error("Error signing in with Google", error);
+                        }
+                      }}
                 >
                     Sign In with Google
                 </button>
                 <p className="text-center my-3">
                     Already have an account?{" "}
-                    <Link to="signIn" className="text-blue-500 hover:text-blue-600">
+                    <Link to="signIn" className="text-teal-500 hover:text-teal-600">
                         Sign in here
                     </Link>
                 </p>
