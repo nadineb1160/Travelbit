@@ -41,7 +41,7 @@ const CityFromState = () => {
         <div>
             <BackButton/>
             <div className="flex justify-center">
-                <button onClick={addCityHandler} className="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                <button onClick={addCityHandler} className="shadow bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                     Add City
                 </button>
             </div>
