@@ -34,9 +34,9 @@ function AddCountry() {
             API.saveCountry(countryBody, userId)
             .then(() => {
                 console.log("Saved Country")
-                return (
-                    window.location.href = "/travel"
-                )
+                // return (
+                //     // window.location.href = "/travel"
+                // )
             })
             .catch(error => {
                 console.log(error)
