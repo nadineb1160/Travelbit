@@ -144,7 +144,7 @@ function TripCard({ card }) {
             {showModal ? (
                 <>
                     <div
-                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none overflow-hidden bg-fixed"
+                        className="justify-center flex overflow-auto fixed inset-0 z-50 outline-none focus:outline-none bg-fixed"
                         data-backdrop="static">
 
                         <div className="relative w-auto my-6 mx-auto max-w-sm">
