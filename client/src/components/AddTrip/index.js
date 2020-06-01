@@ -165,8 +165,8 @@ function AddTrip({ cityId }) {
                         </div>
                     </div>
                 </form>
-                <SearchCardContainer />
             </div>
+            <SearchCardContainer />
         </div>
     );
 }
