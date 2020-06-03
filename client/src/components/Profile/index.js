@@ -83,7 +83,8 @@ const ProfilePage = () => {
               .then(() => {
                 console.log(`Updated User: ${userId}`)
                 // window.location.href = `/profile`
-                history.push(`/profile`)
+                history.push(`/profile`),
+                window.location.reload()
               })
               .catch(error => {
                 console.log(error)

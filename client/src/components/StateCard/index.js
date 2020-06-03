@@ -45,7 +45,8 @@ function StateCard({ card }) {
                         console.log(`Removed ${card.stateName}`)
                         return (
                             // window.location.reload()
-                            history.push(`/country/${card.CountryId}/state`)
+                            history.push(`/country/${card.CountryId}/state`),
+                            window.location.reload()
                         )
                     })
                     .catch(error => {
@@ -74,8 +75,8 @@ function StateCard({ card }) {
                     .then(() => {
                         console.log(`Saved State: ${card.stateName}`)
                         return (
-                            history.push(`/country/${card.CountryId}/state`)
-                            // window.location.reload()
+                            history.push(`/country/${card.CountryId}/state`),
+                            window.location.reload()
                         )
                     })
                     .catch(error => {

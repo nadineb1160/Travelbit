@@ -40,7 +40,8 @@ function CityCard({ card }) {
                     console.log(`Removed ${card.cityName}`)
                     return (
                         // window.location.reload()
-                        history.push(`/country/${card.CountryId}/city`)
+                        history.push(`/country/${card.CountryId}/city`),
+                        window.location.reload()
                     )
                 })
                 .catch(error => {
@@ -66,8 +67,8 @@ function CityCard({ card }) {
                     console.log(`Updated City: ${card.cityName}`)
                     // window.location.href = `/country/${card.CountryId}/city`
                     return (
-                        history.push(`/country/${card.CountryId}/city`)
-                        // window.location.reload()
+                        history.push(`/country/${card.CountryId}/city`),
+                        window.location.reload()
                     )
                 })
                 .catch(error => {

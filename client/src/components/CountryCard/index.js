@@ -31,11 +31,13 @@ function CountryCard({ card }) {
         if (countryName === "United States of America" || countryName === "USA" || countryName === "United States") {
             console.log("states");
             return (
-                history.push(`/country/${countryId}/state`)
+                history.push(`/country/${countryId}/state`),
+                window.location.reload()
             )
         } else {
             return (
-                history.push(`/country/${countryId}/city`)
+                history.push(`/country/${countryId}/city`),
+                window.location.reload()
             )
         }
     }
@@ -50,7 +52,8 @@ function CountryCard({ card }) {
                 .then(() => {
                     console.log(`Removed ${card.countryName}`)
                     return (
-                        history.push(`/travel`)
+                        history.push(`/travel`),
+                        window.location.reload()
                     )
                 })
                 .catch(error => {
@@ -76,8 +79,8 @@ function CountryCard({ card }) {
                     console.log(`Saved Country: ${card.countryName}`)
                     // window.location.href = "/travel"
                     return (
-                        history.push(`/travel`)
-                        // window.location.reload()
+                        history.push(`/travel`),
+                        window.location.reload()
                     )
                   
                 })
