@@ -1,8 +1,10 @@
 import React from 'react';
 import { useUserContext } from "../state/UserContext";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
     const { user } = useUserContext();
+    const history = useHistory();
 
     const OnClickHandler = event => {
         const { id } = event.currentTarget;
