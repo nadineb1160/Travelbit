@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { generateUserDocument, auth, signInWithGoogle } from "../../firebase";
 import API from "../../utils/API";
+import { useHistory } from "react-router-dom";
+
 
 
 function userJSON(user) {
@@ -19,6 +21,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const [displayName, setDisplayName] = useState("");
     const [error, setError] = useState(null);
+    const history = useHistory();
 
     const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
         event.preventDefault();
