@@ -73,6 +73,7 @@ const SignUp = () => {
         setDisplayName("");
 
         window.location.href = "/"
+        
     };
 
     const onChangeHandler = event => {

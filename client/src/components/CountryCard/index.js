@@ -75,8 +75,10 @@ function CountryCard({ card }) {
                 .then(() => {
                     console.log(`Saved Country: ${card.countryName}`)
                     // window.location.href = "/travel"
-                    history.push(`/travel`),
-                    window.location.reload()
+                    return (
+                        history.push(`/travel`),
+                        window.location.reload()
+                    )
                   
                 })
                 .catch(error => {

@@ -64,8 +64,10 @@ function CityCard({ card }) {
                 .then(() => {
                     console.log(`Updated City: ${card.cityName}`)
                     // window.location.href = `/country/${card.CountryId}/city`
-                    history.push(`/country/${card.CountryId}/city`),
-                    window.location.reload()
+                    return (
+                        history.push(`/country/${card.CountryId}/city`),
+                        window.location.reload()
+                    )
                 })
                 .catch(error => {
                     console.log(error)

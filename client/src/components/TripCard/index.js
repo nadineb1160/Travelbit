@@ -90,8 +90,10 @@ function TripCard({ card }) {
                     .then(() => {
                         console.log(`Updated Trip: ${card.tripName}`)
                         // window.location.href = `/city/${card.CityId}/trip`
-                        history.push(`/city/${card.CityId}/trip`),
-                        window.location.reload()
+                        return (
+                            history.push(`/city/${card.CityId}/trip`),
+                            window.location.reload()
+                        )
                         
                     })
                     .catch(error => {
