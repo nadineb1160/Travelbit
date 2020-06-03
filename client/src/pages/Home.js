@@ -8,14 +8,20 @@ const Home = () => {
         const { id } = event.currentTarget;
         if (id === "remember") {
             // window.location.href = "/travel";
-            history.push(`/travel`)
+            return (
+                history.push(`/travel`)
+            )
         } else if (id === "explore") {
             // Update to explore when made
             // window.location.href = "/travel";
-            history.push(`/travel`)
+            return (
+                history.push(`/travel`)
+            )
         } else if (id === "signin") {
             // window.location.href = "/signin";
-            history.push(`/signin`)
+            return (
+                history.push(`/signin`)
+            )
         }
     }
    
