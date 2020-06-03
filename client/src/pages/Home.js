@@ -7,12 +7,15 @@ const Home = () => {
     const OnClickHandler = event => {
         const { id } = event.currentTarget;
         if (id === "remember") {
-            window.location.href = "/travel";
+            // window.location.href = "/travel";
+            history.push(`/travel`)
         } else if (id === "explore") {
             // Update to explore when made
-            window.location.href = "/travel";
+            // window.location.href = "/travel";
+            history.push(`/travel`)
         } else if (id === "signin") {
-            window.location.href = "/signin";
+            // window.location.href = "/signin";
+            history.push(`/signin`)
         }
     }
    

@@ -72,8 +72,9 @@ const SignUp = () => {
         setPassword("");
         setDisplayName("");
 
-        window.location.href = "/"
-        
+        // window.location.href = "/"
+        history.push(`/`)
+
     };
 
     const onChangeHandler = event => {

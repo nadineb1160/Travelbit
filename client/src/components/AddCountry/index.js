@@ -39,7 +39,7 @@ function AddCountry() {
                 return (
                     // window.location.href = "/travel"
                     history.push(`/travel`),
-                    window.location.reload()
+                    // window.location.reload()
                 )
             })
             .catch(error => {

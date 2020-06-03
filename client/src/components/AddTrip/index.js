@@ -55,7 +55,7 @@ function AddTrip({ cityId }) {
                 console.log("Saved Trip")
                 return (
                     history.push(`/city/${cityId}/trip`),
-                    window.location.reload()
+                    // window.location.reload()
                 )
             })
             .catch(error => {

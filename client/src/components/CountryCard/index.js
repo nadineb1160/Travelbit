@@ -50,7 +50,7 @@ function CountryCard({ card }) {
                 .then(() => {
                     console.log(`Removed ${card.countryName}`)
                     return (
-                        window.location.reload()
+                        history.push(`/travel`)
                     )
                 })
                 .catch(error => {

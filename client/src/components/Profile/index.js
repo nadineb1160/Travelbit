@@ -80,7 +80,8 @@ const ProfilePage = () => {
             API.updateUser(userId, userBody)
               .then(() => {
                 console.log(`Updated User: ${userId}`)
-                window.location.href = `/profile`
+                // window.location.href = `/profile`
+                history.push(`/profile`)
               })
               .catch(error => {
                 console.log(error)
