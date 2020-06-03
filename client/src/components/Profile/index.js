@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useUserContext } from "../../state/UserContext";
 import { auth } from "../../firebase";
 import API from "../../utils/API";
@@ -24,6 +25,7 @@ const ProfilePage = () => {
   const [profilePic, setProfilePic] = useState(img);
   const [countryCount, setCountryCount] = useState(0);
   // const [stateCount, setStateCount] = useState(0);
+  const history = useHistory();
 
   useEffect(() => {
     API.getUserByUid(user.uid)
