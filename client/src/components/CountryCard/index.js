@@ -76,8 +76,8 @@ function CountryCard({ card }) {
                     console.log(`Saved Country: ${card.countryName}`)
                     // window.location.href = "/travel"
                     return (
-                        history.push(`/travel`),
-                        window.location.reload()
+                        history.push(`/travel`)
+                        // window.location.reload()
                     )
                   
                 })
