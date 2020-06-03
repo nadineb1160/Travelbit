@@ -72,7 +72,8 @@ function StateCard({ card }) {
                 API.updateState(card.id, stateBody, userId)
                     .then(() => {
                         console.log(`Saved State: ${card.stateName}`)
-                        window.location.href = `/country/${card.CountryId}/state`
+                        history.push(`/country/${card.CountryId}/state`),
+                        window.location.reload()
                     })
                     .catch(error => {
                         console.log(error)

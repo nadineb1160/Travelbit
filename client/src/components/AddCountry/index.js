@@ -1,6 +1,7 @@
-import React, {useState, createRef} from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
-import {useUserContext} from "../../state/UserContext";
+import { useUserContext } from "../../state/UserContext";
 import SearchCardContainer from '../SearchCardContainer';
 import BackButton from '../BackButton';
 
@@ -21,6 +22,7 @@ function AddCountry() {
     const [continent, setContinent] = useState("");
     const [imgURL, setImgURL] = useState("");
     const {user} = useUserContext();
+    const history = useHistory();
 
     const handleAdd = (event) => {
         event.preventDefault();
@@ -34,9 +36,11 @@ function AddCountry() {
             API.saveCountry(countryBody, userId)
             .then(() => {
                 console.log("Saved Country")
-                // return (
-                //     // window.location.href = "/travel"
-                // )
+                return (
+                    // window.location.href = "/travel"
+                    history.push(`/travel`),
+                    window.location.reload()
+                )
             })
             .catch(error => {
                 console.log(error)

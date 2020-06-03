@@ -63,7 +63,9 @@ function CityCard({ card }) {
             API.updateCity(card.id, cityBody, userId)
                 .then(() => {
                     console.log(`Updated City: ${card.cityName}`)
-                    window.location.href = `/country/${card.CountryId}/city`
+                    // window.location.href = `/country/${card.CountryId}/city`
+                    history.push(`/country/${card.CountryId}/city`),
+                    window.location.reload()
                 })
                 .catch(error => {
                     console.log(error)

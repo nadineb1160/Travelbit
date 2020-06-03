@@ -89,7 +89,10 @@ function TripCard({ card }) {
                 API.updateTrip(card.id, tripBody, userId)
                     .then(() => {
                         console.log(`Updated Trip: ${card.tripName}`)
-                        window.location.href = `/city/${card.CityId}/trip`
+                        // window.location.href = `/city/${card.CityId}/trip`
+                        history.push(`/city/${card.CityId}/trip`),
+                        window.location.reload()
+                        
                     })
                     .catch(error => {
                         console.log(error)

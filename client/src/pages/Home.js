@@ -1,18 +1,27 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { useUserContext } from "../state/UserContext";
 
 const Home = () => {
     const { user } = useUserContext();
+    const history = useHistory();
+
 
     const OnClickHandler = event => {
         const { id } = event.currentTarget;
         if (id === "remember") {
-            window.location.href = "/travel";
+            // window.location.href = "/travel";
+            history.push(`/`),
+            window.location.reload()
         } else if (id === "explore") {
             // Update to explore when made
-            window.location.href = "/travel";
+            // window.location.href = "/travel";
+            history.push(`/travel`),
+            window.location.reload()
         } else if (id === "signin") {
-            window.location.href = "/signin";
+            // window.location.href = "/signin";
+            history.push(`/signin`),
+            window.location.reload()
         }
     }
    
