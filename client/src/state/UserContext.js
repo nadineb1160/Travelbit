@@ -33,4 +33,4 @@ export const UserProvider = ({ children }) => {
 
 export const useUserContext = () => useContext(UserContext);
 // import {useUserContext} from "../UserContext.js"
-// const {name, getUserToken} = useUserContext();
+// const {name} = useUserContext();
