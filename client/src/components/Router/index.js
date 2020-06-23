@@ -61,7 +61,7 @@ function Router() {
                         <Route exact path="/city/:cityId/trip" component={Trip} />
                         {/* <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/signin" component={SignIn} /> */}
-                        {/* <Route component={NoMatch} /> */}
+                        <Route component={NoMatch} />
                     </Switch>
                     : <AuthenticatedRoutes />
                 }
