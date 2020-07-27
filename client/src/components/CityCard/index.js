@@ -16,7 +16,7 @@ function cityJSON(city, countryId) {
 function CityCard({ card }) {
     const [showModal, setShowModal] = React.useState(false);
     const [city, setCity] = useState(card.cityName);
-    const [imgURL, setImgURL] = useState(card.img);
+    // const [imgURL, setImgURL] = useState(card.img);
     const {user} = useUserContext();
     const history = useHistory();
 
@@ -80,13 +80,6 @@ function CityCard({ card }) {
         });
     }
 
-    const onChangeHandler = event => {
-        const { name, value } = event.currentTarget;
-        if (name === "city") {
-            setCity(value);
-        }
-    };
-
     return (
         <div>
             <div onClick={(event) => clickCardHandler(event)} className="max-w-sm border rounded overflow-hidden shadow-lg m-3 bg-white"  value={card.id} name={card.cityName}>
@@ -104,7 +97,7 @@ function CityCard({ card }) {
                     id="update"/>
                 </div>
                 {/* Image */}
-                <img className="w-full p-3" src={imgURL} alt="Travel Map"/>
+                <img className="w-full p-3" src={card.img ? card.img : "https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731_1280.jpg"} alt="Travel Map"/>
                 {/* City Name */}
                 <div className="px-3 py-2">
                     <h1 className="font-bold text-5xl mb-2 marker text-center">{card.cityName}</h1>
@@ -151,7 +144,7 @@ function CityCard({ card }) {
                                                 name="city"
                                                 placeholder={city}
                                                 id="city"
-                                                onChange={(event) => onChangeHandler(event)} 
+                                                onChange={(event) => setCity(event.target.value)} 
                                             />
                                         </div>
                                     </div>

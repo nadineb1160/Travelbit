@@ -17,7 +17,7 @@ function CountryCard({ card }) {
     const [showModal, setShowModal] = React.useState(false);
     const [country, setCountry] = useState(card.countryName);
     const [continent, setContinent] = useState(card.continent);
-    const [imgURL, setImgURL] = useState(card.img);
+    // const [imgURL, setImgURL] = useState(card.img);
     const {user} = useUserContext();
     const history = useHistory();
 
@@ -94,15 +94,6 @@ function CountryCard({ card }) {
     
     }
 
-    const onChangeHandler = event => {
-        const { name, value } = event.currentTarget;
-        if (name === "country") {
-            setCountry(value);
-        } else if (name === "continent") {
-            setContinent(value);
-        }
-    };
-
     return (
         <div>
             <div onClick={(event) => clickCardHandler(event)} className="max-w-sm border rounded overflow-hidden shadow-lg m-3 bg-white" value={card.id} name={card.countryName}>
@@ -114,7 +105,7 @@ function CountryCard({ card }) {
                     id="update"></i>
                 </div>
                     
-                <img className="w-full p-3" src={imgURL} alt="Travel Map" />
+                <img className="w-full p-3" src={card.img ? card.img : "https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731_1280.jpg"} alt="Travel Map" />
                 <div className="px-3 py-2">
                     <h1 className="font-bold text-5xl mb-2 marker text-center">{card.countryName}</h1>
                 </div>
@@ -159,7 +150,7 @@ function CountryCard({ card }) {
                                                     name="country"
                                                     placeholder={country}
                                                     id="country"
-                                                    onChange={(event) => onChangeHandler(event)} 
+                                                    onChange={(event) => setCountry(event.target.value)} 
                                                 />
                                             </div>
                                         </div>
@@ -176,7 +167,7 @@ function CountryCard({ card }) {
                                                     name="continent"
                                                     value={continent}
                                                     id="continent"
-                                                    onChange={(event) => onChangeHandler(event)} 
+                                                    onChange={(event) => setContinent(event.target.value)} 
                                                 >
                                                     <option>Africa</option>
                                                     <option>Antarctica</option>

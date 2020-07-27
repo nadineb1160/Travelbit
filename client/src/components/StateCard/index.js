@@ -16,7 +16,7 @@ function stateJSON(state, countryId) {
 function StateCard({ card }) {
     const [showModal, setShowModal] = React.useState(false);
     const [state, setState] = useState(card.stateName);
-    const [imgURL, setImgURL] = useState(card.img);
+    // const [imgURL, setImgURL] = useState(card.img);
     const { user } = useUserContext();
     const history = useHistory();
 
@@ -88,14 +88,6 @@ function StateCard({ card }) {
             });
     }
 
-    const onChangeHandler = event => {
-        const { name, value } = event.currentTarget;
-        if (name === "state") {
-            setState(value);
-        }
-    };
-
-
     return (
         <div>
 
@@ -114,7 +106,7 @@ function StateCard({ card }) {
                         id="update" />
                 </div>
                 {/* Image */}
-                <img className="w-full p-3" src={imgURL} alt="Travel Map" />
+                <img className="w-full p-3" src={card.img ? card.img : "https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731_1280.jpg"} alt="Travel Map" />
                 {/* State Name */}
                 <div className="px-3 py-2">
                     <h1 className="font-bold text-5xl mb-2 marker text-center">{card.stateName}</h1>
@@ -162,7 +154,7 @@ function StateCard({ card }) {
                                                         name="state"
                                                         placeholder={state}
                                                         id="state"
-                                                        onChange={(event) => onChangeHandler(event)}
+                                                        onChange={(event) => setState(event.target.value)}
                                                     />
                                                 </div>
                                             </div>
