@@ -17,16 +17,28 @@ const CityFromCountry = () => {
     useEffect(() => {
         setLoading(true);
         console.log(user)
-        
-        API.getCitiesFromCountry(countryId).then((cities) => {
-        
-            let cityData = cities.data;
 
-            setDisplayCards(cityData);
-            setLoading(false);
-        })
+        API.getUserByUid(user.uid)
+        .then((res) => {
+            console.log(res)
+            let userId = res.data.id;
+            console.log(userId);
+        
+        
+            API.getCitiesFromCountry(countryId, userId).then((cities) => {
+            
+                let cityData = cities.data;
+
+                setDisplayCards(cityData);
+                setLoading(false);
+            }).catch((error) => {
+                console.log(error)
+            });
+        }).catch((error) => {
+            console.log(error)
+        });
        
-    }, []);
+    }, [countryId, user]);
 
     const addCityHandler = (event) => {
         setAdding(true);

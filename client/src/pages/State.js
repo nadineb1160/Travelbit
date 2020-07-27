@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import AddState from "../components/AddState";
 import StateCardContainer from '../components/StateCardContainer';
 import { useUserContext } from "../state/UserContext.js";
@@ -15,7 +15,7 @@ const State = () => {
     // const [selected, setSelected] = useState({});
     const [loading, setLoading] = useState(false);
     const [adding, setAdding] = useState(false);
-    const history = useHistory();
+    // const history = useHistory();
 
     console.log(countryId)
     // console.log(displayCards)
@@ -23,18 +23,26 @@ const State = () => {
     useEffect(() => {
         setLoading(true);
         console.log(user)
-       
-        API.getStates(countryId).then((states) => {
-            console.log("States")
-            
-            let stateData = states.data;
-            console.log(stateData);
 
-            setDisplayCards(stateData);
-            setLoading(false);
-        })
+        API.getUserByUid(user.uid)
+        .then((res) => {
+            let userId = res.data.id;
+            console.log(userId);
+    
+            API.getStates(countryId, userId).then((states) => {
+                console.log("States")
+                
+                let stateData = states.data;
+                console.log(stateData);
+
+                setDisplayCards(stateData);
+                setLoading(false);
+            })
+        }).catch((error) => {
+            console.log(error)
+        });
         
-    }, []);
+    }, [countryId, user]);
 
     const addStateHandler = (event) => {
         

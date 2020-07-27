@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import AddTrip from "../components/AddTrip";
 import TripCardContainer from '../components/TripCardContainer';
 import { useUserContext } from "../state/UserContext.js";
@@ -17,17 +17,28 @@ const Trip = () => {
     useEffect(() => {
         setLoading(true);
         console.log(user)
-        
-        API.getTrips(cityId).then((cities) => {
-    
-            let cityData = cities.data;
 
-            setDisplayCards(cityData);
-            setLoading(false);
-        })
+        API.getUserByUid(user.uid)
+        .then((res) => {
+            let userId = res.data.id;
+            console.log(userId);
+    
+        
+            API.getTrips(cityId, userId).then((cities) => {
+        
+                let cityData = cities.data;
+
+                setDisplayCards(cityData);
+                setLoading(false);
+            }).catch((error) => {
+                console.log(error)
+            });
+        }).catch((error) => {
+            console.log(error)
+        });
         
         
-    }, []);
+    }, [cityId, user]);
 
     const addStateHandler = () => {
         

@@ -28,12 +28,14 @@ const Country = () => {
                 
                 setDisplayCards(countryData);
                 setLoading(false);
+            }).catch(error => {
+                console.log(error)
             })
         }).catch((error) => {
             console.log(error)
         });
         
-    }, []);
+    }, [user]);
 
     const addCountryHandler = (event) => {
         setAdding(true);

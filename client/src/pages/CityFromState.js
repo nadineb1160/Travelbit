@@ -18,18 +18,26 @@ const CityFromState = () => {
 
     useEffect(() => {
         setLoading(true);
+
+        API.getUserByUid(user.uid)
+        .then((res) => {
+            let userId = res.data.id;
+            console.log(userId);
         
-        API.getCitiesFromState(stateId).then((cities) => {
+            API.getCitiesFromState(stateId, userId).then((cities) => {
 
-            let cityData = cities.data;
+                let cityData = cities.data;
 
-            setDisplayCards(cityData);
-            setLoading(false);
-        }).catch(error => {
+                setDisplayCards(cityData);
+                setLoading(false);
+            }).catch(error => {
+                console.log(error)
+            })
+        }).catch((error) => {
             console.log(error)
-        })
+        });
        
-    }, []);
+    }, [stateId, user.uid]);
 
     const addCityHandler = () => {
         setAdding(true);
