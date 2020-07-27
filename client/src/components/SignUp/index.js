@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { generateUserDocument, auth, signInWithGoogle } from "../../firebase";
+import { auth, signInWithGoogle } from "../../firebase";
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 
@@ -106,7 +106,7 @@ const SignUp = () => {
                     </label>
                     <input
                         type="text"
-                        className="px-3 py-3 mb-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
+                        className="px-3 py-3 mb-3 placeholder-gray-500 text-gray-700 relative bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
                         name="displayName"
                         value={displayName}
                         placeholder="E.g: Joe Smith"
@@ -118,7 +118,7 @@ const SignUp = () => {
                     </label>
                     <input
                         type="email"
-                        className="px-3 py-3 mb-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
+                        className="px-3 py-3 mb-3 placeholder-gray-500 text-gray-700 relative bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
                         name="userEmail"
                         value={email}
                         placeholder="E.g: joe.smith@gmail.com"
@@ -130,7 +130,7 @@ const SignUp = () => {
                     </label>
                     <input
                         type="password"
-                        className="px-3 py-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
+                        className="px-3 py-3 placeholder-gray-500 text-gray-700 relative bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
                         name="userPassword"
                         value={password}
                         placeholder="Your Password"
