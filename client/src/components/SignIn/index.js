@@ -18,25 +18,19 @@ const SignIn = () => {
             auth.signInWithEmailAndPassword(email, password)
                 .then(
                     // console.log(user)
-                    history.push("/")
+                    // history.push("/")
                 )
                 .catch(error => {
-                    setError("Error signing in with password and email!");
+                    setError(error.message);
+                    // setError("Error signing in with password and email!");
                     console.error("Error signing in with password and email", error);
                 });
+            if(!user) {
+                history.push("/")
+            }
 
         };
 
-    const onChangeHandler = (event) => {
-        const { name, value } = event.currentTarget;
-
-        if (name === "userEmail") {
-            setEmail(value);
-        }
-        else if (name === "userPassword") {
-            setPassword(value);
-        }
-    };
 
     return (
         <div className="poppins tracking-wider py-6">
@@ -49,24 +43,24 @@ const SignIn = () => {
                     </label>
                     <input
                         type="email"
-                        className="px-3 py-3 mb-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
+                        className="px-3 py-3 mb-3 placeholder-gray-500 text-gray-700 relative bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
                         name="userEmail"
                         value={email}
                         placeholder="E.g: joesmith@gmail.com"
                         id="userEmail"
-                        onChange={(event) => onChangeHandler(event)}
+                        onChange={(event) => setEmail(event.target.value)}
                     />
                     <label htmlFor="userPassword" className="block font-semibold">
                         Password:
                     </label>
                     <input
                         type="password"
-                        className="px-3 py-3 placeholder-gray-500 text-gray-700 relative bg-white bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
+                        className="px-3 py-3 placeholder-gray-500 text-gray-700 relative bg-white rounded text-sm outline-none focus:outline-none focus:shadow-outline w-full pr-10"
                         name="userPassword"
                         value={password}
                         placeholder="Your Password"
                         id="userPassword"
-                        onChange={(event) => onChangeHandler(event)}
+                        onChange={(event) => setPassword(event.target.value)}
                     />
 
                     <button className="bg-teal-600 hover:bg-teal-500 focus:shadow-outline focus:outline-none text-white font-bold uppercase py-2 px-4 mt-4 w-full rounded" onClick={(event) => { signInWithEmailAndPasswordHandler(event, email, password) }}>
