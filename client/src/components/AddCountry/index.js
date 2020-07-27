@@ -53,16 +53,6 @@ function AddCountry() {
 
     }
 
-    const onChangeHandler = event => {
-        const { name, value } = event.currentTarget;
-        if (name === "country") {
-            setCountry(value);
-        } else if (name === "continent") {
-            setContinent(value);
-        } else if (name === "img") {
-            setImgURL(value);
-        }
-    };
 
     // const readURL = (event) => {
     
@@ -98,7 +88,7 @@ function AddCountry() {
                             value={country}
                             placeholder="Germany" 
                             id="country" 
-                            onChange={(event) => onChangeHandler(event)} />
+                            onChange={(event) => setCountry(event.target.value)} />
                         </div>
                     </div>
                     {/* Continent */}
@@ -114,7 +104,7 @@ function AddCountry() {
                             name="continent"
                             value={continent}
                             id="continent"
-                            onChange={(event) => onChangeHandler(event)} >
+                            onChange={(event) => setContinent(event.target.value)} >
                                 <option>Africa</option>
                                 <option>Antarctica</option>
                                 <option>Australia</option>
@@ -143,7 +133,7 @@ function AddCountry() {
                             value={imgURL}
                             placeholder="https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731__480.jpg" 
                             id="img" 
-                            onChange={(event) => onChangeHandler(event)} />
+                            onChange={(event) => setImgURL(event.target.value)} />
                         </div>
                     </div>
                     {/* Add */}

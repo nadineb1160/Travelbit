@@ -48,15 +48,6 @@ function AddState({ countryId }) {
         });
     }
 
-    const onChangeHandler = event => {
-        const { name, value } = event.currentTarget;
-        if (name === "state") {
-            setState(value);
-        } else if (name === "img") {
-            setImgURL(value);
-        }
-    };
-
     return (
         <div>
             <BackButton/>
@@ -77,7 +68,7 @@ function AddState({ countryId }) {
                             value={state}
                             placeholder="California" 
                             id="state" 
-                            onChange={(event) => onChangeHandler(event)} />
+                            onChange={(event) => setState(event.target.value)} />
                         </div>
                     </div>
                     {/* Image URL */}
@@ -95,7 +86,7 @@ function AddState({ countryId }) {
                             value={imgURL}
                             placeholder="https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731__480.jpg" 
                             id="img" 
-                            onChange={(event) => onChangeHandler(event)} />
+                            onChange={(event) => setImgURL(event.target.value)} />
                         </div>
                     </div>
                    {/* Add */}

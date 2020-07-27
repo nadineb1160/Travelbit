@@ -68,17 +68,6 @@ function AddTrip({ cityId }) {
 
     }
 
-    const onChangeHandler = event => {
-        const { name, value } = event.currentTarget;
-        if (name === "tripName") {
-            setTripName(value);
-        } else if (name === "description") {
-            setDescription(value);
-        } else if (name === "img") {
-            setImgURL(value);
-        }
-    };
-
     return (
         <div>
             <BackButton/>
@@ -101,7 +90,7 @@ function AddTrip({ cityId }) {
                                 value={tripName}
                                 placeholder="Road Trip Summer 2014"
                                 id="tripName"
-                                onChange={(event) => onChangeHandler(event)} />
+                                onChange={(event) => setTripName(event.target.value)} />
                         </div>
                     </div>
                     {/* Description */}
@@ -121,7 +110,7 @@ function AddTrip({ cityId }) {
                                 value={description}
                                 placeholder="Adventure around Eastern Europe with cousin Stef and Mom after interning in Berlin."
                                 id="description"
-                                onChange={(event) => onChangeHandler(event)} />
+                                onChange={(event) => setDescription(event.target.value)} />
                         </div>
                     </div>
                     {/* Calendar */}
@@ -152,7 +141,7 @@ function AddTrip({ cityId }) {
                             value={imgURL}
                             placeholder="https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731__480.jpg" 
                             id="img" 
-                            onChange={(event) => onChangeHandler(event)} />
+                            onChange={(event) => setImgURL(event.target.value)} />
                         </div>
                     </div>
                     {/* Add */}
