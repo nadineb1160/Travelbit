@@ -6,11 +6,11 @@ import API from "../../utils/API";
 const userInstagram = require("user-instagram");
 
 
-function userJSON(user, profilePic) {
+function userJSON(user, displayName, profilePic) {
   return (
     {
       "email": user.email,
-      "displayName": user.displayName,
+      "displayName": displayName,
       "uid": user.uid,
       "img": profilePic
     }
@@ -19,17 +19,24 @@ function userJSON(user, profilePic) {
 
 const ProfilePage = () => {
   const { user } = useUserContext();
-  const { displayName, email, img } = user;
+  const { email, img } = user;
   const [showModal, setShowModal] = useState(false);
   const [username, setUsername] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [profilePic, setProfilePic] = useState(img);
   const [countryCount, setCountryCount] = useState(0);
   // const [stateCount, setStateCount] = useState(0);
   const history = useHistory();
 
+
+  console.log(user)
+
   useEffect(() => {
     API.getUserByUid(user.uid)
     .then((res) => {
+      console.log(res)
+      console.log("res")
+      setDisplayName(res.data.displayName);
       setProfilePic(res.data.img);
 
       API.getCountries(res.data.id) 
@@ -75,7 +82,7 @@ const ProfilePage = () => {
           .then((id) => {
             let userId = id.data.id;
 
-            const userBody = userJSON(user, res.profilePicHD);
+            const userBody = userJSON(user, displayName, res.profilePicHD);
             console.log(userBody)
             console.log(user)
 
@@ -106,13 +113,6 @@ const ProfilePage = () => {
 
 
   }
-
-  const onChangeHandler = event => {
-    const { name, value } = event.currentTarget;
-    if (name === "username") {
-      setUsername(value);
-    }
-  };
 
   return (
     <div className="mb-4">
@@ -180,7 +180,7 @@ const ProfilePage = () => {
                           name="username"
                           placeholder={username}
                           id="username"
-                          onChange={(event) => onChangeHandler(event)}
+                          onChange={(event) => setUsername(event.target.value)}
                         />
                       </div>
                     </div>
