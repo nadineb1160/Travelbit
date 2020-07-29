@@ -35,8 +35,9 @@ function AddCityFromCountry({ countryId }) {
             .then(() => {
                 console.log("Saved City")
                 return (
-                    history.push(`/country/${countryId}/city`),
-                    window.location.reload()
+                    // history.push(`/country/${countryId}/city`),
+                    // window.location.reload()
+                    window.location.replace(`/country/${countryId}/city`)
                 )
             })
             .catch(error => {

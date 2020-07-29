@@ -38,8 +38,9 @@ function AddCountry() {
                 console.log("Saved Country")
                 return (
                     // window.location.href = "/travel"
-                    history.push(`/travel`),
-                    window.location.reload()
+                    // history.push(`/travel`),
+                    // window.location.reload()
+                    window.location.replace("/travel")
                 )
             })
             .catch(error => {
