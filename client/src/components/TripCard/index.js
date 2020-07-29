@@ -61,8 +61,9 @@ function TripCard({ card }) {
                     console.log(`Removed ${card.tripName}`)
                     return (
                         // window.location.reload()
-                        history.push(`/city/${card.CityId}/trip`),
-                        window.location.reload()
+                        // history.push(`/city/${card.CityId}/trip`),
+                        // window.location.reload()
+                        window.location.replace(`/city/${card.CityId}/trip`)
                     )
                 })
                 .catch(error => {
@@ -93,8 +94,9 @@ function TripCard({ card }) {
                         console.log(`Updated Trip: ${card.tripName}`)
                         // window.location.href = `/city/${card.CityId}/trip`
                         return (
-                            history.push(`/city/${card.CityId}/trip`),
-                            window.location.reload()
+                            // history.push(`/city/${card.CityId}/trip`),
+                            // window.location.reload()
+                            window.location.replace(`/city/${card.CityId}/trip`)
                         )
                         
                     })
