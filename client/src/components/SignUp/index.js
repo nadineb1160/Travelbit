@@ -41,15 +41,13 @@ const SignUp = () => {
                 API.saveUser(userBody)
                     .then(() => {
                         console.log("Saved")
-                    })
-                    .catch(error => {
+                    }).catch(error => {
                         console.log("Error saving user in database")
                         console.log(error)
                     })
-            })
-                .catch(error => {
-                    console.log(error)
-                });
+            }).catch(error => {
+                console.log(error)
+            });
 
             // console.log(user)
             // console.log(displayName);
