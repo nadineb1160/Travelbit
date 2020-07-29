@@ -55,8 +55,8 @@ function CountryCard({ card }) {
                     console.log(`Removed ${card.countryName}`)
                     return (
                         // history.push(`/travel`),
-                        // window.location.reload()
-                        window.location.replace(`/travel`)
+                        window.location.reload()
+                        // window.location.replace(`/travel`)
                     )
                 })
                 .catch(error => {
@@ -83,8 +83,8 @@ function CountryCard({ card }) {
                     // window.location.href = "/travel"
                     return (
                         // history.push(`/travel`),
-                        // window.location.reload()
-                        window.location.replace(`/travel`)
+                        window.location.reload()
+                        // window.location.replace(`/travel`)
 
                     )
                   

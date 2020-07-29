@@ -41,8 +41,8 @@ function CityCard({ card }) {
                     return (
                         // window.location.reload()
                         // history.push(`/country/${card.CountryId}/city`),
-                        // window.location.reload()
-                        window.location.replace(`/country/${card.CountryId}/city`)
+                        window.location.reload()
+                        // window.location.replace(`/country/${card.CountryId}/city`)
                         
                     )
                 })
@@ -70,8 +70,8 @@ function CityCard({ card }) {
                     // window.location.href = `/country/${card.CountryId}/city`
                     return (
                         // history.push(`/country/${card.CountryId}/city`),
-                        // window.location.reload()
-                        window.location.replace(`/country/${card.CountryId}/city`)
+                        window.location.reload()
+                        // window.location.replace(`/country/${card.CountryId}/city`)
 
                     )
                 })

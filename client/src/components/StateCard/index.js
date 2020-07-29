@@ -46,8 +46,8 @@ function StateCard({ card }) {
                         return (
                             // window.location.reload()
                             // history.push(`/country/${card.CountryId}/state`),
-                            // window.location.reload()
-                            window.location.replace(`/country/${card.CountryId}/state`)
+                            window.location.reload()
+                            // window.location.replace(`/country/${card.CountryId}/state`)
                         )
                     })
                     .catch(error => {
@@ -77,8 +77,8 @@ function StateCard({ card }) {
                         console.log(`Saved State: ${card.stateName}`)
                         return (
                             // history.push(`/country/${card.CountryId}/state`),
-                            // window.location.reload()
-                            window.location.replace(`/country/${card.CountryId}/state`)
+                            window.location.reload()
+                            // window.location.replace(`/country/${card.CountryId}/state`)
                         )
                     })
                     .catch(error => {
