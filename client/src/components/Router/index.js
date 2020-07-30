@@ -2,12 +2,14 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Components
+import AddCityFromCountry from "../AddCityFromCountry";
+import AddCityFromState from "../AddCityFromState";
+import AddCountry from "../AddCountry";
+import AddState from "../AddState";
+import AddTrip from "../AddTrip";
 import SignUp from "../SignUp";
 import SignIn from "../SignIn";
 import PasswordReset from "../PasswordReset";
-import AddCountry from "../AddCountry";
-import AddCityFromCountry from "../AddCityFromCountry";
-import AddCityFromState from "../AddCityFromState";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import Wrapper from "../Wrapper";
@@ -50,19 +52,18 @@ function Router() {
             <Wrapper>
                 {user ?
                     <Switch>
+                        <Route exact path="/state/:stateId/city" component={CityFromState} />
+                        <Route exact path="/country/:countryId/city" component={CityFromCountry} />
                         <Route exact path="/" component={Home} />
-                        <Route exact path="/travel" component={Travel} />
-                        {/* <Route exact path="/about" component={About} /> */}
                         <Route exact path="/profile" component={Profile} />
-                        <Route exact path="/addCountry" component={AddCountry} />
+                        <Route exact path="/country/:countryId/state" component={State} />
+                        <Route exact path="/travel" component={Travel} />
+                        <Route exact path="/city/:cityId/trip" component={Trip} />
                         <Route exact path="/addCityFromCountry" component={AddCityFromCountry} />
                         <Route exact path="/addCityFromState" component={AddCityFromState} />
-                        <Route exact path="/country/:countryId/state" component={State} />
-                        <Route exact path="/country/:countryId/city" component={CityFromCountry} />
-                        <Route exact path="/state/:stateId/city" component={CityFromState} />
-                        <Route exact path="/city/:cityId/trip" component={Trip} />
-                        {/* <Route exact path="/signup" component={SignUp} />
-                    <Route exact path="/signin" component={SignIn} /> */}
+                        <Route exact path="/addCountry" component={AddCountry} />
+                        <Route exact path="/addState" component={AddState} />
+                        <Route exact path="/addTrip" component={AddTrip} />
                         <Route component={NoMatch} />
                     </Switch>
                     : <AuthenticatedRoutes />
