@@ -21,6 +21,7 @@ import State from "../../pages/State";
 import CityFromCountry from "../../pages/CityFromCountry";
 import CityFromState from "../../pages/CityFromState";
 import Trip from "../../pages/Trip";
+import NoMatch from "../../pages/noMatch";
 
 // User State
 import { useUserContext } from "../../state/UserContext.js"
@@ -34,6 +35,7 @@ function AuthenticatedRoutes() {
             <Route path="/signin" component={SignIn} />
             <Route exact path="/passwordReset" component={PasswordReset} />
             <Route exact path="/about" component={About} />
+            <Route component={NoMatch}/>
         </Switch>
     )
 }
@@ -61,7 +63,7 @@ function Router() {
                         <Route exact path="/city/:cityId/trip" component={Trip} />
                         {/* <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/signin" component={SignIn} /> */}
-                        {/* <Route component={NoMatch} /> */}
+                        <Route component={NoMatch} />
                     </Switch>
                     : <AuthenticatedRoutes />
                 }
