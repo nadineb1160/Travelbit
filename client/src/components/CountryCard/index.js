@@ -51,11 +51,11 @@ function CountryCard({ card }) {
             API.deleteCountry(card.id)
                 .then(() => {
                     console.log(`Removed ${card.countryName}`)
-                    history.push(`/travel`)
-                    // return (
-                    //     // window.location.reload()
-                    //     // window.location.replace(`/travel`)
-                    // )
+                    return (
+                        // history.push(`/travel`),
+                        window.location.reload()
+                        // window.location.replace(`/travel`)
+                    )
                 })
                 .catch(error => {
                     console.log(error)
@@ -79,12 +79,11 @@ function CountryCard({ card }) {
                 .then(() => {
                     console.log(`Saved Country: ${card.countryName}`)
                     // window.location.href = "/travel"
-                    history.push(`/travel`)
-                    // return (
-                    //     // window.location.reload()
-                    //     // window.location.replace(`/travel`)
-
-                    // )
+                    return (
+                        // history.push(`/travel`),
+                        window.location.reload()
+                        // window.location.replace(`/travel`)
+                    )
                   
                 })
                 .catch(error => {
