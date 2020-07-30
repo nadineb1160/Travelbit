@@ -31,15 +31,13 @@ function CountryCard({ card }) {
         if (countryName === "United States of America" || countryName === "USA" || countryName === "United States") {
             console.log("states");
             return (
-                // history.push(`/country/${countryId}/state`),
-                // window.location.reload()
-                window.location.replace(`/country/${countryId}/state`)
+                history.push(`/country/${countryId}/state`),
+                window.location.reload()
             )
         } else {
             return (
-                // history.push(`/country/${countryId}/city`),
-                // window.location.reload()
-                window.location.replace(`/country/${countryId}/city`)
+                history.push(`/country/${countryId}/city`),
+                window.location.reload()
             )
         }
     }
@@ -53,11 +51,11 @@ function CountryCard({ card }) {
             API.deleteCountry(card.id)
                 .then(() => {
                     console.log(`Removed ${card.countryName}`)
-                    return (
-                        // history.push(`/travel`),
-                        window.location.reload()
-                        // window.location.replace(`/travel`)
-                    )
+                    history.push(`/travel`)
+                    // return (
+                    //     // window.location.reload()
+                    //     // window.location.replace(`/travel`)
+                    // )
                 })
                 .catch(error => {
                     console.log(error)
@@ -81,12 +79,12 @@ function CountryCard({ card }) {
                 .then(() => {
                     console.log(`Saved Country: ${card.countryName}`)
                     // window.location.href = "/travel"
-                    return (
-                        // history.push(`/travel`),
-                        window.location.reload()
-                        // window.location.replace(`/travel`)
+                    history.push(`/travel`)
+                    // return (
+                    //     // window.location.reload()
+                    //     // window.location.replace(`/travel`)
 
-                    )
+                    // )
                   
                 })
                 .catch(error => {

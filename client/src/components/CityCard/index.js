@@ -38,13 +38,13 @@ function CityCard({ card }) {
             API.deleteCity(card.id)
                 .then(() => {
                     console.log(`Removed ${card.cityName}`)
-                    return (
-                        // window.location.reload()
-                        // history.push(`/country/${card.CountryId}/city`),
-                        window.location.reload()
-                        // window.location.replace(`/country/${card.CountryId}/city`)
+                    history.push(`/country/${card.CountryId}/city`)
+                    // return (
+                    //     // window.location.reload()
+                    //     // window.location.reload()
+                    //     // window.location.replace(`/country/${card.CountryId}/city`)
                         
-                    )
+                    // )
                 })
                 .catch(error => {
                     console.log(error)
@@ -68,12 +68,12 @@ function CityCard({ card }) {
                 .then(() => {
                     console.log(`Updated City: ${card.cityName}`)
                     // window.location.href = `/country/${card.CountryId}/city`
-                    return (
-                        // history.push(`/country/${card.CountryId}/city`),
-                        window.location.reload()
-                        // window.location.replace(`/country/${card.CountryId}/city`)
+                    history.push(`/country/${card.CountryId}/city`)
+                    // return (
+                    //     // window.location.reload()
+                    //     // window.location.replace(`/country/${card.CountryId}/city`)
 
-                    )
+                    // )
                 })
                 .catch(error => {
                     console.log(error)

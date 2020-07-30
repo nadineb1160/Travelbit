@@ -43,12 +43,12 @@ function StateCard({ card }) {
                 API.deleteState(card.id, userId)
                     .then(() => {
                         console.log(`Removed ${card.stateName}`)
-                        return (
-                            // window.location.reload()
-                            // history.push(`/country/${card.CountryId}/state`),
-                            window.location.reload()
-                            // window.location.replace(`/country/${card.CountryId}/state`)
-                        )
+                        history.push(`/country/${card.CountryId}/state`)
+                        // return (
+                        //     // window.location.reload()
+                        //     // window.location.reload()
+                        //     // window.location.replace(`/country/${card.CountryId}/state`)
+                        // )
                     })
                     .catch(error => {
                         console.log(error)
@@ -75,11 +75,11 @@ function StateCard({ card }) {
                 API.updateState(card.id, stateBody, userId)
                     .then(() => {
                         console.log(`Saved State: ${card.stateName}`)
-                        return (
-                            // history.push(`/country/${card.CountryId}/state`),
-                            window.location.reload()
-                            // window.location.replace(`/country/${card.CountryId}/state`)
-                        )
+                        history.push(`/country/${card.CountryId}/state`)
+                        // return (
+                        //     // window.location.reload()
+                        //     // window.location.replace(`/country/${card.CountryId}/state`)
+                        // )
                     })
                     .catch(error => {
                         console.log(error)
