@@ -36,12 +36,12 @@ function AddCountry() {
             API.saveCountry(countryBody, userId)
             .then(() => {
                 console.log("Saved Country")
-                return (
-                    // window.location.href = "/travel"
-                    // history.push(`/travel`),
-                    // window.location.reload()
-                    window.location.replace("/travel")
-                )
+                window.location.href = "/travel"
+                // return (
+                //     // history.push(`/travel`),
+                //     // window.location.reload()
+                //     window.location.replace("/travel")
+                // )
             })
             .catch(error => {
                 console.log(error)
