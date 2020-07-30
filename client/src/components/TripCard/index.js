@@ -5,6 +5,7 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import API from "../../utils/API";
+import { isArguments } from "lodash";
 
 
 function tripJSON(trip, description, startDate, endDate, cityId) {
@@ -109,19 +110,11 @@ function TripCard({ card }) {
             });
     }
 
-    const onChangeHandler = event => {
-        const { name, value } = event.currentTarget;
-        if (name === "trip") {
-            setTrip(value);
-        } else if (name === "description") {
-            setDescription(value);
-        }
-    };
 
     return (
 
         <div className="max-w-xl w-2/3 lg:max-w-full lg:flex p-3 justify-center">
-            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{ backgroundImage: `url(${imgURL})` }} title="Travel picture">
+            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{backgroundImage: imgURL ? `url(${imgURL})` : "url(https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130731_1280.jpg)"}} title="Travel picture">
             </div>
             <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                 {/* Card */}
@@ -189,9 +182,10 @@ function TripCard({ card }) {
                                                     type="text"
                                                     className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500"
                                                     name="trip"
+                                                    value={trip}
                                                     placeholder={trip}
                                                     id="trip"
-                                                    onChange={(event) => onChangeHandler(event)}
+                                                    onChange={(event) => setTrip(event.target.value)}
                                                 />
                                             </div>
                                         </div>
@@ -211,7 +205,7 @@ function TripCard({ card }) {
                                                     value={description}
                                                     placeholder="Adventure around Eastern Europe with cousin Stef and Mom after interning in Berlin."
                                                     id="description"
-                                                    onChange={(event) => onChangeHandler(event)} />
+                                                    onChange={(event) => setDescription(event.target.value)} />
                                             </div>
                                         </div>
                                         <div className="flex items-center mb-6">
